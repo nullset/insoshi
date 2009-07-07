@@ -12,8 +12,9 @@ class PhotosController < ApplicationController
         redirect_to person_galleries_path(current_person)
       }
       format.js {
-        photos = current_person.photos.collect { |p| [(p.title.blank? ? File.basename(p.filename, '.*').titleize : p.title), p.public_filename] }
-        puts "=====> #{photos.to_json}"
+        photos = current_person.photos.collect { |p| 
+          [(p.title.blank? ? File.basename(p.filename, '.*').titleize : p.title), p.public_filename] 
+        }
         render :update do |page|
           page << %{ var tinyMCEImageList = #{photos.to_json}; }
         end
