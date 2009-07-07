@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
      person.resources :galleries
      person.resources :connections
      person.resources :comments
+     person.resources :photos
   end
   
   map.resources :galleries do |gallery|

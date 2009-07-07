@@ -7,7 +7,18 @@ class PhotosController < ApplicationController
   before_filter :correct_gallery_requried, :only => [:new, :create]
   
   def index
-    redirect_to person_galleries_path(current_person)
+    respond_to do |format|
+      format.html {
+        redirect_to person_galleries_path(current_person)
+      }
+      format.js {
+        photos = current_person.photos.collect { |p| [(p.title.blank? ? File.basename(p.filename, '.*').titleize : p.title), p.public_filename] }
+        puts "=====> #{photos.to_json}"
+        render :update do |page|
+          page << %{ var tinyMCEImageList = #{photos.to_json}; }
+        end
+      }
+    end
   end
   
   def show
