@@ -1,0 +1,362 @@
+#wrapper {
+	width: 792px;
+	text-align: left;
+	margin: 0 auto;
+	background: url(wrapper_background_bottom.jpg) left bottom no-repeat;
+	padding-bottom: 24px;
+	margin-top:-40px;
+}
+#header {
+	width: 792px;	
+	height: 161px;
+	background: #0B559E url(new_masthead.jpg) no-repeat;
+	position: relative;
+}
+#body {
+	background: url(body_bg.gif) repeat-y;
+}
+#inner {
+	width: 752px;
+	margin-left: 23px;
+/*	font-size: .85em;*/
+}
+#rightcol {
+	float: right;
+	width: 532px;
+}
+#sidebar {
+	float: left;
+	width: 220px;
+	padding-bottom: 1.5em;
+	background: url(sidebar_top_shadow2.jpg) right top no-repeat;
+	position: relative;
+	z-index: 50;
+}
+#footer {
+	clear: both;
+	margin-top: -3em;
+	padding: 1em 0 .5em;
+	position: relative;
+	background: #e7e7e7;
+	color: #666;
+	margin-left: 23px;
+	margin-right: 17px;
+	height: 40px;
+}
+#body > #footer {
+	height: auto;
+	min-height: 40px;
+}
+
+#header h1 a {
+	display: block;
+	position: absolute;
+	height: 130px;
+	width: 220px;
+	left: 25px;
+	top: 50px;
+	cursor: pointer;
+}
+#header h1 span {
+	position: absolute;
+	left: -1000em;
+}
+#header #search {
+	position: absolute;
+	right: 30px;
+	bottom: 15px;
+	width: 200px;
+	text-align: right;
+}
+#header ul {
+	position: absolute;
+	right: 0px;
+	bottom: 40px;
+	width: 120px;
+	margin-right: 30px;
+}
+#header li {
+	float: left;
+	width: 40px;
+}
+#header li a {
+	display: block;
+	height: 14px;
+	width: 14px;
+}
+#header li a span {
+	position: absolute;
+	left: -1000em;
+}
+#g-home a {
+	background: url(icon_home.gif) center no-repeat;
+}
+#g-contact a {
+	background: url(icon_contact.gif) center no-repeat;
+}
+#g-search a {
+	background: url(icon_search.gif) center no-repeat;
+}
+#searchquery {
+	width: 120px;
+}
+#header form {
+	clear: both;
+}
+#header input {
+	background:#eee;
+	border:1px solid #757575;
+/*	height: 1.4em;*/
+	padding: .1em .2em;
+}
+#header a {
+	display: block;
+}
+
+#crumbs {
+	text-transform: uppercase;
+	padding: .8em 0 0 10px;
+	margin-bottom: 1.5em;
+	color: #999;
+	font-family: Verdana;
+	font-size: .9em;
+}
+#crumbs a {
+	text-decoration: none;
+	color: #999;
+}
+
+#content {
+	clear: both;
+	margin: 0 20px 5em;
+	font-family: Verdana;
+}
+
+#education_content {
+	clear: both;
+	margin: 0 5px 5em;
+	font-family: Verdana;
+}
+#site-map ul {
+	margin-top: .5em;
+}
+#rightcol-inner > #content {
+	margin-bottom: 4em;
+}
+
+#header ul, #mainnav, #sidenav, #footernavtop, #footernavbottom {
+	list-style: none;
+}
+#search ul li, #mainnav li, #footernavtop li, #footernavbottom li {
+	float: left;
+}
+#mainnav a, #footernavtop a, #footernavbottom a, #copyright {
+	display: block;
+	text-align: center;
+	padding: 0 .5em;
+}
+
+#mainnav {
+	font-size: .85em;
+}
+#mainnav li {
+	background: url(mainnav_background.gif) left bottom repeat-x;
+}
+#mainnav a {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: url(mainnav_separator.jpg) left top no-repeat;
+	padding: 0;
+	line-height: 41px;
+	color: #555;
+}
+#mainnav a:hover {
+	color: #927F23;
+}
+#mainnav li:first-child a {
+	background: none;
+}
+#m-about a {
+	width: 150px;
+}
+
+#m-about li {
+	font-size:10px;
+}
+
+#m-physicians a {
+	width: 110px;
+}
+#m-patient a {
+	width: 168px;
+}
+#m-locations a {
+	width: 104px;
+}
+
+#sidebar-inner * {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+#sidebar-inner * * {
+	margin-left: 0;
+	margin-right: 0;
+}
+#sidebar h2 {
+	margin-left: 0;
+	margin-right: 0;
+	padding: 10px 20px;
+	background: url(sidebar-hr.gif) left top no-repeat;
+	margin-top: 1.2em;
+}
+#sidebar h2:first-child, #sidebar h2.first {
+	margin: 0 0 1em 0;
+	background: url(sidebar_hr_dark.gif) left bottom no-repeat;
+}
+
+#sidebar h2.first {
+
+	font-size:16px;
+}
+
+a.andy {
+	text-decoration:none;
+}
+
+#sidebar ul {
+	margin-left: 30px;
+}
+#sidebar li {
+	margin-bottom: .3em;
+}
+ul#sidenav {
+	margin-left: 20px;
+}
+#sidenav li {
+	margin-bottom: .1em;
+}
+#sidenav a {
+	display: block;
+	height: 33px;
+	padding-top: .7em;
+	text-indent: 48px;
+	font-weight: bold;
+	font-size: 1em;
+	color: #460044;
+}
+#sidenav a:hover {
+	color: #927F23;
+}
+#sidenav li > a {
+	height: auto;
+	min-height: 33px;
+}
+#s-sports {
+	background: url(leftnav_sports.jpg) top left no-repeat;
+	position: relative;
+}
+#s-spine {
+	background: url(leftnav_spine.jpg) no-repeat top left;
+	position: relative;
+}
+#s-joint {
+	background: url(leftnav_totaljoint.jpg) no-repeat top left;
+	position: relative;
+}
+#s-trauma {
+	background: url(leftnav_trauma.jpg) no-repeat top left;
+	position: relative;
+}
+#s-foot {
+	background: url(leftnav_footandankle.jpg) no-repeat top left;
+	position: relative;
+}
+#s-hand {
+	background: url(leftnav_hand.jpg) no-repeat top left;
+	position: relative;
+}
+
+#footer img {
+	float: right;
+	margin-right: 10px;
+}
+#footer #updated_date {
+	position: absolute;
+	right: 15px;
+	top: -30px;
+	font-size: .8em;
+}
+#sidebar-bottom {
+	height: 240px;
+	width: 219px;
+	position: absolute;
+	top: -237px;
+	left: 0;
+	margin-top: 4em;
+	background: url(sidebar_bottom_shadow.jpg) bottom right no-repeat;
+	z-index: 10;
+}
+#footer ul {
+	margin: 0 0 0 225px;
+	clear: left;
+}
+#footernavtop {
+	font-size: .9em;
+}
+#footernavbottom {
+	font-size: .8em;
+}
+#footer > #footernavbottom {
+	padding-top: 5px;
+}
+#footernavtop li a, #footernavbottom li a {
+	border-left: 1px solid #bbb;
+	color: #666;
+	text-decoration: none;
+}
+#footernavtop li:first-child a, #footernavbottom li:first-child a, #footernavtop li.first a, #footernavbottom li.first a, #footernavbottom #copyright {
+	border-left: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+#footer a:hover {
+	text-decoration: underline;
+}
+
+.headshots {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.headshots li {
+	float: left;
+	width: 45%;
+	text-align: center;
+	padding-bottom: 1em;
+	font-size: .9em;
+}
+.headshots a {
+	display: block;
+	margin: 0 2%;
+	padding: 5px 5px;
+}
+.headshots img {
+	border: 1px solid #ddd;
+}
+
+.date_update {
+	padding: 0 10px 2.5em 0;
+	text-align: right;
+	font-size: .9em;
+	font-style: italic;
+}
+.access {
+	position: absolute;
+	left: -1000em;
+}
+.noheight {
+	height: 0;
+}
+

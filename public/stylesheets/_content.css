@@ -1,0 +1,334 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: .76em;
+	line-height: 1.4;
+	font-family: Tahoma, "Trebuchet MS", "Lucida Grande", Arial, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color: #555;
+	background: #fff;
+}
+h1, h2, h3, h4, h5, h6{
+	color: #460044;
+	text-transform: uppercase;
+	font-family: Tahoma, "Trebuchet MS", "Lucida Grande", Arial, Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+h1 {
+	font-size: 1.5em;
+	letter-spacing: -.02em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+h2 {
+	font-size: 1.2em;
+	letter-spacing: -.03em;
+	padding: 1em 0 0 0;
+}
+h3 {
+	font-size: 1.1em;
+}
+h4 {
+	font-size: 1em;
+	text-transform: none;
+}
+
+h2.education {
+	margin-top: -0.7em;
+	font-size: 1.3em;
+	font-family: "Trebuchet MS";
+    text-transform: none;
+}
+
+h3.education {
+    font-size: 1.3em;
+	margin-top: -1.5em;
+    text-transform: none;
+    text-align: right;
+}
+
+dl {
+	margin-bottom: 1em;
+}
+dd {
+	margin-left: 2em;
+}
+address {
+	font-style: normal;
+	margin-bottom: 1em;
+}
+cite {
+	display: block;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: right;
+	padding-right: 2em;
+}
+sup, sub {
+	line-height: 0;
+}
+a, a:hover, #crumbs a:hover {
+	color: #927F23;
+}
+a img {
+	border: none;
+}
+h2 a {
+	color: #460044;
+	text-decoration:none;
+	#border-bottom: 0px solid transparent;
+}
+h2 a:hover {
+	color: #927F23;
+	border-bottom: 1px solid;
+}
+
+.clear {
+	clear: both;
+}
+
+#content h2, .mceContentBody h2 {
+	font-size: 1.3em;
+	font-family: "Trebuchet MS";
+}
+#content h3, .mceContentBody h2 {
+	margin: 0 0 1em 0;
+}
+#content p, .mceContentBody p {
+	margin: 0 0 1em 0;
+}
+#content ul, #content ol, .mceContentBody ul, .mceContentBody ol {
+	margin-left: 2em;
+}
+#content li, .mceContentBody li {
+	margin-bottom: .5em;
+}
+#content img {
+	border: 1px solid #ccc;
+}
+
+#content .box-container {
+	border-top: 1px dashed #ccc;
+	padding: 1.5em 0;
+	margin: 1.5em 0 0;
+	background: url(/images/layout/box_center.gif) center 40px repeat-y;
+}
+#content .box-container.no-divider {
+	background: none;
+}
+#content .box-container h2 {
+	padding: 0;
+}
+#content .box-container h4 {
+	margin-bottom: .4em;
+}
+#content .box-left {
+	float: left;
+	width: 45%;
+}
+#content .box-right {
+	float: right;
+	width: 45%;
+}
+
+#education_content p, .mceContentBody p {
+	margin: 0 0 1em 0;
+}
+#education_content ul, #content ol, .mceContentBody ul, .mceContentBody ol {
+	margin-left: 2em;
+}
+#education_content li, .mceContentBody li {
+	margin-bottom: .5em;
+}
+#education_content img {
+	border: 1px solid #ccc;
+}
+
+#education_content a {
+                    text-decoration:none;
+                    }
+
+#education_content ul:hover,li:hover {
+                    text-decoration:underline;
+                    }
+
+#education_content a:hover {
+                    text-decoration:underline;
+                    }                    
+                  
+#education_content table,tr,td {
+                    border: 0px;
+                    border-style:none;
+                    }
+
+#education_content .box-container {
+	border-top: 1px dashed #ccc;
+	padding: 1.5em 0;
+	margin: 1.5em 0 0;
+	background: url(/images/layout/box_center.gif) center 40px repeat-y;
+}
+#education_content .box-container.no-divider {
+	background: none;
+}
+#education_content .box-container h2 {
+	padding: 0;
+}
+#education_content .box-container h4 {
+	margin-bottom: .4em;
+}
+#education_content .box-left {
+	float: left;
+	width: 45%;
+}
+#education_content .box-right {
+	float: right;
+	width: 45%;
+}
+
+
+.caption {
+	font-size: .8em;
+	text-align: center;
+	color: #666;
+	margin-bottom: 2em;
+	display: block;
+}
+
+#content ul.arrows, .mceContentBody ul.arrows {
+	margin: 1em 0 1em 0;
+	list-style: none;
+}
+#content ul.arrows li, .mceContentBody ul.arrows li {
+	background: url(/images/layout/content_bullet.gif) left .3em no-repeat;
+	margin: 0 0 1em 5px;
+	padding-left: 15px;
+}
+
+#content ul:hover,li:hover {
+	text-decoration: none;
+	}
+
+
+
+.caps {
+	text-transform: uppercase;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: .9em;
+}
+a.caps {
+	border-bottom: 1px solid;
+}
+a.caps:hover {
+	border-bottom: 1px solid;
+}
+.floatLeft, .floatLeftNoBorder {
+	float: left;
+	margin: 0 2em 1em 0;
+}
+.floatRight, .floatRightNoBorder {
+	float: right;
+	margin: 0 0 1em 2em;
+}
+.floatLeftTopMargin, .floatLeftTopMarginNoBorder {
+	float: left;
+	margin: 1em 2em 1em 0;
+}
+.floatRightTopMargin, .floatRightTopMarginNoBorder {
+	float: right;
+	margin: 1em 0 1em 2em;
+}
+#content img {
+	border: 1px solid #ccc;
+}
+.floatLeft, .floatLeftTopMargin, .floatRight, .floatLeftTopMargin {
+	border: 1px solid #ccc;
+}
+.floatLeftNoBorder, .floatLeftTopMarginNoBorder, .floatLeftNoBorder img, .floatLeftTopMarginNoBorder img {
+	border: none;
+}
+.floatRightNoBorder, .floatRightTopMarginNoBorder, .floatRightNoBorder img, .floatRightTopMarginNoBorder img {
+	border: none;
+}
+
+.noBreak {
+	white-space: nowrap;
+}
+
+#mainnav li.first a {
+	background: none;
+}
+
+#b_information h1, #b_information h2 {
+	margin-bottom: 0;
+}
+#content .box-container h2, .mceContentBody .box-container h2 {
+	margin-bottom: 1em;
+}
+#language_selector a {
+	float: right;
+	color: #460044;	
+	background: #ddd;
+	border: 1px solid;
+	padding: .7em 1.5em;
+	margin: 0 0 1em 2em;
+	font-size: 1.2em;
+	text-decoration: none;
+}
+#language_selector a:hover {
+	text-decoration: underline;
+	background: #ACCCff;
+}
+
+table {
+	border-collapse: collapse;
+	font-size: 1em;
+	margin-bottom: 1em;
+    border: 0px solid;
+}
+th, td {
+	border: 1px solid  #ccc;
+	font-size: 1em;
+}
+th, td {
+	padding: .2em .4em;
+}
+table.tight, tr.tight, th.tight, td.tight  {
+	margin-top: 0.5em;
+	padding: 0em;
+}
+
+table.no_border {
+	border-width: 0px 0px 0px 0px;
+	border-spacing: 0px;
+	border-style: none none none none;
+	border-color: gray gray gray gray;
+	border-collapse: separate;
+	background-color: white;
+}
+table.no_border th {
+	border-width: 0px 0px 0px 0px;
+	padding: 1px 1px 1px 1px;
+	border-style: inset inset inset inset;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+table.no_border td {
+	border-width: 0px 0px 0px 0px;
+	padding: 1px 1px 1px 1px;
+	border-style: inset inset inset inset;
+	border-color: gray gray gray gray;
+	background-color: white;
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+.tableAltRow {
+	background: #eee;
+}
+.tableHeader {
+	background: #9ac5e2;
+	color: #104f7a;
+}
+table.tableNoBorder, tr.tableNoBorder th, tr.tableNoBorder td, th.tableNoBorder, td.tableNoBorder {
+	border: none;
+}
