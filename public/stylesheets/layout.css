@@ -12,7 +12,7 @@
 #header {
 	width: 792px;	
 	height: 161px;
-	background: #0B559E url(/images/layout/new_masthead.jpg) no-repeat;
+	background: url(/images/layout/new_masthead.jpg) no-repeat;
 	position: relative;
 }
 #body {

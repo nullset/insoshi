@@ -37,7 +37,9 @@ class Photo < ActiveRecord::Base
                  :resize_to => '240>',
                  :thumbnails => { :thumbnail    => '72>',
                                   :icon         => '36>',
-                                  :bounded_icon => '36x36>' },
+                                  :bounded_icon => '36x36>',
+                                  :recent_photo => '50x50!',
+                                  :big => '300>' },
                  :thumbnail_class => Thumbnail
 
   belongs_to :gallery, :counter_cache => true
@@ -88,8 +90,9 @@ class Photo < ActiveRecord::Base
       add_activities(:activity => activity, :person => person)
   end
   
+  # TODO: TEST: Get a list of the n most recent posts
   def self.recent_photos(limit = 9)
-    self.find(:all, :order => "created_at desc", :limit => limit)
+    self.find(:all, :order => "created_at desc", :limit => 9)
   end
 
 end

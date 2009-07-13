@@ -5,7 +5,7 @@
       <%- recent_photos.each do |photo| -%>
         <%# TODO : limit cycle to just recent photos %>
         <li class="<%= cycle('first', '', '') %>">
-          <a href=""><img src="/images/demo/1.jpg" alt="" /></a>
+          <%= link_to image_tag(photo.public_filename(:recent_photo), :alt => photo.title, :title => photo.title, :size => "50x50"), "" %>
         </li>
       <%- end -%>
     </ul>
