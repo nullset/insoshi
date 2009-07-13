@@ -197,7 +197,7 @@
 #subnav li {
   border-left: 1px solid #dfdfdf;
 }
-#subnav li.first {
+#subnav li:first-child {
   border: none;
 }
 #subnav a {
@@ -239,6 +239,10 @@
 	margin-right: 0;
 	padding-right: 0;
 }
+#sidebar-inner > div:first-child h2 {
+  margin-top: .2em;
+}
+
 #sidebar h2 {
 	padding: 10px 20px 8px 0;
 	margin: 2em 0 .75em 0;
@@ -253,7 +257,7 @@ a.andy {
 	margin-left: 30px;
 }
 #sidebar li {
-	margin-bottom: .3em;
+	margin-bottom: .5em;
 }
 ul#sidenav {
 	margin-left: 20px;

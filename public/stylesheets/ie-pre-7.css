@@ -1,0 +1,49 @@
+#upgrade_message {
+  background: #fc0;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  border: 2px solid #000;
+  border-width: 2px 0;
+}
+#upgrade_message .inner {
+  width: 500px;
+  text-align: left;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+#upgrade_message h1 {
+  color: #f00;
+  text-align: center;
+  font-size: 100%;
+}
+#upgrade_message ul {
+  text-align: center;
+}
+#upgrade_message li {
+  list-style: none;
+  display: inline;
+  margin: 0 1em;
+}
+#upgrade_message a {
+  color: #460044;
+}
+#upgrade_message ul a {
+  font-size: 108%;
+}
+#upgrade_message .icon {
+  padding-left: 36px;
+  line-height: 36px;
+}
+#upgrade_message .firefox {
+  background: url(/images/internet_explorer/firefox.png) left center no-repeat;
+}
+#upgrade_message .chrome {
+  background: url(/images/internet_explorer/chrome.png) left center no-repeat;
+}
+#upgrade_message .opera {
+  background: url(/images/internet_explorer/opera.png) left center no-repeat;
+}
+#upgrade_message .safari {
+  background: url(/images/internet_explorer/safari.png) left center no-repeat;
+}

@@ -1,0 +1,15 @@
+<%- unless recent_photos.blank? -%>
+  <div id="recent_photos">
+    <h2>Recent Photos</h2>
+    <ul>
+      <%- recent_photos.each do |photo| -%>
+        <%# TODO : limit cycle to just recent photos %>
+        <li class="<%= cycle('first', '', '') %>">
+          <a href=""><img src="/images/demo/1.jpg" alt="" /></a>
+        </li>
+      <%- end -%>
+    </ul>
+    <div class="clear"></div>
+    <div class="more"><a href="">View more &raquo;</a></div>
+  </div> <!-- #recent_photos -->
+<%- end -%>

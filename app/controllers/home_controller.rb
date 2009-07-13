@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_before_filter :require_activation
   
   def index
-    @body = "home"
+    @body = "_home"
     @topics = Topic.find_recent
     @members = Person.find_recent
     if logged_in?
@@ -11,7 +11,11 @@ class HomeController < ApplicationController
       @requested_contacts = current_person.requested_contacts
     else
       @feed = Activity.global_feed
-    end    
+    end
+    
+    @blog_posts = BlogPost.recent_posts
+    @photos = Photo.recent_photos
+    
     respond_to do |format|
       format.html
       format.atom

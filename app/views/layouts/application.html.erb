@@ -1,17 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><%= app_name %></title>
-  <% if @forum %>
-    <%= auto_discovery_link_tag(:atom, :action => :show, :format => :atom, 
-    :id => @forum.id ) %>
-  <% elsif @feed %>
-    <%= auto_discovery_link_tag(:atom, :action => :index, 
-    :format => :atom ) %>
-  <% end %>
-    <%= stylesheet_link_tag "default" %>
+	
+<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Language" content="en-us" />
+		<title>Blog : Panorama Orthopedics &amp; Spine Center</title>
+    <% if @forum %>
+      <%= auto_discovery_link_tag(:atom, :action => :show, :format => :atom, 
+      :id => @forum.id ) %>
+    <% elsif @feed %>
+      <%= auto_discovery_link_tag(:atom, :action => :index, 
+      :format => :atom ) %>
+    <% end %>
+		<meta name="keywords" content="Panorama Orthopedics &amp;Spine Center, Golden, Colorado, Orthopedic Surgeons, Denver, Orthopedic Specialists, Shoulder, hip, knee, replacement, resurfacing, reconstruction, arthritis, orthopaedic, arthroscopy, bones, bone, joints, hip joint, knee joint, knock knees, flat foot, flat feet, osteotomy, osteotomies, scoliosis, fractures, herniated disc, back pain, spine, orthopedic trauma, carpal tunnel, elbow, finger, hand, ankle, foot, sports injuries, broken tibia, reconstructive surgery, knee reconstruction, foot and ankle" />
+		<meta name="description" content="Panorama Orthopedics &amp;Spine Center is a group of orthopedic surgeons specializing in sports medicine, spine, joint, foot &amp;ankle, hand and trauma. " />
+		<meta name="robots" content="index,follow" />
+    <%= stylesheet_link_tag "reset-min", "base-min", "reset-fonts", "layout", "content" %>
+    <!--[if lte IE 6]>
+      <%= stylesheet_link_tag "ie-pre-7.css" %>
+    <![endif]-->
+    <!--[if IE 7]>
+      <%= stylesheet_link_tag "ie7" %>
+    <![endif]-->
+    
+    <link rel="shortcut icon" href="favicon.ico" />
+    <%# stylesheet_link_tag "default" %>
     <%= stylesheet_link_tag "jquery-flora.tabs.css", "jquery.tooltip.css", 
                             "facebox.css" %>
     <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", 
@@ -79,23 +93,114 @@
     
   </head>
   <body class="<%= @body %>">
-    <%= render :partial => 'shared/header' %>
-    <div id="wrap">
-      <div id="content">
-        <%- if global_prefs.demo? -%>
-          <p class="error" style="font-weight: bold;">
-            This is a demonstration site. 
-            Data may be modified or removed without warning.
-          </p>
-        <%- end -%>
-        <% flash.each do |key, msg| %>
-          <%= content_tag :p, msg, :class => "flash #{key}" %>
-        <% end %>     
-        <%= yield %>
-      </div>
-      <%= render :partial => 'shared/footer' %>
-      <%= render :partial => 'shared/debug' if development? %>
+    
+    <div id="wrapper">
+    
+      <div id="header">
+        <h1>
+    			<a href="http://www.panoramaortho.com/index.html"><span>Panorama Orthopedics and Spine Center</span></a>
+    		</h1>
+    	</div> <!-- #header -->
+    	
+  		<div id="body">
+    		<div id="inner">
+    		  <div id="rightcol">
+    			  <div id="rightcol-inner">
+              <ul id="mainnav">
+                <li class="first"><a href="">About Panorama</a></li>
+                <li><a href="">Physicians</a></li>
+                <li><a href="">Resources</a></li>
+                <li class="first"><a href="">Locations</a></li>
+                <li><a href="">Blog</a>
+                  <ul id="subnav">
+                    <%- menu.each do |link| -%>
+                      <%= menu_li link %>
+                    <%- end -%>
+                    <li>
+                      <form action="" id="search">
+                        <dl>
+                          <dt><label>Search People &#8230;</label></dt>
+                          <dd><input type="text" /></dd>
+                        </dl>
+                        <div class="buttons"><input type="submit" value="Search" /></div>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div id="crumbs" class="clear">
+                &#187; <a href="">Home</a> &#187; Blog
+              </div> <!-- #crumbs -->
+              <div id="content">
+                
+                <%- if global_prefs.demo? -%>
+                  <p class="error" style="font-weight: bold;">
+                    This is a demonstration site. 
+                    Data may be modified or removed without warning.
+                  </p>
+                <%- end -%>
+                <% flash.each do |key, msg| %>
+                  <%= content_tag :p, msg, :class => "flash #{key}" %>
+                <% end %>     
+                
+                <%= yield %>
+       				  <div class="clear">&nbsp;</div>
+
+              </div> <!-- #content -->
+    		    </div> <!-- #rightcol-inner -->
+    		  </div> <!-- #rightcol -->
+    		  <div id="sidebar">
+    		    <div id="sidebar-inner">
+    		      
+    		      <%- if logged_in? -%>
+  		          <div id="welcome">
+                  <h2>Welcome, <%= h current_person.first_name %>!</h2>
+                  <p><%= link_to "Sign out", logout_path %></p>
+                <%- if current_person.admin? -%>
+                  <br />
+                  <%- if admin_view? -%>
+                    <%= link_to("Standard view", home_path) %>
+                  <%- else -%>
+                    <%= link_to("Admin view", admin_preferences_path) %>
+                  <%- end -%>
+                <%- end -%>
+                </div> <!-- #welcome -->
+              <%- else -%>
+                <%- if params[:controller] != 'sessions' -%>
+                  <%= render :partial => "sessions/form" %>
+                <%- end -%>
+              <%- end -%>
+              
+
+              <%= render :partial => "shared/recent_posts", :object => @blog_posts %>
+              <%= render :partial => "shared/recent_photos", :object => @photos %>
+
+    		      <div id="tag_cloud">
+    		        <h2>Tags</h2>
+    		        <ul>
+    		          <li><a href="" class="tag3">Aciliqu</a></li>
+    		          <li><a href="" class="tag9">Susciduipit</a></li>
+    		          <li><a href="" class="tag2">Teisi sum</a></li>
+    		          <li><a href="" class="tag8">Consectetuer</a></li>
+    		          <li><a href="" class="tag7">Orci miniat</a></li>
+    		          <li><a href="" class="tag1">Doluptat</a></li>
+    		          <li><a href="" class="tag4">Eugiat odio</a></li>
+    		          <li><a href="" class="tag10">Iolumsan incinim</a></li>
+    		          <li><a href="" class="tag5">Ipisl</a></li>
+    		          <li><a href="" class="tag6">Aenean</a></li>
+    		        </ul>
+    		      </div> <!-- #tag_cloud -->
+
+    	      </div> <!-- #sidebar-inner -->
+    			</div> <!-- #sidebar -->
+    		</div>
+    		<div class="clear">&nbsp;</div>
+    		<%= render :partial => "shared/footer" %>
+    	</div>
     </div>
+    
+    <%= render :partial => 'shared/debug' if development? %>
     <%= global_prefs.analytics %>
+
   </body>
 </html>

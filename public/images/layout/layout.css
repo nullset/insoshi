@@ -211,18 +211,8 @@
 	background: url(sidebar-hr.gif) left top no-repeat;
 	margin-top: 1.2em;
 }
-#sidebar h2:first-child, #sidebar h2.first {
-	margin: 0 0 1em 0;
-	background: url(sidebar_hr_dark.gif) left bottom no-repeat;
-}
-
-#sidebar h2.first {
-
-	font-size:16px;
-}
-
-a.andy {
-	text-decoration:none;
+#sidebar-inner {
+  background: #fc0;
 }
 
 #sidebar ul {

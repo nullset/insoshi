@@ -87,5 +87,9 @@ class Photo < ActiveRecord::Base
       activity = Activity.create!(:item => self, :person => person)
       add_activities(:activity => activity, :person => person)
   end
+  
+  def self.recent_photos(limit = 9)
+    self.find(:all, :order => "created_at desc", :limit => limit)
+  end
 
 end

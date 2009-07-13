@@ -1,0 +1,11 @@
+<%- unless recent_posts.blank? -%>
+  <div id="recent_posts">
+    <h2>Recent Posts</h2>
+    <ul>
+      <%- recent_posts.each do |post| -%>
+        <li><%= link_to post.title, "" %></li>
+      <%- end -%>
+    </ul>
+    <div class="more"><a href="">View more &raquo;</a></div>
+  </div> <!-- #recent_posts -->
+<%- end -%>

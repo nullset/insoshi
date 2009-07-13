@@ -11,7 +11,7 @@ module ApplicationHelper
   ## Menu helpers
   
   def menu
-    home     = menu_element("Dashboard",   home_path)
+    # home     = menu_element("Dashboard",   home_path)
     people   = menu_element("People", people_path)
     if Forum.count == 1
       forum = menu_element("Forum", forum_path(Forum.find(:first)))
@@ -29,7 +29,8 @@ module ApplicationHelper
       #                        person_connections_path(current_person))
       events   = menu_element("Events", events_path)
       #links = [home, profile, contacts, messages, blog, people, forum]
-      links = [home, profile, messages, people, forum]
+      # links = [home, profile, messages, people, forum]
+      links = [profile, messages, people, forum]
       # TODO: put this in once events are ready.
       # links.push(events)
       
@@ -39,9 +40,11 @@ module ApplicationHelper
       forums =  menu_element(inflect("Forum", Forum.count),
                              admin_forums_path)
       preferences = menu_element("Prefs", admin_preferences_path)
-      links = [home, people, forums, preferences]
+      # links = [home, people, forums, preferences]
+      links = [people, forums, preferences]
     else
-      links = [home, people]
+      # links = [home, people]
+      links = [people]
     end
     if global_prefs.about.blank?
       links
