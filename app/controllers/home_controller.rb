@@ -3,9 +3,9 @@ class HomeController < ApplicationController
   
   def index
     @body = "_home"
-    @topics = Topic.find_recent
-    @members = Person.find_recent
-    unless logged_in?
+    if logged_in?
+      @requested_contacts = current_person.requested_contacts
+    else
       @feed = Activity.global_feed
     end
 
