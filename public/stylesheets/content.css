@@ -212,27 +212,27 @@ form dd {
   font-weight: 900;
 }
 
-#_home .post img {
+._home .post img {
   float: right;
   margin: 0 0 20px 20px;
 }
-#_home .post .meta li.date {
+._home .post .meta li.date {
   margin: 0;
   list-style: none;
 }
-#_home .post.secondary .meta li.date {
+._home .post.secondary .meta li.date {
   position: absolute;
   bottom: 0;
   left: 0;
 }
-#_home .box-right.post.secondary .meta li.date {
+._home .box-right.post.secondary .meta li.date {
   left: 20px;
 }
-#_home .post.secondary .meta li.author {
+._home .post.secondary .meta li.author {
   margin-left: 0;
   list-style: none;
 }
-#_home .post.secondary img {
+._home .post.secondary img {
   float: right;
   margin: 0 0 15px 15px;
 }

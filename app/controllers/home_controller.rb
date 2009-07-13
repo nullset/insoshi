@@ -5,14 +5,13 @@ class HomeController < ApplicationController
     @body = "_home"
     @topics = Topic.find_recent
     @members = Person.find_recent
-    if logged_in?
-      @feed = current_person.feed
-      @some_contacts = current_person.some_contacts
-      @requested_contacts = current_person.requested_contacts
-    else
+    unless logged_in?
       @feed = Activity.global_feed
     end
-    
+
+    @intro = Person.find(:first, :conditions => ["admin = ?", true]).blog.posts.find(:first, :order => "created_at desc")
+    # TODO : Make featured posts
+    # @featured_posts = 
     @blog_posts = BlogPost.recent_posts
     @photos = Photo.recent_photos
     

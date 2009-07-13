@@ -35,7 +35,7 @@ class Photo < ActiveRecord::Base
                  :max_size => UPLOAD_LIMIT.megabytes,
                  :min_size => 1,
                  :resize_to => '240>',
-                 :thumbnails => { :thumbnail    => '72>',
+                 :thumbnails => { :thumbnail    => '100>',
                                   :icon         => '36>',
                                   :bounded_icon => '36x36>',
                                   :recent_photo => '50x50!',

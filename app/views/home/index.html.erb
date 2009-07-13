@@ -1,38 +1,54 @@
-<%- column_div :type => :primary do -%>
-  <%- if logged_in? and current_person.has_unread_messages? -%>
-    <div class="notice">
-      You have unread messages in your mailbox.
-      <%= link_to "Click here to see your messages",
-                  messages_path %>
-    </div>
-  <%- end -%>
-  <%= render :partial => 'feed' %>
-<%- end -%>
+<h1><%= sanitize(@intro.title) %></h1>
+<%= display @intro.body %>
 
-<%- column_div :type => :secondary do -%>
-  <%= render :partial => "searches/box" %>
-  <%- if logged_in? -%>
-    <%= render :partial => 'requested_contacts' %>
-    <%= render :partial => 'messages_preview' %>
-    <%= render :partial => 'shared/contacts_preview',
-               :locals => { :person => current_person } %>
-  <%- else -%>
-    <%- unless global_prefs.app_name.blank? -%>
-      <h2>About <%= global_prefs.app_name %></h2>
-    
-      <p>
-        <%= link_to "Click here", about_path %>
-        to learn more about us.
-      </p>
-    <%- end -%>
-    
-    <h2>Join
-      <%= global_prefs.app_name.blank? ? "the site" : global_prefs.app_name %>
-    </h2>
-    
-    <div style="text-align: center;">
-      <%= link_to image_tag("button_signup.png"), signup_path %>
-    </div>
-      
-  <%- end -%>
-<%- end -%>
+<div class="hr"></div>
+
+<div class="post">
+  <h2>A title for an article from a doctor's blog</h2>
+  <ul class="meta">
+    <li class="date">July 14, 2009</li>
+    <li class="author"><a href="">Dr. John Q. Smith</a></li>
+    <li class="comments"><a href="" class="icon comments">12 comments</a></li>
+  </ul>
+  <div class="clear"></div>
+  <img src="/images/demo/man.jpg" width="300" height="200" alt="" />
+  <p>Loborting facidunt doluptatue faccummy nummolorem blaore euissim facinci; commodipis vendre ullamcorper eui. Donec doloborper magnis nissi nit placerat. Nonum ing dis pharetra risus magniat tion sapien feugue vent ullutpat. Velenibh patin eugue minciliquat. </p>
+  <p>Luptatum iuscipit sequam iliquiscipis iliquiscipis adignim odolore elenisit dip eui utpationse. Torquent luctus vulput ante tue quipsum dolut, prate consequipis nonse, elis molor do diamet. Consectem exercilit et feuguer vendiatie hendipisim doloboreet facing ullutpat; susci nullute praestis adignim modo nisl.</p>
+  <div class="more"><a href="">Read more &raquo;</a></div>
+</div> <!-- .post -->
+
+<div class="hr"></div>
+
+<!-- start .box-container -->
+<div class="container">
+  <div class="box-left post secondary">
+    <h3>A user's article</h3>
+    <ul class="meta">
+      <li class="date">July 14, 2009</li>
+      <li class="author"><a href="">Mark Hamilton</a></li>
+      <li class="comments"><a href="" class="icon comments">12 comments</a></li>
+    </ul>
+    <div class="clear"></div>
+    <img src="/images/demo/by_water.jpg" width="100" height="67" alt="" />
+    <p>Ullutat vercilisit modiam ationullaoret. Utate quamet facillum os prat diamcon voloreros issectem consequat, sodales ipit rilit. Eraestie natoque alisi adion enit, nulput ostrud tio. Consequat dapibus aliquip consequis alisit euismodi. Tellus dolortis alismolum doluptatue justo, se accumsan atueros urna conubia ip facillum isisiscilit ex.</p>
+    <div class="more"><a href="">Read more &raquo;</a></div>
+  </div>
+
+  <div class="box-right post secondary">
+    <h3>Another article</h3>
+    <ul class="meta">
+      <li class="date">July 14, 2009</li>
+      <li class="author"><a href="">Jane Doe</a></li>
+      <li class="comments"><a href="" class="icon comments">12 comments</a></li>
+    </ul>
+    <div class="clear"></div>
+    <img src="/images/demo/golf.jpg" width="75" height="100" alt="" />
+    <p>Consectem egestas deliquatue dolesecte prat utetumm odipsumsan, congue feuisi nisit, volutpat lobortio nisl elenisit. Vel tatum hendre rilisit luptat incing enisit adio; pratisl eumsandre sis consequat.</p>
+    <div class="more"><a href="">Read more &raquo;</a></div>
+  </div>
+
+  <div class="clear">&nbsp;</div>
+</div>
+<!-- end .box-container -->
+
+
