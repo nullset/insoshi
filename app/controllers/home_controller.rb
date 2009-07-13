@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
     @intro = Person.find(:first, :conditions => ["admin = ?", true]).blog.posts.find(:first, :order => "created_at desc")
     # TODO : Make featured posts
-    # @featured_posts = 
+    @featured_posts = Post.find(:all, :conditions => ["featured = ?", true], :order => "position")
     @blog_posts = BlogPost.recent_posts
     @photos = Photo.recent_photos
     

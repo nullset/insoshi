@@ -1,0 +1,11 @@
+<div class="post">
+  <h2><%= link_to sanitize(post.title), blog_post_path(post.blog, post) %></h2>
+  <ul class="meta">
+    <li class="date"><%= post.created_at.to_date.to_formatted_s(:long_ordinal) %></li>
+    <li class="author"><%= link_to sanitize(post.blog.person.name), person_path(post.blog.person) %></li>
+    <li class="comments"><%= link_to pluralize(post.comments.length, "comment"), blog_post_path(post.blog, post, :anchor => "comments"), :class => "icon comments" %></li>
+  </ul>
+  <div class="clear"></div>
+  <%= display truncate(post.body, :length => 1000, :omission => "&#8230;") %>
+  <div class="more"><%= link_to "Read more &raquo;", blog_post_path(post.blog, post) %></div>
+</div> <!-- .post -->
