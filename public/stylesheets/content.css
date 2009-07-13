@@ -79,6 +79,13 @@ form dd {
   background: #85250D;
   color: #fc0;
 }
+.success {
+  background: #557E24;
+  color: #fff;
+}
+.nowrap {
+  white-space: nowrap;
+}
 
 .box-left {
   float: left;
@@ -107,6 +114,51 @@ form dd {
   margin-bottom: 1em;
 }
 
+
+th, td {
+  padding: .5em;
+}
+thead th {
+  font-weight: bolder;
+  font-size: 85%;
+  
+}
+tbody th, tbody td {
+  vertical-align: top;
+}
+tr {
+  border-bottom: 1px solid #ddd;
+}
+tr.odd {
+  background: #fff;
+}
+tr.even {
+  background: #efefef;
+}
+
+table.forum, table.forum th, table.forum td {
+  border: none;
+}
+table.forum thead tr {
+  background: #724A7D;
+  color: #fff;
+}
+table.forum td.meta {
+  font-size: 85%;
+  text-align: center;
+}
+table.forum td.meta .author {
+  white-space: nowrap;
+}
+
+.pagination {
+  margin: 1em 0;
+  text-align: center;
+}
+
+div.search {
+  margin-bottom: 2em;
+}
 
 #content img {
   border: 1px solid #ccc;

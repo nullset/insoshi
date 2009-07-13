@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   
-  before_filter :login_required
+  # before_filter :login_required
   before_filter :admin_required, :only => [:edit, :update, :destroy]
   before_filter :setup
   

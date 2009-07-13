@@ -1,25 +1,32 @@
-<%- column_div :type => :primary do -%>
-  <h2>Discussion topics</h2>
-  
-  <ol class="list forum full">
-    <%= render :partial => 'topics/topic', :collection => @topics %>
-  </ol>
-  <%= will_paginate(@topics) %>
+<%= render :partial => 'searches/box' %>
 
-  <%- if logged_in? -%>
-      <h2>New Topic</h2>
-  
-      <% form_for :topic, :url => forum_topics_path(@forum) do |f| %>
-        <div class="form_row">
-          <%= f.label :name, "Subject" %>
-          <%= f.text_field :name %>
-          <%= f.submit "Start", :class => "button" %>
-        </div>
-      <% end %>
-  <%- end -%>
-<%- end -%>
+<h2>Discussion topics</h2>
+<table class="forum">
+  <thead>
+    <tr>
+      <th scope="col">Topic</th>
+      <th scope="col">Author</th>
+      <th scope="col">Posts</th>
+      <th scope="col">Started at</th>
+      <th scope="col">Last updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @topics.each do |topic| -%>
+      <%= render :partial => 'topics/topic', :object => topic %>
+    <%- end -%>
+  </tbody>
+</table>
+<%= will_paginate(@topics) %>
 
-<%- column_div :type => :secondary do -%>
-  <%= render :partial => 'searches/box' %>
-  <%= render :partial => 'shared/minifeed' %>
+<%- if logged_in? -%>
+    <h2>New Topic</h2>
+
+    <% form_for :topic, :url => forum_topics_path(@forum) do |f| %>
+      <div class="form_row">
+        <%= f.label :name, "Subject" %>
+        <%= f.text_field :name %>
+        <%= f.submit "Start", :class => "button" %>
+      </div>
+    <% end %>
 <%- end -%>
