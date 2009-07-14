@@ -1,4 +1,3 @@
-<%- column_div :type => :primary do -%>
 <h2>Common contacts with <%= @person.name %></h2>
 <% unless @common_contacts.empty? -%>
   <%= will_paginate(@common_contacts) %>
@@ -10,9 +9,3 @@
 <% else %>
   <h2>No contacts in common</h2>
 <% end -%>
-
-<%- end -%>
-
-<%- column_div :type => :secondary do -%>
-  <%= render :partial => 'shared/minifeed' %>
-<%- end -%>
