@@ -1,31 +1,34 @@
-<h2><span class="fn n"><%= @person.name %></span>'s Profile</h2>
-<%- if current_person?(@person) || current_person.admin? -%>
-  <div class="button_container">
-<%- end -%>
-<%- if current_person.admin? -%>
-  <%- activity = activated_status(@person)  -%>
-  <%= link_to activity,
-              admin_person_path(@person, :task => "deactivated"),
-              :method => :put %>
-  <%= "|" if current_person?(@person) %>
-<%- end -%>
-<%- if current_person?(@person) -%>
-  <%= link_to "Edit profile", edit_person_path(@person) %> |
-  <%= link_to "Change photo", @person.galleries.first %>
-<%- end -%>
-<%- if current_person?(@person) || current_person.admin? -%>
-    <div class="clear"></div>
-  </div>
-<%- end -%>
-<%- if admin? and not @person.active? -%>
-  <p class="error">This person is not active</p>
-<%- end -%>
-<%- if current_person?(@person) && current_person.description.blank? -%>
-  <div class="error">
-    Your description is blank.
-    <%= link_to "Click here to add a description", 
-      edit_person_path(@person) %>
-  </div>
+<h1><span class="fn n"><%= @person.name %></span>'s Profile</h1>
+
+<%- if logged_in? -%>
+  <%- if current_person?(@person) || current_person.admin? -%>
+    <div class="button_container">
+      <p>
+  <%- end -%>
+  <%- if current_person.admin? -%>
+    <%- activity = activated_status(@person)  -%>
+    <%= link_to activity, admin_person_path(@person, :task => "deactivated"), :method => :put %>
+    <%= "|" if current_person?(@person) %>
+  <%- end -%>
+  <%- if current_person?(@person) -%>
+    <%= link_to "Edit profile", edit_person_path(@person) %> |
+    <%= link_to "Change photo", @person.galleries.first %>
+  <%- end -%>
+  <%- if current_person?(@person) || current_person.admin? -%>
+      </p>
+      <div class="clear"></div>
+    </div>
+  <%- end -%>
+  <%- if admin? and not @person.active? -%>
+    <p class="error">This person is not active</p>
+  <%- end -%>
+  <%- if current_person?(@person) && current_person.description.blank? -%>
+    <div class="error">
+      Your description is blank.
+      <%= link_to "Click here to add a description", 
+        edit_person_path(@person) %>
+    </div>
+  <%- end -%>
 <%- end -%>
 
 <div class="toolbox">

@@ -2,8 +2,7 @@ class PeopleController < ApplicationController
   
   skip_before_filter :require_activation, :only => :verify_email
   skip_before_filter :admin_warning, :only => [ :show, :update ]
-  before_filter :login_required, :only => [ :show, :edit, :update,
-                                            :common_contacts ]
+  before_filter :login_required, :only => [ :edit, :update, :common_contacts ]
   before_filter :correct_user_required, :only => [ :edit, :update ]
   before_filter :setup
   
@@ -29,10 +28,10 @@ class PeopleController < ApplicationController
       # Use the same max number as in basic contacts list.
       num_contacts = Person::MAX_DEFAULT_CONTACTS
       @some_common_contacts = @common_contacts[0...num_contacts]
-      @blog = @person.blog
-      @posts = @person.blog.posts.paginate(:page => params[:page])
-      @galleries = @person.galleries.paginate(:page => params[:page])
     end
+    @blog = @person.blog
+    @posts = @person.blog.posts.paginate(:page => params[:page])
+    @galleries = @person.galleries.paginate(:page => params[:page])
     respond_to do |format|
       format.html
     end

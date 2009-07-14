@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-  before_filter :login_required
+  # before_filter :login_required
 
   def show
     @body = "blog"

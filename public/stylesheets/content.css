@@ -47,20 +47,37 @@ form dd {
 #content form dd input[type="text"], #content form dd input[type="password"] {
   width: 50%;
 }
+ul.clear {
+  height: auto;
+}
 
-.icon {
+.icon, .admin {
   padding-left: 20px;
   min-height: 16px;
   display: inline-block;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+.icon.posts {
+  background-image: url(/images/famfamfam/page_white_stack.png);
 }
 .icon.comments {
-  background: url(/images/famfamfam/comments.png) left center no-repeat;
+  background-image: url(/images/famfamfam/comments.png);
 }
 .icon.help {
-  background: url(/images/famfamfam/help.png) left center no-repeat;
+  background-image: url(/images/famfamfam/help.png);
 }
 .icon.new_user {
-  background: url(/images/famfamfam/user_add.png) left center no-repeat;
+  background-image: url(/images/famfamfam/user_add.png);
+}
+.icon.photos {
+  background-image: url(/images/famfamfam/photos.png);
+}
+.icon.calendar {
+  background-image: url(/images/famfamfam/calendar.png);
+}
+.icon.group {
+  background-image: url(/images/famfamfam/group.png);
 }
 
 .hr {
@@ -159,6 +176,87 @@ table.forum td.meta .author {
 div.search {
   margin-bottom: 2em;
 }
+
+
+.grid ul {
+  margin: 0;
+}
+.grid li {
+  list-style: none;
+  float: left;
+  margin: 0 0 20px 20px;
+}
+.grid li.first {
+  clear: left;
+  margin-left: 0;
+}
+
+.grid li.contact a {
+  width: 145px;
+  height: 60px;
+  display: block;
+  border: 1px solid #ccc;
+  padding: 5px;
+  overflow: hidden;
+  color: #777;
+  text-decoration: none;
+  background: url(/images/layout/sidebar_top_shadow2.jpg) left -150px no-repeat;
+}
+.grid li.contact a:hover {
+  border-color: #927F23;
+  color: #927F23;
+}
+.grid li.contact a img {
+  float: left;
+  margin-right: 10px;
+}
+#content .grid li.contact a:hover img {
+  border-color: #927F23;
+}
+
+
+#welcome img {
+  float: left;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+#welcome ul.user_meta {
+  float: left;
+  width: 130px;
+  font-size: 85%;
+  margin: 0;
+}
+#welcome ul.user_meta li {
+  list-style: none;
+}
+
+
+#sidebar #friend_requests ul {
+  margin: 0;
+}
+#friend_requests li {
+  list-style: none;
+  margin-left: 0;
+  border-top: 1px solid #efefef;
+  padding-top: .5em;
+}
+#friend_requests li:first-child {
+  border: none;
+  padding: 0;
+}
+#friend_requests img {
+  float: left;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+#friend_requests .info {
+  float: left;
+  width: 130px;
+}
+#friend_requests .meta {
+  font-size: 85%;
+}
+
 
 #content img {
   border: 1px solid #ccc;

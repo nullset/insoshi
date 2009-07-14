@@ -1,10 +1,12 @@
-<ul class="grid contacts medium">
+<ul class="grid">
   <%- contacts.each do |contact| -%>
-    <li class="vcard contact"><span>
+    <li class="contact <%= cycle('first', '', '', :name => "contact_card") %>">
       <%= image_link contact, :image_options => { :class => "photo" },
-                              :link_options => { :class => "url" },
-                              :vcard => true,
-                              :image => :bounded_icon %>
-  </span></li>
+                            :link_options => { :class => "url" },
+                            :vcard => true,
+                            :image => :icon %>
+    </li>
   <%- end %>
 </ul>
+
+<div class="clear"></div>

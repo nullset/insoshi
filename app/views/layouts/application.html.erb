@@ -153,30 +153,14 @@
     		    <div id="sidebar-inner">
     		      
     		      <%- if logged_in? -%>
-  		          <div id="welcome">
-                  <h2>Welcome, <%= h current_person.first_name %>!</h2>
-                  <p><%= link_to "Sign out", logout_path %></p>
-                <%- if current_person.admin? -%>
-                  <br />
-                  <%- if admin_view? -%>
-                    <%= link_to("Standard view", home_path) %>
-                  <%- else -%>
-                    <%= link_to("Admin view", admin_preferences_path) %>
-                  <%- end -%>
-                <%- end -%>
-                </div> <!-- #welcome -->
+    		        <%= render :partial => "shared/logged_in" %>
               <%- else -%>
                 <%- if params[:controller] != 'sessions' -%>
                   <%= render :partial => "sessions/form" %>
                 <%- end -%>
-              <%- end -%>
-              
-              <%- if logged_in? && @home == '_home' -%>
-                <%= render :partial => 'requested_contacts' rescue render :partial => "home/requested_contacts" %>
-              <%- end -%>
-              
+              <%- end -%>              
 
-              <%= render :partial => "shared/recent_posts", :object => @blog_posts %>
+              <%= render :partial => "shared/recent_posts" %>
               <%= render :partial => "shared/recent_photos", :object => @photos %>
 
     		      <div id="tag_cloud">

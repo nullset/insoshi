@@ -1,0 +1,22 @@
+<%- unless current_person.requested_contacts.empty? -%>
+<div id="friend_requests">
+  <h2>Friend Requests</h2>
+  <ul>
+    <%- current_person.requested_contacts.each do |contact| -%>
+      <%- conn = Connection.conn(current_person, contact) -%>
+      <li>
+        <%= image_link contact %>
+        <div class="info">
+          <div class="name"><%= person_link contact %></div>
+          <div class="meta">
+            <div><%= time_ago_in_words(conn.created_at) %> ago</div>
+            <%= link_to "Respond", edit_connection_path(conn) %>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </li>
+    <%- end -%>
+  </ul>
+</div>
+<div class="clear"></div>
+<%- end -%>
