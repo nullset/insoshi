@@ -14,9 +14,9 @@
   <%= link_to image_tag(current_person.icon), person_path(current_person) %>
   <ul class="user_meta">
     <li class="icon calendar">Member since <%= current_person.created_at.to_date.to_formatted_s(:long_ordinal) %></li>
-    <li class="icon posts"><%= pluralize(current_person.blog.posts.length, "blog post") %></li>
+    <li class="icon posts"><%= link_to pluralize(current_person.blog.posts.length, "blog post"), person_blog_path(current_person, current_person.blog) %></li>
     <li class="icon comments"><%= pluralize(current_person.forum_posts.length, "forum post") %></li>
-    <li class="icon photos"><%= pluralize(current_person.photos.length, "photo") %></li>
+    <li class="icon photos"><%= link_to pluralize(current_person.photos.length, "photo"), person_galleries_path(current_person) %></li>
     <li class="icon group"><%= link_to pluralize(current_person.contacts.length, "friend"), person_connections_path(current_person) %></li>
   </ul>
   <div class="clear"></div>

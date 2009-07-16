@@ -1,25 +1,28 @@
-<li class="message">
+<li class="message <%= cycle('odd', 'even', :name => "message") %>">
   <div class="profile-image">
     <%= image_link message.other_person(current_person),
-                   :image => :thumbnail,
+                   :image => :bounded_icon,
                    :image_options => { :class => "photo" } %>
   </div>
-  <p>
-    <span class="label">Subject:</span>
-    <%= link_to sanitize(message.subject), message %>
-  </p>
-  <p>
-    <%= message_icon(message) %>
+  <dl>
+    <dt>Subject:</dt>
+    <dd><%= link_to sanitize(message.subject), person_message_path(current_person, message) %></dd>
     <%- if current_person?(message.sender) -%>
-      <span class="label">To:</span>
-      <%= person_link message.recipient, :class => "url fn" %>
+      <dt>To:</dt>
+      <dd><%= person_link message.recipient, :class => "url fn" %></dd>
     <%- else -%>
-      <span class="label">From:</span>
-      <%= person_link message.sender, :class => "url fn" %>
+      <dt>From:</dt>
+      <dd><%= person_link message.sender, :class => "url fn" %></dd>
     <%- end -%>
-<br />
-  <span class="tools meta">
-  Sent <%= time_ago_in_words message.created_at %> ago 
+    <dt>Excerpt:</dt>
+    <dd><%= display truncate(message.content, :length => 95, :omission => " &#8230; ") + link_to("Read more &raquo;", person_message_path(current_person, message)) %> <%=  %></dd>
+  </dl>
+
+    <%# message_icon(message) %>
+
+  <div class="tools meta">
+    <div>Sent <%= time_ago_in_words message.created_at %> ago</div>
+    <%= link_to image_tag("famfamfam/email_open.png", :class => 'actioner'), person_message_path(current_person, message), :title => "Read this message" %>
     <%= link_to image_tag("icons/email_edit.png", :class => 'actioner'), 
                 reply_message_path(message),
                 :title => "Reply to this message" %>
@@ -33,6 +36,8 @@
       <%= link_to "Untrash", undestroy_message_path(message),
                              :method => :put %>
     <% end -%>    
-  </span>
-</p><div class="clear"></div>
+  </div>
+  
+  <div class="clear"></div>
+
 </li>

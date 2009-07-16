@@ -22,7 +22,7 @@ module ApplicationHelper
 
     if logged_in? and not admin_view?
       profile  = menu_element("Profile",  person_path(current_person))
-      messages = menu_element("Messages", messages_path)
+      messages = menu_element("Messages", person_messages_path(current_person))
       #blog     = menu_element("Blog",     blog_path(current_person.blog))
       #photos   = menu_element("Photos",   photos_path)
       #contacts = menu_element("Contacts",

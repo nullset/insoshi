@@ -1,5 +1,15 @@
 <%- column_div :type => :primary do -%>
-  <h2>Messages</h2>
+  <h1>
+    <%- case params[:action] -%>
+    <%- when 'sent' -%>
+      Sent
+    <%- when 'trash' -%>
+      Trashed
+    <%- else -%>
+      <%# do nothing %>
+    <%- end -%>
+    Messages
+  </h1>
 
   <%= render :partial => 'message_nav' %>
   

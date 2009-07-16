@@ -7,6 +7,6 @@
         <li><%= link_to post.title, blog_post_path(post.blog, post) %></li>
       <%- end -%>
     </ul>
-    <div class="more"><a href="">View more &raquo;</a></div>
+    <div class="more"><%= link_to "View more &raquo;", blogs_path %></div>
   </div> <!-- #recent_posts -->
 <%- end -%>

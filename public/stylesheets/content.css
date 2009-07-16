@@ -97,6 +97,9 @@ ul.clear {
 .icon.comment_delete {
   background-image: url(/images/famfamfam/comment_delete.png);
 }
+.icon.photo_add {
+  background-image: url(/images/famfamfam/photo_add.png);
+}
 
 .hr {
   margin: 20px 0;
@@ -462,12 +465,46 @@ div.search {
   padding-bottom: 1.5em;
   border-bottom: 1px solid #b8b8b8;
 }
-#content .comments {
+ul.comments {
   border-top: 1px solid #ddd;
 }
-#content .comments li {
+ul.comments li {
   list-style: none;
   border: 1px solid #ddd;
   border-width: 0 1px 1px;
   padding: 1em;
+}
+
+ul.people, ul.messages {
+  border-top: 1px #ddd solid;
+}
+ul.people li, ul.messages li {
+  list-style: none;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+ul.people li .profile-image, ul.messages li .profile-image {
+  float: right;
+  margin: 0 0 10px 15px;
+}
+
+ul.messages dl {
+  width: 370px;
+  float: left;
+}
+ul.messages dt {
+  float: left;
+  width: 70px;
+  text-align: right;
+  clear: both;
+}
+ul.messages dd {
+  margin: 0 0 .5em 0;
+  float: right;
+  width: 290px;
+}
+ul.messages .meta {
+  float: right;
+  width: 110px;
+  text-align: right;
 }

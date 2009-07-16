@@ -26,7 +26,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'people/verify/:id', :controller => 'people',
                                    :action => 'verify_email'
   map.resources :people do |person|
-     person.resources :messages
+     person.resources :messages, :collection => { :sent => :get, :trash => :get },
+                              :member => { :reply => :get, :undestroy => :put }
      person.resources :galleries
      person.resources :connections
      person.resources :comments
