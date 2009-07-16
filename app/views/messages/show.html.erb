@@ -10,7 +10,7 @@
   <%= render :partial => 'message_nav' %>
   
   <h3 class="subject"><%= sanitize @message.subject %></h3>
-  <ul class="list person">
+  <ul class="messages list person">
     <% all_messages =  @message.conversation.messages %>
     <%= render :partial => 'full_message',
                :collection => all_messages,
