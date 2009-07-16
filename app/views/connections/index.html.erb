@@ -1,4 +1,4 @@
-<%= render :partial => 'searches/box' %>
+<%= render :partial => "shared/profile_nav" %>
 
 <h2><%= h @person.name %>'s Friends</h2>
 <% if @person.connections.count > Person::MAX_DEFAULT_CONTACTS %>
@@ -16,3 +16,4 @@
   <h3>No contacts (yet)</h3>
 <% end -%>
 
+<%= render :partial => 'searches/box' %>

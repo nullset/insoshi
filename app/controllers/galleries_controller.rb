@@ -5,6 +5,7 @@ class GalleriesController < ApplicationController
   def show
     @body = "galleries"
     @gallery = Gallery.find(params[:id])
+    @person = @gallery.person
     @photos = @gallery.photos.paginate :page => params[:page] 
   end
   

@@ -2,7 +2,7 @@
   <%- contacts.each do |contact| -%>
     <li class="contact <%= cycle('first', '', '', :name => "contact_card") %>">
       <%= image_link contact, :image_options => { :class => "photo" },
-                            :link_options => { :class => "url" },
+                            :link_options => { :class => "block_link" },
                             :vcard => true,
                             :image => :icon %>
     </li>

@@ -131,13 +131,13 @@ module ApplicationHelper
     else
       path = new_person_message_path(person)
     end
-    img = image_tag("icons/email_add.png")
+    img = '' # image_tag("icons/email_add.png")
     if reply.nil?
       action = to_all.nil? ? "Send Message" : "Message to Everyone"
     else
       action = "Send Reply"
     end
-    opts = { :class => 'email-link' }
+    opts = { :class => 'icon email_add' }
     if use_image
       str = link_to(action + ' ' + img, path, opts)
     else

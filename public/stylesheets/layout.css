@@ -135,6 +135,7 @@
 #content {
 	clear: both;
 	margin: 0 10px 5em;
+	position: relative;
 }
 
 #education_content {
@@ -227,6 +228,26 @@
 #subnav form .buttons {
   float: left;
   margin-left: .5em;
+}
+
+.subnav {
+  margin: 0;
+  padding-bottom: 2em;
+}
+.subnav li {
+  float: left;
+  list-style: none;
+  margin-left: 1em;
+  padding-left: 1em;
+  border-left: 1px solid #ddd;
+}
+.subnav li:first-child {
+  margin-left: 0;
+  border-left: 0;
+  padding-left: 0;
+}
+.subnav li a {
+  display: block;
 }
 
 #sidebar-inner * {

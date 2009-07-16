@@ -32,10 +32,8 @@
 <%- end -%>
 
 <div class="toolbox">
-  <%= image_tag @person.main_photo, :class => "profile-image photo",
-                                    :alt => h(@person.name) %>
+  <%= image_tag @person.big_photo, :class => "profile-image photo", :alt => h(@person.name), :class => "left" %>
   <%- unless current_person?(@person) -%>
-    <h3><%= @person.name %></h3>
     <ul class="tools">
       <%- if logged_in? -%>
         <%- unless Connection.exists?(@person, current_person) -%>
@@ -45,21 +43,13 @@
         <%- end -%>
         <%- if Connection.connected?(@person, current_person) -%>
           <li>You're connected!
-          <%= link_to image_tag('icons/user_delete.png'),
-                      connection_path(Connection.conn(current_person,
-                                                      @person)), 
-                          :method => :delete,
-                      :title => "Remove connection",
-             :confirm => "Are you sure you want to remove this connection?" %>
+          <%= link_to image_tag('icons/user_delete.png', :class => 'icon'), connection_path(Connection.conn(current_person, @person)), :method => :delete, :title => "Remove connection", :confirm => "Are you sure you want to remove this connection?" %>
           </li>
         <%- end -%>
           <%- if Connection.pending?(current_person, @person) -%>
           <li>
             <%= h @person.name %> has contacted you
-            <br />
-            (<%= link_to "respond to contact request", 
-                         edit_connection_path(Connection.conn(current_person,
-                                                              @person)) %>)
+            <%= link_to "Respond", edit_connection_path(Connection.conn(current_person, @person)), :class => "icon group_go" %>
           </li>
           <%- end -%>
           <%- if Connection.pending?(@person, current_person) -%>
@@ -70,6 +60,8 @@
         <li><%= email_link(@person) %></li>
       <%- end -%>
     </ul>
+    <div class="clear"></div>
+    <h3><%= @person.name %></h3>
   <%- end -%>
 </div>
 <%= display @person.description %>

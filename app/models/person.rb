@@ -278,7 +278,7 @@ class Person < ActiveRecord::Base
     photo.nil? ? "default_icon.png" : photo.public_filename(:recent_photo)
   end
   
-  def big
+  def big_photo
     photo.nil? ? "default_icon.png" : photo.public_filename(:big)
   end
 

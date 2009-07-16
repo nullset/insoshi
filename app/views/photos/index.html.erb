@@ -5,7 +5,7 @@
         <div class="button"><%= link_to "Add Photo", new_photo_path() %></div>
         <div class="clear"></div>
     </div>
-    <ul class="">
+    <ul class="grid photos">
       <%=render :partial=>"shared/photo", :collection => @photos%>
     </ul>
   </div>

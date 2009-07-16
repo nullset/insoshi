@@ -5,6 +5,7 @@ class BlogsController < ApplicationController
   def show
     @body = "blog"
     @blog = Blog.find(params[:id])
+    @person = @blog.person
     @posts = @blog.posts.paginate(:page => params[:page])
     
     respond_to do |format|

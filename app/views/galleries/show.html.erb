@@ -1,3 +1,4 @@
+<%= render :partial => "shared/profile_nav" %>
 <div id="photos">
   <h2>Photos in <%= h(@gallery.title) %> Gallery</h2>
     <% unless @gallery.description.nil? %>
@@ -9,18 +10,17 @@
     <% end %>
   
     <p>
+      <%= link_to "&laquo; All galleries", person_galleries_path(@gallery.person) %>
       <% if current_person?(@gallery.person)%>
-        <%= link_to "Add photo", new_gallery_photo_path(@gallery) %> |
-        <%= link_to "Edit gallery", edit_gallery_path %> |
+        | <%= link_to "Add photo", new_gallery_photo_path(@gallery) %>
+        | <%= link_to "Edit gallery", edit_gallery_path %>
       <% end %>
-      <%= link_to "All galleries", person_path(@gallery.person,
-                                   :anchor => 'tGalleries') %>
     </p>
   
     <%- if @photos.empty? -%>
     <h3>No photos (yet)
     <%- else -%>
-      <ul>
+      <ul class="grid photos">
         <%= render :partial=>"shared/photo", :collection => @photos %>
       </ul>
       <%= will_paginate(@photos) %>
