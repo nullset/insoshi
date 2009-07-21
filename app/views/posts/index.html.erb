@@ -1,0 +1,11 @@
+<ul class="posts">
+  <%- @posts.each do |post| -%>
+    <li>
+      <h3><%= link_to h(post.title), person_blog_post_path(post.blog.person, post.blog, post) %></h3>
+      <p class="meta"><%= post.created_at.to_date.to_formatted_s(:long_ordinal) %> ago</p>
+      <%= display truncate(post.body, :omission => "&#8230; #{link_to 'Read more &raquo;', person_blog_post_path(post.blog.person, post.blog, post)}", :length => 200) %>
+    </li>
+  <%- end -%>
+</ul>
+
+<%= will_paginate @posts %>

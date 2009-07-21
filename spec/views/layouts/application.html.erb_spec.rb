@@ -9,8 +9,12 @@ describe "layout when not logged in" do
     response.body.should match(/XHTML 1.0 Strict/)
   end
   
-  it "should have a login link" do
-    response.should have_tag("a[href=?]", login_path)
+  # it "should have a login link" do
+  #   response.should have_tag("a[href=?]", login_path)
+  # end
+  
+  it "should have a login form" do
+    response.should have_tag("form[action='/session']")
   end
   
   it "should have a signup link" do

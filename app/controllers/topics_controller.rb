@@ -70,7 +70,11 @@ class TopicsController < ApplicationController
   private
   
     def setup
-      @forum = Forum.find(params[:forum_id])
+      begin
+        @forum = Forum.find(params[:forum_id])
+      rescue
+        redirect_to login_url
+      end
       @body = "forum"
     end
 end
