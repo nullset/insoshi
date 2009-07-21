@@ -1,10 +1,10 @@
 <%- recent_photos = Photo.recent_photos -%>
+
 <%- unless recent_photos.blank? -%>
   <div id="recent_photos">
     <h2>Recent Photos</h2>
     <ul>
       <%- recent_photos.each do |photo| -%>
-        <%# TODO : limit cycle to just recent photos %>
         <li class="<%= cycle('first', '', '') %>">
           <%= link_to image_tag(photo.public_filename(:recent_photo), :alt => photo.title, :title => photo.title, :size => "50x50"), "" %>
         </li>

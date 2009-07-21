@@ -35,6 +35,11 @@ describe Photo do
     photo.errors.on(:base).should_not be_nil
   end
   
+  it "should show recent photos" do
+    photos = Photo.recent_photos
+    photos.should have(0).items
+  end
+  
   private
   
     def new_photo(options = {})

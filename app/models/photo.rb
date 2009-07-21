@@ -90,9 +90,13 @@ class Photo < ActiveRecord::Base
       add_activities(:activity => activity, :person => person)
   end
   
-  # TODO: TEST: Get a list of the n most recent posts
   def self.recent_photos(limit = 9)
-    self.find(:all, :order => "created_at desc", :limit => 9)
+    photos = self.find(:all, :order => "created_at desc", :limit => 9)
+    if photos.respond_to?("each")
+      photos
+    else
+      [photos]
+    end
   end
 
 end

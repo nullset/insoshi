@@ -1,13 +1,13 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
 describe GalleriesController do
-  describe "when not logged in" do
-      
-    it "should protect the index page" do
-      get :index
-      response.should redirect_to(login_url)
-    end
-  end
+  # describe "when not logged in" do
+  #     
+  #   it "should protect the index page" do
+  #     get :index
+  #     response.should redirect_to(login_url)
+  #   end
+  # end
   
   describe "when logged in" do
     integrate_views

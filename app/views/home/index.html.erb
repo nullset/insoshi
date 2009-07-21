@@ -1,7 +1,9 @@
-<h1><%= sanitize(@intro.title) %></h1>
-<%= display @intro.body %>
+<%- unless @intro.blank? -%>
+  <h1><%= sanitize(@intro.title) %></h1>
+  <%= display @intro.body %>
 
-<div class="hr"></div>
+  <div class="hr"></div>
+<%- end -%>
 
 <%- @featured_posts.each do |post| -%>
   <%- if post.position == 1 -%>
