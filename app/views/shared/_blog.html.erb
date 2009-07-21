@@ -2,7 +2,7 @@
 
 
 <%- if current_person?(@blog.person) -%>
-  <p style="margin-bottom: 3em"><%= link_to "New blog post", new_blog_post_path(@blog), :class => "icon page_add" %></p>
+  <p style="margin-bottom: 3em"><%= link_to "New blog post", new_person_blog_post_path(@blog.person, @blog), :class => "icon page_add" %></p>
 <%- end -%> 
 
 <%- if @posts.empty? -%>

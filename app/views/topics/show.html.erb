@@ -13,7 +13,7 @@
         <td class="meta">
           <div><%= time_ago_in_words(post.created_at) %> ago</div>
           by
-          <div class="author"><%= h post.person.name %></div>
+          <div class="author"><%= link_to h(post.person.name), person_path(post.person) %></div>
           <div><%= image_link post.person, :image => :bounded_icon %></div>
         </td>
       </tr>

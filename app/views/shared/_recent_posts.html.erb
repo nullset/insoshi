@@ -4,9 +4,9 @@
     <h2>Recent Posts</h2>
     <ul>
       <%- recent_posts.each do |post| -%>
-        <li><%= link_to post.title, blog_post_path(post.blog, post) %></li>
+        <li><%= link_to post.title, person_blog_post_path(post.blog.person, post.blog, post) %></li>
       <%- end -%>
     </ul>
-    <div class="more"><%= link_to "View more &raquo;", blogs_path %></div>
+    <div class="more"><%= link_to "View more &raquo;", posts_path %></div>
   </div> <!-- #recent_posts -->
 <%- end -%>

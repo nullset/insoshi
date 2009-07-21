@@ -15,7 +15,12 @@
 
   <div style="display: none;" id="gpu<%= photo_id(photo) -%>">
     <%= image_tag photo.public_filename, :width => photo.width, :height => photo.height, :class => "large_photo" %> 
-    <div class="gpuTitle"><%= photo.label %></div>
+    <div class="gpuTitle">
+      <%= photo.label %>
+      <%- unless current_person?(photo.person) -%>
+        <div><%= link_to "View #{h(photo.person.first_name)}'s photo galleries", person_galleries_path(photo.person) %></div>
+      <%- end -%>
+    </div>
   </div>
 
 </li>

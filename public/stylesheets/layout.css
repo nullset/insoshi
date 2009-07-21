@@ -394,3 +394,6 @@ form dl, form dt, form dd {
 	height: 0;
 }
 
+#content ul.posts {
+  margin-left: 2em;
+}

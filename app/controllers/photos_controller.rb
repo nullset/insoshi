@@ -9,7 +9,8 @@ class PhotosController < ApplicationController
   def index
     respond_to do |format|
       format.html {
-        redirect_to person_galleries_path(current_person)
+        # redirect_to person_galleries_path(current_person)
+        @photos = Photo.find(:all, :order => "created_at desc").paginate(:page => params[:page])
       }
       format.js {
         photos = current_person.photos.collect { |p| 

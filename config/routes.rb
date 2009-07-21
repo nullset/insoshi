@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :activities
   map.resources :connections
   map.resources :password_reminders
+  map.resources :posts
   map.resources :photos,
                 :member => { :set_primary => :put, :set_avatar => :put }
   map.open_id_complete 'session', :controller => "sessions",
@@ -32,7 +33,9 @@ ActionController::Routing::Routes.draw do |map|
      person.resources :connections
      person.resources :comments
      person.resources :photos
-     person.resources :blogs
+     person.resources :blogs do |blog|
+       blog.resources :posts
+     end
   end
   
   map.resources :galleries do |gallery|

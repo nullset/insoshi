@@ -44,7 +44,7 @@ module ApplicationHelper
       links = [people, forums, preferences]
     else
       # links = [home, people]
-      links = [people]
+      links = [people, forum]
     end
     if global_prefs.about.blank?
       links
