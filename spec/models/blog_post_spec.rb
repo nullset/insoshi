@@ -23,6 +23,11 @@ describe BlogPost do
     post.errors.on(:body).should_not be_empty
   end
   
+  it "should have recent_posts" do
+    posts = Post.recent_posts
+    posts.length.should == 3
+  end
+  
   it "should have a maximum body length" do
     @post.should have_maximum(:body, BlogPost::MAX_BODY)
   end

@@ -113,6 +113,11 @@ describe Person do
       param = "#{@person.id}-michael-and-hartl"
       @person.to_param.should == param
     end
+    
+    it "should have a first_name" do
+      @person.name = "Bob Smith"
+      @person.first_name.should == "Bob"
+    end
   end
 
   describe "contact associations" do

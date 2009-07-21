@@ -387,7 +387,6 @@ class Person < ActiveRecord::Base
     (contacts & other_person.contacts).paginate(options)
   end
   
-  # TODO: TEST: Return on a person's first name
   def first_name
     self.name.split(' ').first
   end

@@ -60,7 +60,7 @@ describe PhotosController do
     end
 
     it "should have an edit photo page" # do
-    # FIX : No idea why this isn't working
+    # FIXME : No idea why this isn't working
     #   Photo.should_receive(:find).and_return(@photo)
     #   get :edit, :id => @photo
     #   response.should be_success

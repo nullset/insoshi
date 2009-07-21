@@ -20,7 +20,6 @@ class Post < ActiveRecord::Base
                         :conditions => "item_type = 'Post'"
   attr_accessible nil
   
-  # TODO: TEST: Get a list of the n most recent posts
   def self.recent_posts(limit = 3)
     self.find(:all, :order => "created_at desc", :limit => limit)
   end
