@@ -17,9 +17,9 @@
 class Post < ActiveRecord::Base
   include ActivityLogger
 
-  include SetDirty
-  before_save :set_dirty
-  default_scope :conditions => ["dirty is not true"]
+  # include SetDirty
+  # before_save :set_dirty
+  # default_scope :conditions => "dirty is not true"
 
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
                         :conditions => "item_type = 'Post'"
