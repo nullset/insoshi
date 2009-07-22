@@ -16,6 +16,11 @@
 
 class Post < ActiveRecord::Base
   include ActivityLogger
+
+  include SetDirty
+  before_save :set_dirty
+  default_scope :conditions => ["dirty is not true"]
+
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
                         :conditions => "item_type = 'Post'"
   attr_accessible nil
@@ -23,5 +28,5 @@ class Post < ActiveRecord::Base
   def self.recent_posts(limit = 3)
     self.find(:all, :order => "created_at desc", :limit => limit)
   end
-  
+
 end
