@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        flash[:success] = "Photo successfully uploaded"
+        flash[:success] = "Photo successfully uploaded.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)."
         format.html { redirect_to @photo.gallery }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class PhotosController < ApplicationController
     
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        flash[:success] = "Photo successfully updated"
+        flash[:success] = "Photo successfully updated.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)."
         format.html { redirect_to(gallery_path(@photo.gallery)) }
       else
         format.html { render :action => "new" }

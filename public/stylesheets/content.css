@@ -122,7 +122,7 @@ ul.clear {
   color: #fff;
 }
 .notice {
-  color: #fc0;
+  background: #fc0;
 }
 .notice a {
   color: #555;

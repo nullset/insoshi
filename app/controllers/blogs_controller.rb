@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
     @body = "blog"
     @blog = Blog.find(params[:id])
     @person = @blog.person
-    @posts = @blog.posts.paginate(:page => params[:page])
+    @posts = @blog.posts.all.paginate(:page => params[:page])
     
     respond_to do |format|
       format.html

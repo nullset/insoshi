@@ -17,17 +17,16 @@
 class Post < ActiveRecord::Base
   include ActivityLogger
 
-  include SetDirty
-  before_save :set_dirty
-  named_scope :all, :conditions => "approved_by is not null"
-  named_scope :clean, :conditions => "dirty is not true"
+  include SetTainted
+  before_save :set_tainted
+  named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at desc"
 
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
                         :conditions => "item_type = 'Post'"
   attr_accessible nil
   
   def self.recent_posts(limit = 3)
-    self.find(:all, :order => "created_at desc", :limit => limit)
+    self.find(:all, :conditions => "approved_by is not null", :order => "created_at desc", :limit => limit)
   end
 
 end

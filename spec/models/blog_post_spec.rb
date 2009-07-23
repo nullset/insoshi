@@ -23,11 +23,6 @@ describe BlogPost do
     post.errors.on(:body).should_not be_empty
   end
   
-  it "should have recent_posts" do
-    posts = Post.recent_posts
-    posts.length.should == 3
-  end
-  
   it "should have a maximum body length" do
     @post.should have_maximum(:body, BlogPost::MAX_BODY)
   end
@@ -83,4 +78,45 @@ describe BlogPost do
       end
     end
   end
+  
+  describe "class methods" do
+
+    it "should have recent_posts" do
+      posts = BlogPost.recent_posts
+      posts.length.should == 0
+    end
+    
+  end
+  
+  describe "approval process" do
+    
+    before(:each) do
+      @post.save!
+    end
+    
+    it "should set tainted == true for any new post" do
+      @post.tainted.should == true
+    end
+
+    it "should set tainted == true for any updated post" do
+      @post.tainted = false
+      @post.save!
+      @post.tainted.should == false
+      @post.title = "Updated title"
+      @post.save!
+      @post.tainted.should == true
+    end
+    
+    it "should ensure that tainted and approved_by cannot be set by mass assignment" do
+      @post.update_attributes(:tainted => false, :approved_by => 1)
+      @post.tainted.should == true
+      @post.approved_by.should == nil
+    end
+    
+    it "should set approved_by == nil for any new post" do
+      @post.approved_by.should == nil
+    end
+    
+  end
+  
 end

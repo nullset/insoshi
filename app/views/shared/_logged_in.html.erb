@@ -11,7 +11,8 @@
       <%- end -%>
     <%- end -%>
   </p>
-  <%= link_to "boo", person_path(current_person) %>
+  
+  <%# TODO : P : Add an user image here, and test why it fails  %>
   <ul class="user_meta">
     <li class="icon calendar">Member since <%= current_person.created_at.to_date.to_formatted_s(:long_ordinal) %></li>
     <li class="icon posts"><%= link_to pluralize(current_person.blog.posts.length, "blog post"), person_blog_path(current_person, current_person.blog) %></li>

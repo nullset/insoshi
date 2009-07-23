@@ -6,14 +6,14 @@
 
 <div class="hr"></div>
 
-<%- unless @post.comments.empty? -%>
+<%- unless @post.comments.all.empty? -%>
 <h3 id="comments">Comments</h3>
   <ul class="list comments full">
-    <%= render :partial => 'comment', :collection => @post.comments %>
+    <%= render :partial => 'comment', :collection => @post.comments.all %>
   </ul>
+  <div class="hr"></div>
 <%- end -%>
 
-<div class="hr"></div>
 
 <%- if logged_in? -%>
   <h4>Leave a comment</h4>

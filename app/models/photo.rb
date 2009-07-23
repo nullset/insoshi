@@ -25,6 +25,10 @@ class Photo < ActiveRecord::Base
   include ActivityLogger
   UPLOAD_LIMIT = 5 # megabytes
   
+  include SetTainted
+  before_save :set_tainted, :reset_approved_by
+  named_scope :all, :conditions => "approved_by is not null or approved_by != ''"
+  
   # attr_accessible is a nightmare with attachment_fu, so use
   # attr_protected instead.
   attr_protected :id, :person_id, :parent_id, :created_at, :updated_at
@@ -98,5 +102,14 @@ class Photo < ActiveRecord::Base
       [photos]
     end
   end
+  
+  private
+  
+    def reset_approved_by
+      if self.changed? && !self.changes.include?('approved_by')
+        self.approved_by = nil
+      end
+    end
+    
 
 end

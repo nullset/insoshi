@@ -40,6 +40,25 @@ describe Photo do
     photos.should have(0).items
   end
   
+  # TODO : TEST : approval process
+  describe "approval process" do
+  #   
+    it "should set tainted == true for any new image" # do
+  #     @image.tainted.should == true
+  #   end
+  # 
+    it "should ensure that tainted and approved_by cannot be set by mass assignment" # do
+  #     @image.update_attributes(:tainted => false, :approved_by => 1)
+  #     @image.tainted.should == true
+  #     @image.approved_by.should == nil
+  #   end
+  #   
+    it "should set approved_by == nil for any new image" # do
+  #     @image.approved_by.should == nil
+  #   end
+  #   
+  end
+  
   private
   
     def new_photo(options = {})

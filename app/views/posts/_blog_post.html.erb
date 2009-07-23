@@ -17,7 +17,7 @@
 <%= display blog_post.body %>
 <p class="meta">
   Posted <%= time_ago_in_words(blog_post.created_at) %> ago | 
-  <%- n = blog_post.comments.count -%>
+  <%- n = blog_post.comments.all.count -%>
   <%= link_to pluralize(n, "comment"),
               blog_post_path(@blog, blog_post, :comments => n),
               :class => "show-follow" %>    

@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        flash[:success] = 'Post created'
+        flash[:success] = 'Your post has been created.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours).'
         format.html { redirect_to post_url }
       else
         format.html { render :action => resource_template("new") }

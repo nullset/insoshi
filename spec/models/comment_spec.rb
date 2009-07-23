@@ -206,4 +206,38 @@ describe Comment do
       @person.activities.should have_distinct_elements
     end
   end
+  
+  describe "approval process" do
+    
+    before(:each) do
+      @post = posts(:blog_post)
+      @comment = @post.comments.unsafe_build(:body => "Hey there",
+                                             :commenter => people(:aaron))
+    end
+    
+    it "should set tainted == true for any new comment" do
+      @comment.tainted.should == true
+    end
+
+    it "should set tainted == true for any updated comment" do
+      @comment.tainted = false
+      @comment.save!
+      @comment.tainted.should == false
+      @comment.body = "Updated body"
+      @comment.save!
+      @comment.tainted.should == true
+    end
+    
+    it "should ensure that tainted and approved_by cannot be set by mass assignment" do
+      @comment.update_attributes(:tainted => false, :approved_by => 1)
+      @comment.tainted.should == true
+      @comment.approved_by.should == nil
+    end
+    
+    it "should set approved_by == nil for any new comment" do
+      @comment.approved_by.should == nil
+    end
+    
+  end
+  
 end

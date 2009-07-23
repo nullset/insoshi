@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @comment.save
-        flash[:success] = 'Comment was successfully created.'
+        flash[:success] = 'Your comment bas been created.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours).'
         format.html { redirect_to comments_url }
       else
         format.html { render :action => resource_template("new") }
