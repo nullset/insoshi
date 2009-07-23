@@ -213,6 +213,8 @@
   float: left;
 }
 #subnav form dt {
+  position: absolute;
+  left: -1000em;
   font-weight: normal;
   text-transform: uppercase;
 }
@@ -229,6 +231,7 @@
 #subnav form .buttons {
   float: left;
   margin-left: .5em;
+  margin-bottom: 0;
 }
 
 .subnav {

@@ -51,6 +51,9 @@ form dd {
 ul.clear {
   height: auto;
 }
+.buttons {
+  margin-bottom: 2em;
+}
 
 #content img.icon, #content img.actioner {
   padding-left: 0;

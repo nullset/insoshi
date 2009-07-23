@@ -23,8 +23,16 @@ $(document).ready(function() {
   jQuery('a[rel*=facebox]').facebox();
   
   // Subnav search box label position
-  jQuery('#subnav form dt:first').css({position: 'absolute', left: '1.5em'});
-  jQuery('#txtSearch:first').focus(function() { jQuery('#subnav form dt:first').css({left: '-1000em'}) });
-  jQuery('#txtSearch:first').blur(function() { jQuery('#subnav form dt:first').css({left: '1.5em'}) });
+  toggle_search_label();
+  jQuery('#txtSearch:first').focus(function() { toggle_search_label() });
+  jQuery('#txtSearch:first').blur(function() { toggle_search_label() });
+  
+  function toggle_search_label() {
+    if (jQuery('#subnav form dt:first').css('left') == '1.5em') {
+      jQuery('#subnav form dt:first').css({position: 'absolute', left: '-1000em'});
+    } else {
+      jQuery('#subnav form dt:first').css({position: 'absolute', left: '1.5em'});
+    }
+  }
 
 });
