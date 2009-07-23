@@ -110,6 +110,5 @@ class Photo < ActiveRecord::Base
         self.approved_by = nil
       end
     end
-    
 
 end

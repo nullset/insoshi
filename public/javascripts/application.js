@@ -21,5 +21,10 @@ $(document).ready(function() {
 
   // facebox popups
   jQuery('a[rel*=facebox]').facebox();
+  
+  // Subnav search box label position
+  jQuery('#subnav form dt:first').css({position: 'absolute', left: '1.5em'});
+  jQuery('#txtSearch:first').focus(function() { jQuery('#subnav form dt:first').css({left: '-1000em'}) });
+  jQuery('#txtSearch:first').blur(function() { jQuery('#subnav form dt:first').css({left: '1.5em'}) });
 
 });

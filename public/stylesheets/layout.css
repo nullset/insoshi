@@ -213,10 +213,11 @@
   float: left;
 }
 #subnav form dt {
-  position: absolute;
-  left: 1.5em;
   font-weight: normal;
   text-transform: uppercase;
+}
+#subnav form dt, #subnav form dd {
+  display: inline;
 }
 #subnav form label {
   font-size: 93%;

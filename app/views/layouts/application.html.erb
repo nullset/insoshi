@@ -117,13 +117,7 @@
                       <%= menu_li link %>
                     <%- end -%>
                     <li>
-                      <form action="" id="search">
-                        <dl>
-                          <dt><label>Search Blogs &#8230;</label></dt>
-                          <dd><input type="text" /></dd>
-                        </dl>
-                        <div class="buttons"><input type="submit" value="Search" /></div>
-                      </form>
+                      <%= render :partial => "searches/subnav_search" %>
                     </li>
                   </ul>
                 </li>
