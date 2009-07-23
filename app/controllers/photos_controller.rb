@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       format.html {
         # redirect_to person_galleries_path(current_person)
-        @photos = Photo.find(:all, :order => "created_at desc").paginate(:page => params[:page])
+        @photos = Photo.all.paginate(:page => params[:page])
       }
       format.js {
         photos = current_person.photos.collect { |p| 
@@ -68,7 +68,7 @@ class PhotosController < ApplicationController
     
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        flash[:success] = "Photo successfully updated.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)."
+        flash[:success] = "Photo successfully updated"
         format.html { redirect_to(gallery_path(@photo.gallery)) }
       else
         format.html { render :action => "new" }

@@ -22,6 +22,10 @@ class AdminMailer < ActionMailer::Base
     
   end
   
+  def new_topic_notification(photo)
+    
+  end
+  
   # def password_reminder(person)
   #   from         "Password reminder <password-reminder@#{domain}>"
   #   recipients   person.email

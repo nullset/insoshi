@@ -2,16 +2,16 @@
 <%= error_messages_for :photo %>
 
 <h3>Select New Image</h3>
-<% form_for @photo,:url=>{:controller => :photos, :action => :create, :gallery_id => @gallery}, :html => { :multipart => true } do |f| -%>
+<% form_for @photo,:url=> {:controller => :photos, :action => :create, :gallery_id => @gallery}, :html => { :multipart => true } do |f| -%>
 
-  <div class="form_field">
-    <%= f.file_field :uploaded_data %>
-  </div>
-  <div class="form_field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form_field">
+  <dl>
+    <dt><%= f.label :uploaded_data, "Select file" %></dt>
+    <dd><%= f.file_field :uploaded_data %></dd>
+    <dt><%= f.label :title %></dt>
+    <dd><%= f.text_field :title %></dd>
+  </dl>
+  
+  <div class="buttons">
     <%= submit_tag 'Upload', :class => 'button' %>
     <%= link_to 'Cancel', @gallery, :class => "button", :id => "cancel" %>
   </div>

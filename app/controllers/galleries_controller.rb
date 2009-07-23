@@ -6,7 +6,11 @@ class GalleriesController < ApplicationController
     @body = "galleries"
     @gallery = Gallery.find(params[:id])
     @person = @gallery.person
-    @photos = @gallery.photos.paginate :page => params[:page] 
+    if @person == current_person
+      @photos = @gallery.photos.paginate :page => params[:page] 
+    else
+      @photos = @gallery.photos.all.paginate :page => params[:page] 
+    end
   end
   
   def index

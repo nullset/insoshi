@@ -27,7 +27,7 @@ class Photo < ActiveRecord::Base
   
   include SetTainted
   before_save :set_tainted, :reset_approved_by
-  named_scope :all, :conditions => "approved_by is not null or approved_by != ''"
+  named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => 'created_at desc'
   
   # attr_accessible is a nightmare with attachment_fu, so use
   # attr_protected instead.
@@ -95,7 +95,7 @@ class Photo < ActiveRecord::Base
   end
   
   def self.recent_photos(limit = 9)
-    photos = self.find(:all, :order => "created_at desc", :limit => 9)
+    photos = self.find(:all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at desc", :limit => limit)
     if photos.respond_to?("each")
       photos
     else

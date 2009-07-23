@@ -1,6 +1,8 @@
 <li class="<%= cycle('first', '', :name => "photos") %>">
   <a href="#gpu<%= photo_id(photo) %>" rel="facebox" class="block_link">
-    <%= image_tag(photo.public_filename(:thumbnail)) %>
+    <span class="img_wrapper <%= photo.tainted? ? 'tainted' : nil %>">
+      <%= image_tag(photo.public_filename(:thumbnail)) %>
+    </span>
     <%= photo.label %>
   </a>
     

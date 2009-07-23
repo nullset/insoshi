@@ -10,6 +10,10 @@ module SetTainted
     end
   end
   
+  def tainted?
+    tainted
+  end
+  
   module ClassMethods
   end
   

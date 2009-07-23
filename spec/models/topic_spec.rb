@@ -51,4 +51,36 @@ describe Topic do
       Activity.find_by_item_id(@topic).should_not be_nil
     end
   end
+  
+  describe "approval process" do
+    
+    before(:each) do
+      @topic.save!
+    end
+    
+    it "should set tainted == true for any new topic" do
+      @topic.tainted.should == true
+    end
+
+    it "should set tainted == true for any updated topic" do
+      @topic.tainted = false
+      @topic.save!
+      @topic.tainted.should == false
+      @topic.name = "Updated title"
+      @topic.save!
+      @topic.tainted.should == true
+    end
+    
+    it "should ensure that tainted and approved_by cannot be set by mass assignment" do
+      @topic.update_attributes(:tainted => false, :approved_by => 1)
+      @topic.tainted.should == true
+      @topic.approved_by.should == nil
+    end
+    
+    it "should set approved_by == nil for any new topic" do
+      @topic.approved_by.should == nil
+    end
+    
+  end
+  
 end

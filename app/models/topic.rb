@@ -15,6 +15,9 @@
 class Topic < ActiveRecord::Base
   include ActivityLogger
   
+  include SetTainted
+  before_save :set_tainted
+
   MAX_NAME = 100
   NUM_RECENT = 6
   
