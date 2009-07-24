@@ -24,16 +24,16 @@
     <div>Sent <%= time_ago_in_words message.created_at %> ago</div>
     <%= link_to image_tag("famfamfam/email_open.png", :class => 'actioner'), person_message_path(current_person, message), :title => "Read this message" %>
     <%= link_to image_tag("icons/email_edit.png", :class => 'actioner'), 
-                reply_message_path(message),
+                reply_person_message_path(current_person, message),
                 :title => "Reply to this message" %>
     <% unless message.trashed?(current_person) -%>
       <%= link_to image_tag("icons/email_delete.png", :class => 'actioner'), 
-                  message_path(message), 
+                  person_message_path(current_person, message), 
                   :method => :delete, 
                   :confirm => %(Delete this message?),
                   :title => "Delete this message" %>
     <% else -%>
-      <%= link_to "Untrash", undestroy_message_path(message),
+      <%= link_to "Untrash", undestroy_person_message_path(current_person, message),
                              :method => :put %>
     <% end -%>    
   </div>

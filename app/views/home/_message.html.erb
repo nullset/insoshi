@@ -16,6 +16,6 @@
   </p>
   <p title="Subject">
     <%= link_to sanitize(truncate(message.subject, :length => 30)),
-                message_path(message, :anchor => message_anchor(message)) %>
+                person_message_path(current_person, message, :anchor => message_anchor(message)) %>
   </p>
 </li>
