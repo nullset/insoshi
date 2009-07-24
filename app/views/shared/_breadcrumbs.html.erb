@@ -1,3 +1,5 @@
+<%# ActionController::Routing::Routes.recognize_path( '/your/url/here', :method => :get ) %>
+
 <%- 
   request_parts = []
   parts = request.request_uri.split('/').delete_if {|x| x.blank? } 

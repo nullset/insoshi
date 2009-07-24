@@ -1,82 +1,68 @@
-<%- column_div :type => :primary do -%>
-  <h2>Edit Global Preferences</h2>
+<h1>Edit Global Preferences</h1>
 
-  <%= error_messages_for :preferences %>
+<%= error_messages_for :preferences %>
 
-  <% form_for :preferences,
-              :url => admin_preference_path(@preferences),
-              :html => { :method => :put, :id => 'admin_preferences' } do |f| %>
-              
-    <div class="form_row">
-      <%= f.label :app_name, 'Application Name' %>
-      <%= f.text_field :app_name %>
-    </div>
+<% form_for :preferences, :url => admin_preference_path(@preferences), :html => { :method => :put, :id => 'admin_preferences' } do |f| %>
+  <dl class="pref_list">
+    <dt><%= f.label :app_name, 'Application Name' %></dt>
+    <dd><%= f.text_field :app_name %></dd>
+
+    <dt><%= f.label :domain, 'Email Domain' %></dt>
+    <dd><%= f.text_field :domain %></dd>
+
+    <dt><%= f.label :server_name, 'Server Name' %></dt>
+    <dd><%= f.text_field :server_name %>
+
+    <dt><%= f.label :smtp_server, 'SMTP Server' %></dt>
+    <dd><%= f.text_field :smtp_server %>
+
+    <dt><%= f.label :email_notifications, 'Send Notices', :class => 'checkbox' %></dt>
+    <dd>
+      <label for="email_notifications">
+        <%= f.check_box :email_notifications %>
+        Send email when messages, connection requests, etc., are sent
+      </label>
+    </dd>
+
+    <dt><%= f.label :demo, 'Demo Site', :class => 'checkbox' %></dt>
+    <dd>
+      <label for="demo">
+        <%= f.check_box :demo %>
+        Display a note to explain that this site is just a demonstration
+      </label>
+    </dd>
     
-    <div class="form_row">
-      <%= f.label :domain, 'Email Domain' %>
-      <%= f.text_field :domain %>
-    </div>
+    <dt><%= f.label :whitelist %></dt>
+    <dd>
+      <label for="whitelist">
+        <%= f.check_box :whitelist %>
+        Register new people in a deactivated state until whitelisted
+      </label>
+    </dd>
+    
+    <dt><%= f.label :email_verifications, "Verification Emails" %></dt>
+    <dd>
+      <label for="email_verifications">
+        <%= f.check_box :email_verifications %>
+        Verify email for new registrations using an activation code
+      </label>
+    </dd>
 
-    <div class="form_row">
-      <%= f.label :server_name, 'Server Name' %>
-      <%= f.text_field :server_name %>
-    </div>
-
-    <div class="form_row">
-      <%= f.label :smtp_server, 'SMTP Server' %>
-      <%= f.text_field :smtp_server %>
-    </div>
-
-    <div class="form_row">
-      <%= f.label :email_notifications, 'Send Notices', :class => 'checkbox' %>
-      <%= f.check_box :email_notifications %>
-    </div>
-    <p class="meta">Send email when messages, connection requests, etc., are sent</p>
-
-    <div class="form_row">
-      <%= f.label :demo, 'Demo Site', :class => 'checkbox' %>
-      <%= f.check_box :demo %>
-    </div>
-    <p class="meta">Display a note to explain that this site is just a demonstration</p>  
-
-    <br />
-
-    <p>Register new people in a deactivated state until whitelisted</p>
-    <div class="form_row">
-      <label for="whitelist"
-             class="checkbox">Whitelist</label>
-      <%= f.check_box :whitelist %>
-    </div>
-
-    <br />
-
-    <p>Verify email for new registrations using an activation code</p>
-    <div class="form_row">
-      <%= f.label :email_verifications, 'Verification Emails', :class => 'checkbox' %>
-      <%= f.check_box :email_verifications %>
-    </div>
-    <p class="meta">Send email to new users containing an activation code</p>  
-
-    <div class="form_row">
-      <%= f.label :about %>
+    <dt><%= f.label :about %></dt>
+    <dd>
       <p><%= formatting_note %></p>
       <%= f.text_area :about, :rows => 10 %>
-    </div>
-  <br />
-    
-    <p class="meta">Keep this short to fit the 146px width</p>  
-    
-    <br />
-
-    <div class="form_row">
-      <%= f.label :analytics %>
+    </dd>
+  
+    <dt><%= f.label :analytics %></dt>
+    <dd>
       <%= f.text_area :analytics, :rows => 10 %>
-    </div>
-  <p class="meta">Code will be inserted just before the &lt;/body&gt; tag</p>
+      <p class="meta">Code will be inserted just before the &lt;/body&gt; tag</p>
+    <dd>
+  </dl>
 
-    <div class="form_row">
-      <%= f.submit "Update", :class => "button" %>
-      <%= link_to "Cancel", admin_preferences_path %>
-    </div>
-  <% end %>
-<%- end -%>
+  <div class="buttons">
+    <%= f.submit "Update", :class => "button" %>
+    <%= link_to "Cancel", admin_preferences_path %>
+  </div>
+<% end %>

@@ -529,3 +529,8 @@ ul.messages .meta {
   width: 110px;
   text-align: right;
 }
+
+
+.pref_list dd {
+  margin-bottom: 1em;
+}
