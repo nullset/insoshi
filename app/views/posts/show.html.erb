@@ -1,5 +1,5 @@
 <h1>
-<%= link_to "Blog for #{h @blog.person.name}", blog_tab_path(@blog) %>
+<%= link_to "Blog for #{h @blog.person.name}", person_blog_tab_path(@blog.person, @blog) %>
 </h1>
 
 <%= render :partial => 'posts/blog_post', :object => @post %>
@@ -17,7 +17,7 @@
 
 <%- if logged_in? -%>
 
-  <% form_for :comment, :url => blog_post_comments_path(@blog, @post), :html => { :id => "blogcomment" } do |f| %>
+  <% form_for :comment, :url => person_blog_post_comments_path(@blog.person, @blog, @post), :html => { :id => "blogcomment" } do |f| %>
     <h4><%= f.label :body, "Leave a comment" %></h4>
     <dl>
       <dt class="access"><%= f.label :body, "Leave a comment" %></dt>

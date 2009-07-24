@@ -13,6 +13,7 @@
     <strong>Forum Posts:</strong> 
     <%= person.forum_posts_count -%> | 
     <strong>Blog Posts:</strong> 
+    <%# FIXME : Not sure if this is correct path or not ... not even sure if this partial is used. %>
     <%= link_to person.blog.posts.count.to_s, blog_path(person) -%> |
     <strong>Connections:</strong> 
       <%= link_to person.connections.count,

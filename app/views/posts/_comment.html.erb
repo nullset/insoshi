@@ -6,7 +6,7 @@
   <%= display comment.body %>
   <%- if current_person?(comment.commentable.blog.person) -%>
   <div>
-    <%= link_to "delete", blog_post_comment_path(@blog, @post, comment), :method => :delete, :class => "icon comment_delete", :confirm => "Are you sure you want to delete this comment?" %>
+    <%= link_to "delete", person_blog_post_comment_path(@blog.person, @blog, @post, comment), :method => :delete, :class => "icon comment_delete", :confirm => "Are you sure you want to delete this comment?" %>
   </div>
   <%- end -%>
 </li>

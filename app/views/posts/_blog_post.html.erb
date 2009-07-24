@@ -19,6 +19,6 @@
   Posted <%= time_ago_in_words(blog_post.created_at) %> ago | 
   <%- n = blog_post.comments.all.count -%>
   <%= link_to pluralize(n, "comment"),
-              blog_post_path(@blog, blog_post, :comments => n),
+              person_blog_post_path(@blog.person, @blog, blog_post, :comments => n),
               :class => "show-follow" %>    
 </p>
