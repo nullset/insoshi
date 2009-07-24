@@ -47,11 +47,15 @@ class PostsController < ApplicationController
   # Used for both forum and blog posts.
   def create
     @post = new_resource_post
+    set_tainted(@post)
     
     respond_to do |format|
       if @post.save
-        flash[:success] = 'Your post has been created.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours).'
-        format.html { redirect_to post_url }
+        flash[:success] = "Your post has been created.#{wait_message}"
+        if @post.instance_of(BlogPost)
+          format.html { redirect_to person_blog_post_path(current_person, current_person.blog, @post) }
+        elsif @post.instance_of(ForumPost)
+          
       else
         format.html { render :action => resource_template("new") }
       end
