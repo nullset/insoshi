@@ -40,7 +40,7 @@ class PersonMailer < ActionMailer::Base
     subject      formatted_subject("New blog comment")
     body         "server" => server, "comment" => comment,
                  "url" => 
-                 blog_post_path(comment.commentable.blog, comment.commentable),
+                 person_blog_post_path(comment.commentable.blog.person, comment.commentable.blog, comment.commentable),
                  "preferences_note" => 
                     preferences_note(comment.commented_person)
   end

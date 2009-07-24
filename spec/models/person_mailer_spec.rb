@@ -99,6 +99,7 @@ describe PersonMailer do
      
      it "should have a link to the comment" do
        url = "http://#{@server}"
+       url += "/people/#{@comment.commentable.blog.person.to_param}"
        url += "/blogs/#{@comment.commentable.blog.to_param}"
        url += "/posts/#{@comment.commentable.to_param}"
        @email.body.should =~ /#{url}/
