@@ -36,7 +36,9 @@ ActionController::Routing::Routes.draw do |map|
      person.resources :comments
      person.resources :photos
      person.resources :blogs do |blog|
-       blog.resources :posts
+       blog.resources :posts do |post|
+         post.resources :comments
+       end
      end
   end
   

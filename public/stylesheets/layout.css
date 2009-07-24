@@ -131,6 +131,9 @@
 #crumbs a:hover {
   color: #927F23;
 }
+#crumbs a, #crumbs span {
+  white-space: nowrap;
+}
 
 #content {
 	clear: both;
