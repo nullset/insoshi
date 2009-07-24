@@ -5,11 +5,11 @@
   <p><%= image_tag(@display_photo.public_filename(:thumbnail)) %></p>
 
   <% form_for @photo do |f| -%>
-    <div class="form_field">
-    <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-    <div class="form_field">
+    <dl>
+      <dt><%= f.label :title %></dt>
+      <dd><%= f.text_field :title %></dd>
+    </dl>
+    <div class="buttons">
       <%= submit_tag 'Update', :class => 'button' %>
       <%= link_to "Cancel", gallery_path(@photo.gallery) %>
     </div>

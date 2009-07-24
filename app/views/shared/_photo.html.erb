@@ -8,10 +8,10 @@
     
   <%- if current_person?(photo.person) -%>
     <div class='links'>
-      <%= link_to image_tag("icons/picture_edit.png", :class => 'actioner icon'), edit_photo_path(photo), :title => "Edit photo" %>
-      <%= link_to image_tag("icons/picture_delete.png", :class => 'actioner icon'), photo_path(photo), :method => :delete, :confirm => 'Really delete this photo?', :title => 'Delete photo' %>
-      <%= link_to image_tag("default_thumbnail.png", :class => 'actioner icon', :style => 'height: 16px;'), set_avatar_photo_path(photo), :method => :put, :title => 'Select as your profile photo' %>
-      <%= link_to image_tag("icons/photo.png", :class => 'actioner icon', :style => 'height: 16px;'), set_primary_photo_path(photo), :method => :put, :title => 'Select as gallery thumbnail' %>
+      <%= link_to image_tag("icons/picture_edit.png", :class => 'actioner icon'), edit_person_gallery_photo_path(current_person, photo.gallery, photo), :title => "Edit photo" %>
+      <%= link_to image_tag("icons/picture_delete.png", :class => 'actioner icon'), person_gallery_photo_path(current_person, photo.gallery, photo), :method => :delete, :confirm => 'Really delete this photo?', :title => 'Delete photo' %>
+      <%= link_to image_tag("default_thumbnail.png", :class => 'actioner icon', :style => 'height: 16px;'), set_avatar_person_gallery_photo_path(current_person, photo.gallery, photo), :method => :put, :title => 'Select as your profile photo' %>
+      <%= link_to image_tag("icons/photo.png", :class => 'actioner icon', :style => 'height: 16px;'), set_primary_person_gallery_photo_path(current_person, photo.gallery, photo), :method => :put, :title => 'Select as gallery thumbnail' %>
     </div>
   <%- end -%>
 

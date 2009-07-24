@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
      person.resources :messages, :collection => { :sent => :get, :trash => :get },
                               :member => { :reply => :get, :undestroy => :put }
      person.resources :galleries do |gallery|
-       gallery.resources :photos
+       gallery.resources :photos, :member => { :set_primary => :put, :set_avatar => :put }
      end
      person.resources :connections
      person.resources :comments
