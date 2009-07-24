@@ -96,7 +96,7 @@ describe PostsController do
       lambda do
         post :create, :blog_id => @blog,
                       :post => { :title => "The post", :body => "The body" }
-        response.should redirect_to(blog_post_url(@blog, assigns(:post)))
+        response.should redirect_to(person_blog_post_url(@person, @blog, assigns(:post)))
       end.should change(BlogPost, :count).by(1)
     end
     

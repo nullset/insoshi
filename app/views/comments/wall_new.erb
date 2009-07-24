@@ -2,14 +2,13 @@
 
 <%= error_messages_for :comment %>
 
-<h3>Leave a comment</h3>
-
 <% form_for :comment, :url => person_comments_path(@person) do |f| %>
-  <div class="form_row">
-    <%= f.text_area :body %>
-  </div>
-  
-  <div class="form_row">
+  <h3><%= f.label :body, "Leave a comment" %></h3>
+  <dl>
+    <dt class="access"><%= f.label :body, "Leave a comment" %></dt>
+    <dd><%= f.text_area :body %></dd>
+  </dl>
+  <div class="buttons">
     <%= submit_tag "Submit", :class => "button" %>
   </div>
 <% end %>

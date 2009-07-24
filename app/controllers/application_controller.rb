@@ -71,4 +71,15 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+    
+    def set_tainted(model)
+      if current_person.admin?
+        model.tainted = false
+        model.approved_by = current_person.id
+      end
+    end
+    
+    def wait_message
+      "<br />It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)." unless current_person.admin?
+    end
 end

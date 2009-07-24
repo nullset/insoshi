@@ -16,17 +16,17 @@
 
 
 <%- if logged_in? -%>
-  <h4>Leave a comment</h4>
 
-  <p><%= formatting_note %></p>
-
-  <% form_for :comment, :url => blog_post_comments_path(@blog, @post),
-                        :html => { :id => "blogcomment" } do |f| %>
-    <div class="form_row">
-      <%= f.text_area :body, :rows => 10 %>
-    </div>
-
-    <div class="form_row">
+  <% form_for :comment, :url => blog_post_comments_path(@blog, @post), :html => { :id => "blogcomment" } do |f| %>
+    <h4><%= f.label :body, "Leave a comment" %></h4>
+    <dl>
+      <dt class="access"><%= f.label :body, "Leave a comment" %></dt>
+      <dd>
+        <p><%= formatting_note %></p>
+        <%= f.text_area :body %>
+      </dd>
+    </dl>
+    <div class="buttons">
       <%= submit_tag "Submit", :class => "button" %>
     </div>
   <% end %>

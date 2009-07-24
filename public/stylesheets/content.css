@@ -16,6 +16,9 @@ h2 {
 h3 {
   font-size: 108%;
 }
+h1 label, h2 label, h3 label, h4 label, h5 label, h6 label {
+  font-size: 100%;
+}
 p {
   margin: 0 0 1em 0;
   line-height: 1.4;
@@ -117,9 +120,20 @@ ul.clear {
 .flash {
   padding: .5em 1em;
 }
-.error {
+.error, #errorExplanation {
   background: #85250D;
   color: #fc0;
+}
+#errorExplanation {
+  padding: 10px;
+  margin-bottom: 1em;
+}
+#errorExplanation h2 {
+  font-size: 108%;
+  color: inherit;
+}
+#errorExplanation ul {
+  margin-left: 2em;
 }
 .success {
   background: #557E24;
