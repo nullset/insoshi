@@ -52,10 +52,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash[:success] = "Your post has been created.#{wait_message}"
-        if @post.instance_of(BlogPost)
+        if @post.instance_of?(BlogPost)
           format.html { redirect_to person_blog_post_path(current_person, current_person.blog, @post) }
-        elsif @post.instance_of(ForumPost)
-          format.html { redirect_to person_blog_post_path(current_person, current_person.blog, @post) }
+        elsif @post.instance_of?(ForumPost)
+          format.html { redirect_to post_url }
         end
       else
         format.html { render :action => resource_template("new") }
