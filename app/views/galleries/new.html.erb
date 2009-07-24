@@ -1,14 +1,7 @@
 <h2>New gallery</h2>
 
 <%- form_for(@gallery) do |f| -%>
-  <dl>
-    <dt><%= f.label :title %></dt>
-    <dd><%= f.text_field :title %></dd>
-    <dt><%= f.label :description %></dt>
-    <dd><%= f.text_area :description, :rows => 5 %></dd>
-  </dl>
-  <%= set_focus_to "gallery_title" %>
-
+  <%= render :partial => "form", :locals => {:form => f} %>
   <div class="buttons">
     <%= f.submit "Create", :class => "button" %>
     <%= link_to "Cancel", person_galleries_path(current_person) %>

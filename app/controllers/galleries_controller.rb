@@ -28,7 +28,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.save
         flash[:success] = "Gallery successfully created"
-        format.html { redirect_to gallery_path(@gallery) }
+        format.html { redirect_to person_gallery_path(current_person, @gallery) }
       else
         format.html { render :action => "new" }
       end
@@ -44,7 +44,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
         flash[:success] = "Gallery successfully updated"
-        format.html { redirect_to gallery_path(@gallery) }
+        format.html { redirect_to person_gallery_path(current_person, @gallery) }
       else
         format.html { render :action => "new" }
       end

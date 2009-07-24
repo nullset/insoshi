@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
     if params[:photo].nil?
       # This is mainly to prevent exceptions on iPhones.
       flash[:error] = "Your browser doesn't appear to support file uploading"
-      redirect_to gallery_path(Gallery.find(params[:gallery_id])) and return
+      redirect_to person_gallery_path(current_person, Gallery.find(params[:gallery_id])) and return
     end
 
     photo_data = params[:photo].merge(:person => current_person)
@@ -69,7 +69,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         flash[:success] = "Photo successfully updated"
-        format.html { redirect_to(gallery_path(@photo.gallery)) }
+        format.html { redirect_to(person_gallery_path(current_person, @photo.gallery)) }
       else
         format.html { render :action => "new" }
       end
@@ -82,7 +82,7 @@ class PhotosController < ApplicationController
     @photo.destroy
     flash[:success] = "Photo deleted"
     respond_to do |format|
-      format.html { redirect_to gallery_path(@gallery) }
+      format.html { redirect_to person_gallery_path(current_person, @gallery) }
     end
   end
   
@@ -148,7 +148,7 @@ class PhotosController < ApplicationController
         @gallery = Gallery.find(params[:gallery_id])
         if @gallery.person != current_person
           flash[:error] = "You cannot add photos to this gallery"
-          redirect_to gallery_path(@gallery)
+          redirect_to person_gallery_path(current_person, @gallery)
         end
       end
     end

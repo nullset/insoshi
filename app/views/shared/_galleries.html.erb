@@ -1,6 +1,6 @@
 <h1><%= @person.name %>'s Galleries</h1>
 <% if current_person?(@person)%>
-  <p><%= link_to "Add Gallery", new_gallery_path, :class => "icon photo_add" %></p>
+  <p><%= link_to "Add Gallery", new_person_gallery_path(current_person), :class => "icon photo_add" %></p>
 <% end %>
 
 <ul id="gallery_list" class="grid">

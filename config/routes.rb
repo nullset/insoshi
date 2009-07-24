@@ -29,7 +29,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people do |person|
      person.resources :messages, :collection => { :sent => :get, :trash => :get },
                               :member => { :reply => :get, :undestroy => :put }
-     person.resources :galleries
+     person.resources :galleries do |gallery|
+       gallery.resources :photos
+     end
      person.resources :connections
      person.resources :comments
      person.resources :photos

@@ -85,7 +85,7 @@ describe PhotosController do
         
     it "should handle nil photo parameter" do
       post :create, :photo => nil, :gallery_id => @gallery
-      response.should redirect_to(gallery_url(@gallery))
+      response.should redirect_to(person_gallery_url(@person, @gallery))
       flash[:error].should_not be_nil
     end
     

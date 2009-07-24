@@ -12,8 +12,8 @@
     <p>
       <%= link_to "&laquo; All galleries", person_galleries_path(@gallery.person) %>
       <% if current_person?(@gallery.person)%>
-        | <%= link_to "Add photo", new_gallery_photo_path(@gallery) %>
-        | <%= link_to "Edit gallery", edit_gallery_path %>
+        | <%= link_to "Add photo", new_person_gallery_photo_path(current_person, @gallery) %>
+        | <%= link_to "Edit gallery", edit_person_gallery_path(current_person) %>
       <% end %>
     </p>
   
