@@ -122,9 +122,7 @@
                   </ul>
                 </li>
               </ul>
-              <div id="crumbs" class="clear">
-                &#187; <a href="">Home</a> &#187; Blog
-              </div> <!-- #crumbs -->
+              <%= render :partial => "shared/breadcrumbs" %>
               <div id="content">
                 
                 <%- if global_prefs.demo? -%>
