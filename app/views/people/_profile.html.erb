@@ -33,9 +33,24 @@
 
 <div class="toolbox">
   <%= image_tag @person.big_photo, :class => "profile-image photo", :alt => h(@person.name), :class => "left" %>
-  <%- unless current_person?(@person) -%>
-    <ul class="tools">
-      <%- if logged_in? -%>
+  <ul class="tools">
+    <%- unless @person.injuries.blank? -%>
+      <li>
+        <dl>
+          <dt>Panorama Orthopedics worked on &#8230;</dt>
+          <dd>
+            <%- @person.injured_areas.each do |area| -%>
+              <div><%= area.parent.name %>: <%= area.name %></div>
+            <%- end -%>
+          </dd>
+        </dl>
+        <%- unless @person.contact_for_advice.blank? -%>
+          <%= link_to "Contact me about my experience at Panorama Orthopedics", new_person_message_path(@person, :experience => true), :class => "link_box" %>
+        <%- end -%>
+      </li>
+    <%- end -%>
+    <%- unless current_person?(@person) %>
+      <%- if logged_in? %>
         <%- unless Connection.exists?(@person, current_person) -%>
           <li><%= link_to "Request Connection",
                           person_connections_path(@person),
@@ -59,9 +74,9 @@
           <%- end -%>
         <li><%= email_link(@person) %></li>
       <%- end -%>
-    </ul>
-    <div class="clear"></div>
-    <h3><%= @person.name %></h3>
-  <%- end -%>
+    <%- end -%>
+  </ul>
+  <div class="clear"></div>
+  <h3><%= @person.name %></h3>
 </div>
 <%= display @person.description %>

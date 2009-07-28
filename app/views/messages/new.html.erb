@@ -1,5 +1,6 @@
 <h2>New message</h2>
 
+<%- @message.subject = 'What was your experience at Panorama Orthopedics like?' if params[:experience] == "true" -%>
 <%- column_div :type => :primary do -%>
 
   <%= error_messages_for :message %>
@@ -12,9 +13,9 @@
   <% form_for(:message, :url => person_messages_path(@recipient)) do |f| %>
     <dl>
       <dt><%= f.label :recipient, "To" %></dt>
-      <dd><%= text_field_tag :recipient, h(@recipient.name), :disabled => true %></dd>
+      <dd><%= text_field_tag :recipient, h(@recipient.name), :disabled => true, :class => 'w-100' %></dd>
       <dt><%= f.label :message_subject, "Subject" %></dt>
-      <dd><%= f.text_field :subject, :id => "message_subject" %></dd>
+      <dd><%= f.text_field :subject, :id => "message_subject", :class => 'w-80' %></dd>
       <dt><%= f.label :message_body, "Message" %></dt>
       <dd>
         <p><%= formatting_note %></p>

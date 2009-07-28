@@ -10,17 +10,37 @@
       <dt><%= f.label :email %></dt>
       <dd><%= f.text_field :email, :maxlength => Person::MAX_EMAIL %></dd>
       <dt><%= f.label :panorama_patient %></dt>
-      <dd><label for="person_panorama_patient"><%= f.check_box :panorama_patient %> I have been a patient at Panorama Orthopedics</label></dd>
-      <dt><span class="label">Please check the areas Panorama Orthopedics has worked on</span></dt>
       <dd>
+        <label for="person_panorama_patient"><%= f.check_box :panorama_patient %> I have been a patient at Panorama Orthopedics</label>
+        <script type="text/javascript" charset="utf-8">
+          jQuery('#person_panorama_patient').click(function() {
+            if (this.checked) {
+              jQuery("dt.patient, dd.patient").slideToggle('slow');
+            } else {
+              jQuery("dt.patient, dd.patient").slideToggle('slow');
+              jQuery("dd.patient input[type=checkbox]").attr('checked', false);
+            }
+          });
+          
+        </script>
+      </dd>
+      <%- hidden = "display: none" unless @person.panorama_patient == true -%>
+      <dt class="patient" style="<%= hidden %>"><span class="label">Please check the areas Panorama Orthopedics has worked on</span></dt>
+      <dd class="patient" style="<%= hidden %>">
         <%- @injured_areas.children.each do |area| -%>
           <fieldset class="box">
             <legend><%= area.name %></legend>
             <%- area.children.each do |injury| -%>
-              <div><label for="injured_area_<%= injury.slug %>"><%= check_box_tag "injured_areas[]", injury.id, (@person.injuries.collect {|x| x.injured_area_id }.include?(injury.id) ? true : false), :id => "injured_area_#{injury.slug}" %> <%= injury.name %></label></div>
+              <div><label for="injured_area_<%= injury.parent_slug %>"><%= check_box_tag "injured_areas[]", injury.id, (@person.injuries.collect {|x| x.injured_area_id }.include?(injury.id) ? true : false), :id => "injured_area_#{injury.parent_slug}" %> <%= injury.name %></label></div>
             <%- end -%>
           </fieldset>
         <%- end -%>
+      </dd>
+      <dt class="patient" style="<%= hidden %>"><%= f.label :contact_for_advice, "Contact preferences" %></dt>
+      <dd class="patient" style="<%= hidden %>">
+        <fieldset>
+          <div><label for="person_contact_for_advice"><%= f.check_box :contact_for_advice %> Others can contact me regarding my experience at Panorama Orthopedics</label></div>
+        </fieldset>
       </dd>
       <dt><%= f.label :description, "Public description" %></dt>
       <dd>

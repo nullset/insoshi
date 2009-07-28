@@ -69,6 +69,9 @@ fieldset.box legend {
   background: #fff;
   padding: .2em .5em;
 }
+#content form dd input.w-80 {
+  width: 80%;
+}
 
 #content img.icon, #content img.actioner {
   padding-left: 0;
@@ -586,4 +589,16 @@ ul.messages .meta {
 .person.inactive {
   background: #aaa;
   border-left: 2px solid #85250D;
+}
+
+.link_box {
+  border: 3px double #fff;
+  background: #927F23;
+  color: #fff;
+  display: block;
+  margin-top: 1em;
+  padding: .5em;
+  font-size: 93%;
+  text-decoration: none;
+  text-align: center;
 }

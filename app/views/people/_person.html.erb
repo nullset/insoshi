@@ -1,7 +1,9 @@
 <li class="vcard person <%= cycle('odd', 'even', :name => "person") %>">
-  <div class="profile-image">
-    <%= image_link person, :class => "photo", :image => :thumbnail %>
-  </div>
+  <%- unless person.photos.blank? -%>
+    <div class="profile-image">
+      <%= image_link person, :class => "photo", :image => :thumbnail %>
+    </div>
+  <%- end -%>
   <p><%= person_link person, :class => "url fn" %></p>
   <%= display(truncate(person.description, :length => 150),
               :class => "note") %>
