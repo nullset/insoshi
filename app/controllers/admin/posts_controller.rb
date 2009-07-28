@@ -26,6 +26,7 @@ class Admin::PostsController < ApplicationController
     post = model.find(params[:id])
     post.tainted = false
     post.rejected = true
+    post.approved_by = nil
     person = case post.type
     when "BlogPost"
       post.blog.person
@@ -44,6 +45,7 @@ class Admin::PostsController < ApplicationController
     post = model.find(params[:id])
     post.tainted = false
     post.rejected = true
+    post.approved_by = nil
     person = case post.type
     when "BlogPost"
       post.blog.person
