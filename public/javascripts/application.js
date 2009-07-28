@@ -28,10 +28,12 @@ $(document).ready(function() {
   jQuery('#txtSearch:first').blur(function() { toggle_search_label() });
   
   function toggle_search_label() {
-    if (jQuery('#subnav form dt:first').css('left') == '1.5em') {
-      jQuery('#subnav form dt:first').css({position: 'absolute', left: '-1000em'});
-    } else {
-      jQuery('#subnav form dt:first').css({position: 'absolute', left: '1.5em'});
+    if (jQuery('#txtSearch').attr('value') == '') {
+      if (jQuery('#subnav form dt:first').css('left') == '1.5em') {
+        jQuery('#subnav form dt:first').css({position: 'absolute', left: '-1000em'});
+      } else {
+        jQuery('#subnav form dt:first').css({position: 'absolute', left: '1.5em'});
+      }
     }
   }
 
