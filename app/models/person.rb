@@ -37,9 +37,10 @@ class Person < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :name,
                   :description, :connection_notifications,
                   :message_notifications, :wall_comment_notifications,
-                  :blog_comment_notifications, :identity_url
+                  :blog_comment_notifications, :identity_url,
+                  :panorama_patient, :search_injured_areas
   # Indexed fields for Sphinx
-  is_indexed :fields => [ 'name', 'description', 'deactivated', 'email_verified'],
+  is_indexed :fields => [ 'name', 'description', 'deactivated', 'email_verified', 'panorama_patient', 'search_injured_areas'],
              :conditions => "deactivated = false AND (email_verified IS NULL OR email_verified = true)"
   MAX_EMAIL = MAX_PASSWORD = 40
   MAX_NAME = 40

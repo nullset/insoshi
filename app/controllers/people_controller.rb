@@ -114,6 +114,8 @@ class PeopleController < ApplicationController
     respond_to do |format|
       case params[:type]
       when 'info_edit'
+        @injured_areas = InjuredArea.find(:all, :conditions => ["id in(?)", params[:injured_areas]])
+        params[:person][:search_injured_areas] = @injured_areas.collect {|area| "#{area.parent.name}: #{area.name}" }.join(', ')
         new_identities = params[:injured_areas].collect {|x| {:person_id => @person.id, :injured_area_id => x} }
         if !preview? and @person.update_attributes(params[:person]) and @person.injuries.delete_all and Injury.create(new_identities)
           flash[:success] = 'Profile updated!'
