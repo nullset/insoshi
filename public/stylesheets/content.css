@@ -211,6 +211,9 @@ tr {
   background: #efefef;
 }
 
+table.forum {
+  width: 100%;
+}
 table.forum, table.forum th, table.forum td {
   border: none;
 }

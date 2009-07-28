@@ -17,6 +17,7 @@ class Topic < ActiveRecord::Base
   
   include SetTainted
   before_save :set_tainted
+  named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => 'created_at desc'
   named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
 
   MAX_NAME = 100

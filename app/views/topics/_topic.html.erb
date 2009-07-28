@@ -1,9 +1,8 @@
 <%- n = topic.posts.count -%>
 <tr class="<%= cycle('odd', 'even', :name => "topic_rows") %>">
   <th scope="row"><%= link_to h(topic.name), forum_topic_path(topic.forum, topic, :comments => n), :class => "show-follow" %></th>
-  <td class="nowrap"><%= link_to h(topic.person.name), person_path(topic.person) %></td>
-  <td class="nowrap"><%= pluralize(n, "post") %></td>
-  <td class="nowrap"><%= time_ago_in_words(topic.created_at) %></td>
-  <td class="nowrap"><%= time_ago_in_words(topic.updated_at) %></td>
+  <td class="nowrap"><small><%= link_to h(topic.person.name), person_path(topic.person) %></small></td>
+  <td class="nowrap"><small><%= pluralize(n, "post") %></small></td>
+  <td class="nowrap"><small><%= time_ago_in_words(topic.updated_at) %> ago</small></td>
   <%# TODO : Updated at is probably the updated_at for the topic, not for the last post %>
 </tr>

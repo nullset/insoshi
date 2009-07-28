@@ -11,7 +11,7 @@ class ForumsController < ApplicationController
 
   def show
     @forum = Forum.find(params[:id])
-    @topics = @forum.topics.paginate(:page => params[:page],
+    @topics = @forum.topics.all.paginate(:page => params[:page],
                                      :order => "updated_at DESC")
 
     respond_to do |format|

@@ -1,28 +1,30 @@
 <h2 class="entry-title"><%= h @topic.name %></h2>
-<table class="forum">
-  <thead>
-    <tr>
-      <th scope="col">Comment</th>
-      <th scope="col">Posted</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%- @posts.each do |post| -%>
-      <tr id="post_<%= post.id %>" class="<%= cycle('odd', 'even', :name => "topic_rows") %>">
-        <td><%= display post.body %></td>
-        <td class="meta">
-          <div><%= time_ago_in_words(post.created_at) %> ago</div>
-          by
-          <div class="author"><%= link_to h(post.person.name), person_path(post.person) %></div>
-          <div><%= image_link post.person, :image => :bounded_icon %></div>
-        </td>
+<%- unless @topic.posts.blank? -%>
+  <table class="forum">
+    <thead>
+      <tr>
+        <th scope="col">Comment</th>
+        <th scope="col">Posted</th>
       </tr>
-    <%- end -%>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%- @posts.each do |post| -%>
+        <tr id="post_<%= post.id %>" class="<%= cycle('odd', 'even', :name => "topic_rows") %>">
+          <td><%= display post.body %></td>
+          <td class="meta">
+            <div><%= time_ago_in_words(post.created_at) %> ago</div>
+            by
+            <div class="author"><%= link_to h(post.person.name), person_path(post.person) %></div>
+            <div><%= image_link post.person, :image => :bounded_icon %></div>
+          </td>
+        </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<%- end -%>
 
 <%- if logged_in? -%>
-  <h2>Add Reply</h2>
+  <h2>Add Post</h2>
 
   <p><%= formatting_note %></p>
 
