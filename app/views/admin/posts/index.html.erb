@@ -1,0 +1,74 @@
+<h1>Admin Review Posts</h1>
+
+<%- unless @posts.blank? -%>
+  <h2>Blog/Forum Posts</h2>
+  <div id="blog_post_notice"></div>
+  <div id="forum_post_notice"></div>
+  <table class="data">
+    <thead>
+      <tr>
+        <th group="col">New?</th>
+        <th group="col">Title</th>
+        <th group="col">User</th>
+        <th group="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'post', :collection => @posts %>
+    </tbody>
+  </table>
+<%- end -%>
+
+<%- unless @photos.blank? -%>
+  <h2>Photos</h2>
+  <div id="photo_notice"></div>
+  <table class="data">
+    <thead>
+      <tr>
+        <th group="col">New?</th>
+        <th group="col">Photo</th>
+        <th group="col">User</th>
+        <th group="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'photo', :collection => @photos %>
+    </tbody>
+  </table>
+<%- end -%>
+
+<%- unless @comments.blank? -%>
+  <h2>Comments</h2>
+  <div id="comment_notice"></div>
+  <table class="data">
+    <thead>
+      <tr>
+        <th group="col">New?</th>
+        <th group="col">Comment</th>
+        <th group="col">User</th>
+        <th group="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'comment', :collection => @comments %>
+    </tbody>
+  </table>
+<%- end -%>
+
+<%- unless @topics.blank? -%>
+  <h2>Forum Topics</h2>
+  <div id="topic_notice"></div>
+  <table class="data">
+    <thead>
+      <tr>
+        <th group="col">New?</th>
+        <th group="col">Title</th>
+        <th group="col">User</th>
+        <th group="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'topic', :collection => @topics %>
+    </tbody>
+  </table>
+<%- end -%>

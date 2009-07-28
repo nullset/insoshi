@@ -28,6 +28,7 @@ class Photo < ActiveRecord::Base
   include SetTainted
   before_save :set_tainted, :reset_approved_by
   named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => 'created_at desc'
+  named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
   
   # attr_accessible is a nightmare with attachment_fu, so use
   # attr_protected instead.

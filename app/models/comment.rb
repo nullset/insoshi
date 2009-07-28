@@ -19,6 +19,7 @@ class Comment < ActiveRecord::Base
   include SetTainted
   before_save :set_tainted
   named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at asc"
+  named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
   
   attr_accessor :commented_person, :send_mail
 

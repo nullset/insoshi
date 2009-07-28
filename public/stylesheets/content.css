@@ -83,6 +83,9 @@ ul.clear {
 .icon.new_user {
   background-image: url(/images/famfamfam/user_add.png);
 }
+.icon.delete_user {
+  background-image: url(/images/famfamfam/user_delete.png);
+}
 .icon.photos {
   background-image: url(/images/famfamfam/photos.png);
 }
@@ -106,6 +109,9 @@ ul.clear {
 }
 .icon.photo_add {
   background-image: url(/images/famfamfam/photo_add.png);
+}
+.icon.page_find {
+  background-image: url(/images/famfamfam/page_find.png);
 }
 
 .hr {
@@ -218,6 +224,32 @@ table.forum td.meta {
 }
 table.forum td.meta .author {
   white-space: nowrap;
+}
+
+
+table.data {
+  margin-bottom: 2em;
+  width: 100%;
+}
+table.data, table.data td, table.data th {
+  border-color: #ccc;
+}
+table.data thead th {
+  background: #aaa;
+  text-align: center;
+  color: #333;
+}
+table.data .actions {
+  white-space: nowrap;
+}
+table.data .actions a {
+  margin: 0 .25em;
+}
+#content table.data img {
+  border: none;
+}
+table.data .new {
+  text-align: center;
 }
 
 .pagination {
@@ -533,4 +565,9 @@ ul.messages .meta {
 
 .pref_list dd {
   margin-bottom: 1em;
+}
+
+.person.inactive {
+  background: #aaa;
+  border-left: 2px solid #85250D;
 }

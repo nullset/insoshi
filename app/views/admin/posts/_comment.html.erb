@@ -1,0 +1,20 @@
+<tr class="<%= cycle('odd', 'even', :name => 'comments') %>">
+  <td class="new"><%= image_tag("famfamfam/star.png", :title => "New", :alt => "New") if comment.approved_by.blank? %></td>
+  <td>
+    <%- uuid = "gpu#{comment.class}#{comment.id}" -%>
+    <%= link_to "", "##{uuid}", :rel => "facebox", :class => "icon page_find left" %>
+    <%= display truncate(comment.body, :length => 90, :omission => "&#8230;") %>
+    <%= link_to "Read more &#187;", "##{uuid}", :rel => "facebox" %>
+    <div style="display: none" id="<%= uuid %>">
+      <%= display comment.body %>
+    </div>
+  </td>
+  <td>
+    <%- if comment.respond_to?("commenter") -%>
+      <%= link_to comment.commenter.name, person_path(comment.commenter) %>
+    <%- end -%>
+  </td>
+  <td class="actions">
+    <%= render :partial => "actions", :locals => {:object => comment} %>
+  </td>
+</tr>

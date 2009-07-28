@@ -1,0 +1,4 @@
+<%- short_obj = @obj.split(" ").last -%>
+Your <%= @obj %> has been rejected by our administrator. This is likely due to objectionable content within the <%= short_obj %>. Please review your <%= short_obj %> and update it.
+
+http://<%= @server %><%= @url %>

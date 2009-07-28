@@ -63,6 +63,27 @@ class PersonMailer < ActionMailer::Base
                  "code" => ev.code
   end
   
+  def post_rejected(object, person)
+    from         "Admin <no-reply@#{domain}>"
+    recipients  "#{person.name} <#{person.email}>"
+    case object.class.to_s
+    when "BlogPost"
+      url = person_blog_post_path(object.blog.person, object.blog, object)
+    when "ForumPost"
+      url = forum_topic_path(object.topic.forum, object.topic, :comments => object)
+    when "Photo"
+      url = person_gallery_photo_path(object.gallery.person, object.gallery, object)
+    when "Topic"
+      url = forum_topic_path(object.forum, object)
+    end
+    obj = object.class.to_s.underscore.humanize.downcase
+
+    subject      formatted_subject("Your #{obj} has been rejected")
+    body         "server" => server,
+                 "url" => url,
+                 "obj" => obj
+  end
+  
   private
   
     # Prepend the application name to subjects if present in preferences.

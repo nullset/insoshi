@@ -20,6 +20,7 @@ class Post < ActiveRecord::Base
   include SetTainted
   before_save :set_tainted
   named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at desc"
+  named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
 
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
                         :conditions => "item_type = 'Post'"

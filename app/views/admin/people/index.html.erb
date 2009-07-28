@@ -1,16 +1,11 @@
-<%- column_div :type => :primary do -%>
+<h2>People Admin</h2>
 
-  <h2>People Admin</h2>
+<%= will_paginate %>
 
-  <%= will_paginate %>
+<ul class="list people">
+  <%= render :partial => @people %>
+</ul>
 
-  <ul class="list people admin">
-    <%= render :partial => @people %>
-  </ul>
-  
-  <%= will_paginate %>
-<%- end -%>
+<%= will_paginate %>
 
-<%- column_div :type => :secondary do -%>
-  <%= render :partial => 'searches/box' %>
-<%- end -%>
+<%= render :partial => 'searches/box' %>

@@ -46,6 +46,11 @@ ActionController::Routing::Routes.draw do |map|
     gallery.resources :photos
   end
   map.namespace :admin do |admin|
+    admin.resources :posts, :member => {
+      :accept => :post,
+      :reject => :post,
+      :reject_and_deactivate => :post
+    }
     admin.resources :people, :preferences
     admin.resources :forums do |forums|
       forums.resources :topics do |topic|

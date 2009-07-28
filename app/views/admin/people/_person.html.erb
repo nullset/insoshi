@@ -1,22 +1,22 @@
-<li class="vcard person">
-  <%= person_link_with_image person, :class => "url fn" %> &mdash;
+<li class="vcard person <%= cycle('odd', 'even', :name => "person") %> <%= 'inactive' if person.deactivated? %>">
+  <div class="profile-image">
+    <%= image_link person, :class => "photo", :image => :thumbnail %>
+  </div>
+  <h3><%= person_link person, :class => "url fn" %></h3>
   <%- activity = activated_status(person) -%>
-  <%= link_to activity, 
-              admin_person_path(person, :task => "deactivated"),
-              :method => :put %>
-  |
-  <%- activity = person.admin? ? "unadmin" : "make admin" -%>
-  <%= link_to activity, 
-              admin_person_path(person, :task => "admin"),
-              :method => :put %>
-  <p class="person_meta">
-    <strong>Forum Posts:</strong> 
-    <%= person.forum_posts_count -%> | 
-    <strong>Blog Posts:</strong> 
-    <%# FIXME : Not sure if this is correct path or not ... not even sure if this partial is used. %>
-    <%= link_to person.blog.posts.count.to_s, blog_path(person) -%> |
-    <strong>Connections:</strong> 
-      <%= link_to person.connections.count,
-                  person_connections_path(person) -%>
+  <p>
+    <%= link_to activity, admin_person_path(person, :task => "deactivated"), :method => :put %>
+    |
+    <%- activity = person.admin? ? "Remove admin qualifications" : "Make admin" -%>
+    <%= link_to activity, admin_person_path(person, :task => "admin"), :method => :put %>
   </p>
+  <div class="person_meta">
+    <div><strong>Forum Posts:</strong> <%= person.forum_posts_count -%></div>
+    
+    <div><strong>Blog Posts:</strong><%# FIXME : Not sure if this is correct path or not ... not even sure if this partial is used. %>
+      <%= link_to person.blog.posts.count.to_s, blog_path(person) -%>
+    </div>
+    <div><strong>Connections:</strong> <%= link_to person.connections.count,person_connections_path(person) -%></div>
+  </div>
+  <div class="clear"></div>
 </li>

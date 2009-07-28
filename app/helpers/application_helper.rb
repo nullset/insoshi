@@ -35,13 +35,14 @@ module ApplicationHelper
       # links.push(events)
       
     elsif logged_in? and admin_view?
-      home =    menu_element("Home", home_path)
+      # home =    menu_element("Home", home_path)
+      posts = menu_element("Posts", admin_posts_path)
       people =  menu_element("People", admin_people_path)
       forums =  menu_element(inflect("Forum", Forum.count),
                              admin_forums_path)
       preferences = menu_element("Prefs", admin_preferences_path)
       # links = [home, people, forums, preferences]
-      links = [people, forums, preferences]
+      links = [posts, people, forums, preferences]
     else
       # links = [home, people]
       links = [people, forum]

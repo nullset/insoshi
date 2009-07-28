@@ -1,0 +1,22 @@
+<tr class="<%= cycle('odd', 'even', :name => 'photos') %>">
+  <td class="new"><%= image_tag("famfamfam/star.png", :title => "New", :alt => "New") if photo.approved_by.blank? %></td>
+  <td>
+    <%- uuid = "gpu#{photo.class}#{photo.id}" -%>
+    <%= link_to "#{image_tag photo.public_filename(:icon), :class => 'left'} #{photo.title}", "##{uuid}", :rel => "facebox", :class => "" %>
+    <div style="display: none" id="<%= uuid %>">
+    <%= image_tag photo.public_filename, :width => photo.width, :height => photo.height, :class => "large_photo" %> 
+    <div class="gpuTitle">
+      <%= photo.label %>
+    </div>
+  </td>
+  <td>
+    <%- if photo.respond_to?("person") -%>
+      <%= link_to photo.person.name, person_path(photo.person) %>
+    <%- else -%>
+      <%= link_to photo.blog.person.name, person_path(photo.blog.person), :target => "_blank" %>
+    <%- end -%>
+  </td>
+  <td class="actions">
+    <%= render :partial => "actions", :locals => {:object => photo} %>
+  </td>
+</tr>

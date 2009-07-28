@@ -17,6 +17,7 @@ class Topic < ActiveRecord::Base
   
   include SetTainted
   before_save :set_tainted
+  named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
 
   MAX_NAME = 100
   NUM_RECENT = 6

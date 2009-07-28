@@ -1,0 +1,20 @@
+<tr class="<%= cycle('odd', 'even', :name => 'topics') %>">
+  <td class="new"><%= image_tag("famfamfam/star.png", :title => "New", :alt => "New") if topic.approved_by.blank? %></td>
+  <td>
+    <%- uuid = "gpu#{topic.class}#{topic.id}" -%>
+    <%= link_to topic.name, "##{uuid}", :rel => "facebox", :class => "icon page_find" %>
+    <div style="display: none" id="<%= uuid %>">
+      <h3><%= topic.name %></h3>
+    </div>
+  </td>
+  <td>
+    <%- if topic.respond_to?("person") -%>
+      <%= link_to topic.person.name, person_path(topic.person) %>
+    <%- else -%>
+      <%= link_to topic.blog.person.name, person_path(topic.blog.person), :target => "_blank" %>
+    <%- end -%>
+  </td>
+  <td class="actions">
+    <%= render :partial => "actions", :locals => {:object => topic} %>
+  </td>
+</tr>

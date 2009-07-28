@@ -1,0 +1,27 @@
+<tr class="<%= cycle('odd', 'even', :name => 'posts') %>">
+  <td class="new"><%= image_tag("famfamfam/star.png", :title => "New", :alt => "New") if post.approved_by.blank? %></td>
+  <td>
+    <%- uuid = "gpu#{post.class}#{post.id}" -%>
+    <%- if post.respond_to?("person") -%>
+      <%= link_to "", "##{uuid}", :rel => "facebox", :class => "icon page_find left" %>
+      <%= display truncate(post.body, :length => 90, :omission => "&#8230;") %>
+      <%= link_to "Read more &#187;", "##{uuid}", :rel => "facebox" %>
+    <%- else -%>
+      <%= link_to post.title, "##{uuid}", :rel => "facebox", :class => "icon page_find" %>
+    <%- end -%>
+    <div style="display: none" id="<%= uuid %>">
+      <h3><%= post.title %></h3>
+      <%= display post.body %>
+    </div>
+  </td>
+  <td>
+    <%- if post.respond_to?("person") -%>
+      <%= link_to post.person.name, person_path(post.person) %>
+    <%- else -%>
+      <%= link_to post.blog.person.name, person_path(post.blog.person), :target => "_blank" %>
+    <%- end -%>
+  </td>
+  <td class="actions">
+    <%= render :partial => "actions", :locals => {:object => post} %>
+  </td>
+</tr>
