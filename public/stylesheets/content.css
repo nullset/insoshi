@@ -341,6 +341,7 @@ div.search {
 }
 #welcome ul.user_meta li {
   list-style: none;
+  width: 100%;
 }
 
 

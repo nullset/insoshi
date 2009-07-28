@@ -3,6 +3,8 @@
 <%- 
   request_parts = []
   parts = request.request_uri.split('/').delete_if {|x| x.blank? } 
+  # Get rid of ?q=BLAH string at the end of search queries
+  parts.collect! {|x| x.match(/\?q=[\S]/i) ? x.sub(/\?q=.*/, '') : x }
   parts.each_with_index do |part, i|
     request_parts << {part => parts.delete_at(i + 1)}
   end
