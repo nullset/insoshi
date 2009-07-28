@@ -97,8 +97,9 @@ class Person < ActiveRecord::Base
   has_many :event_attendees
   has_many :attendee_events, :through => :event_attendees, :source => :event
   
-  has_many :injuries
+  has_many :injuries, :dependent => :destroy
   has_many :injured_areas, :through => :injuries
+  # accepts_nested_attributes_for :injured_areas, :allow_destroy => false
   
 
   validates_presence_of     :email, :name

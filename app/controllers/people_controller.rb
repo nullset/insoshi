@@ -102,6 +102,7 @@ class PeopleController < ApplicationController
 
   def edit
     @person = Person.find(params[:id])
+    @injured_areas = InjuredArea.find_by_name("All")
 
     respond_to do |format|
       format.html
@@ -113,7 +114,8 @@ class PeopleController < ApplicationController
     respond_to do |format|
       case params[:type]
       when 'info_edit'
-        if !preview? and @person.update_attributes(params[:person])
+        new_identities = params[:injured_areas].collect {|x| {:person_id => @person.id, :injured_area_id => x} }
+        if !preview? and @person.update_attributes(params[:person]) and @person.injuries.delete_all and Injury.create(new_identities)
           flash[:success] = 'Profile updated!'
           format.html { redirect_to(@person) }
         else

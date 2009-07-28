@@ -13,13 +13,14 @@
       <dd><label for="person_panorama_patient"><%= f.check_box :panorama_patient %> I have been a patient at Panorama Orthopedics</label></dd>
       <dt><span class="label">Please check the areas Panorama Orthopedics has worked on</span></dt>
       <dd>
-        <%- injured_areas = @person.injured_areas.split(', ') rescue [] -%>
-        <fieldset class="box">
-          <legend>Spine</legend>
-          <%- ["Cervical Spine", "Thoracic Spine", "Lumbar Spine"].each do |spine| -%>
-            <div><label for=""><%= check_box_tag "person_injured_areas[]", spine, injured_areas.include?(spine) ? true : false, :id => spine.gsub(/ /, '_') %> <%= spine %></label></div>
-          <%- end -%>
-        </fieldset>
+        <%- @injured_areas.children.each do |area| -%>
+          <fieldset class="box">
+            <legend><%= area.name %></legend>
+            <%- area.children.each do |injury| -%>
+              <div><label for="injured_area_<%= injury.slug %>"><%= check_box_tag "injured_areas[]", injury.id, (@person.injuries.collect {|x| x.injured_area_id }.include?(injury.id) ? true : false), :id => "injured_area_#{injury.slug}" %> <%= injury.name %></label></div>
+            <%- end -%>
+          </fieldset>
+        <%- end -%>
       </dd>
       <dt><%= f.label :description, "Public description" %></dt>
       <dd>
