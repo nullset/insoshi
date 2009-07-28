@@ -116,7 +116,7 @@ class PeopleController < ApplicationController
       when 'info_edit'
         @injured_areas = InjuredArea.find(:all, :conditions => ["id in(?)", params[:injured_areas]])
         params[:person][:search_injured_areas] = @injured_areas.collect {|area| "#{area.parent.name}: #{area.name}" }.join(', ')
-        new_identities = params[:injured_areas].collect {|x| {:person_id => @person.id, :injured_area_id => x} }
+        new_identities = params[:injured_areas].collect {|x| {:person_id => @person.id, :injured_area_id => x} } unless params[:injured_areas].blank?
         if !preview? and @person.update_attributes(params[:person]) and @person.injuries.delete_all and Injury.create(new_identities)
           flash[:success] = 'Profile updated!'
           format.html { redirect_to(@person) }
@@ -124,6 +124,7 @@ class PeopleController < ApplicationController
           if preview?
             @preview = @person.description = params[:person][:description]
           end
+          @injured_areas = InjuredArea.find_by_name("All")
           format.html { render :action => "edit" }
         end
       when 'password_edit'
