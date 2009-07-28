@@ -39,8 +39,7 @@ class Person < ActiveRecord::Base
                   :message_notifications, :wall_comment_notifications,
                   :blog_comment_notifications, :identity_url
   # Indexed fields for Sphinx
-  is_indexed :fields => [ 'name', 'description', 'deactivated',
-                          'email_verified'],
+  is_indexed :fields => [ 'name', 'description', 'deactivated', 'email_verified'],
              :conditions => "deactivated = false AND (email_verified IS NULL OR email_verified = true)"
   MAX_EMAIL = MAX_PASSWORD = 40
   MAX_NAME = 40
@@ -97,6 +96,10 @@ class Person < ActiveRecord::Base
   has_many :events
   has_many :event_attendees
   has_many :attendee_events, :through => :event_attendees, :source => :event
+  
+  has_many :injuries
+  has_many :injured_areas, :through => :injuries
+  
 
   validates_presence_of     :email, :name
   validates_presence_of     :password,              :if => :password_required?

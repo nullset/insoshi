@@ -9,6 +9,18 @@
       <dd><%= f.text_field :name, :maxlength => Person::MAX_NAME %></dd>
       <dt><%= f.label :email %></dt>
       <dd><%= f.text_field :email, :maxlength => Person::MAX_EMAIL %></dd>
+      <dt><%= f.label :panorama_patient %></dt>
+      <dd><label for="person_panorama_patient"><%= f.check_box :panorama_patient %> I have been a patient at Panorama Orthopedics</label></dd>
+      <dt><span class="label">Please check the areas Panorama Orthopedics has worked on</span></dt>
+      <dd>
+        <%- injured_areas = @person.injured_areas.split(', ') rescue [] -%>
+        <fieldset class="box">
+          <legend>Spine</legend>
+          <%- ["Cervical Spine", "Thoracic Spine", "Lumbar Spine"].each do |spine| -%>
+            <div><label for=""><%= check_box_tag "person_injured_areas[]", spine, injured_areas.include?(spine) ? true : false, :id => spine.gsub(/ /, '_') %> <%= spine %></label></div>
+          <%- end -%>
+        </fieldset>
+      </dd>
       <dt><%= f.label :description, "Public description" %></dt>
       <dd>
         <p class="meta">This is what other users of the system see as your 
