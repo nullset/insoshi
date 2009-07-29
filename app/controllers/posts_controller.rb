@@ -51,6 +51,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
+        AdminMailer.deliver_post_notification(@post)
         flash[:success] = "Your post has been created.#{wait_message}"
         if @post.instance_of?(BlogPost)
           format.html { redirect_to person_blog_post_path(current_person, current_person.blog, @post) }
@@ -66,6 +67,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        AdminMailer.deliver_post_notification(@post)
         flash[:success] = 'Post updated'
         format.html { redirect_to post_url }
       else

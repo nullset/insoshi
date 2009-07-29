@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_filter :login_required
   before_filter :get_instance_vars
   before_filter :authorize_destroy, :only => [:destroy]
-  before_filter :connection_required
+  # before_filter :connection_required
 
   def index
     redirect_to comments_url
@@ -24,15 +24,18 @@ class CommentsController < ApplicationController
     end
   end
 
-  # Used for both wall and blog comments.
+  # OLD - Used for both wall and blog comments.
+  # Used for only blog comments
   def create
     @comment = parent.comments.build(params[:comment])
     @comment.commenter = current_person
-    
+    @post = Post.find(params[:post_id])
+
     respond_to do |format|
       if @comment.save
-        flash[:success] = 'Your comment bas been created'
-        format.html { redirect_to comments_url }
+        AdminMailer.deliver_comment_notification(@comment)
+        flash[:success] = "Your comment bas been created. #{wait_message}"
+        format.html { redirect_to person_blog_post_path(@post.blog.person, @post.blog, @post) }
       else
         format.html { render :action => resource_template("new") }
       end
@@ -149,7 +152,7 @@ class CommentsController < ApplicationController
 
     # True if resource lives on a wall.
     def wall?
-      !params[:person_id].nil?
+      !params[:person_id].nil? && params[:blog_id].nil?
     end
 
     # True if resource lives in a blog.

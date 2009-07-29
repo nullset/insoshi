@@ -10,19 +10,29 @@ class AdminMailer < ActionMailer::Base
     @server_name ||= PersonMailer.global_prefs.server_name
   end
   
-  def new_post_notification(post)
+  def post_notification(post)
+    from         "System Notifier <no-reply@#{domain}>"
+    recipients   Person.admins.collect { |p| p.email }.join(',')
+    new_post = post.approved_by.blank?
+    subject      formatted_subject(new_post == true ? "New post" : "Updated post")
+    body         "post" => post, "new" => new_post, 
+                  "url" => admin_posts_path
+  end
+  
+  def comment_notification(comment)
+    from         "System Notifier <no-reply@#{domain}>"
+    recipients   Person.admins.collect { |p| p.email }.join(',')
+    new_comment = comment.approved_by.blank?
+    subject      formatted_subject(new_comment == true ? "New comment" : "Updated comment")
+    body         "comment" => comment, "new" => new_comment, 
+                  "url" => admin_posts_path
+  end
+  
+  def photo_notification(photo)
     
   end
   
-  def new_comment_notification(comment)
-    
-  end
-  
-  def new_photo_notification(photo)
-    
-  end
-  
-  def new_topic_notification(photo)
+  def topic_notification(photo)
     
   end
   

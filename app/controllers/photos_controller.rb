@@ -55,7 +55,8 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        flash[:success] = "Photo successfully uploaded.<br/>It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)."
+        AdminMailer.deliver_photo_notification(@photo)
+        flash[:success] = "Photo successfully uploaded. #{wait_message}"
         format.html { redirect_to @photo.gallery }
       else
         format.html { render :action => "new" }
@@ -68,6 +69,7 @@ class PhotosController < ApplicationController
     
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
+        AdminMailer.deliver_photo_notification(@photo)
         flash[:success] = "Photo successfully updated"
         format.html { redirect_to(person_gallery_path(current_person, @photo.gallery)) }
       else

@@ -26,7 +26,7 @@ class Photo < ActiveRecord::Base
   UPLOAD_LIMIT = 5 # megabytes
   
   include SetTainted
-  before_save :set_tainted, :reset_approved_by
+  before_save :set_tainted
   named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => 'created_at desc'
   named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
   
@@ -103,13 +103,5 @@ class Photo < ActiveRecord::Base
       [photos]
     end
   end
-  
-  private
-  
-    def reset_approved_by
-      if self.changed? && !self.changes.include?('approved_by')
-        self.approved_by = nil
-      end
-    end
 
 end

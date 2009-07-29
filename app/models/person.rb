@@ -126,6 +126,9 @@ class Person < ActiveRecord::Base
   before_update :set_old_description
   after_update :log_activity_description_changed
   before_destroy :destroy_activities, :destroy_feeds
+  
+  named_scope :admins, :conditions => "admin is true"
+  
 
   class << self
 
