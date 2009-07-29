@@ -1,0 +1,14 @@
+<%- if @new == true -%>
+A new topic has been created. This topic must be approved before regular users will be able to see it.
+<%- else -%>
+A topic has been updated. This topic is currently viewable by regular users, and need not be approved (though it's still a good idea to do so).
+<%- end -%>
+
+-------------------------------------------------
+
+<%= @topic.name %>
+
+-------------------------------------------------
+
+Approve or reject this topic:
+  http://<%= @server %><%= @url %>

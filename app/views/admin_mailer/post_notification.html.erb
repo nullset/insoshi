@@ -1,0 +1,16 @@
+<%- if @new == true -%>
+A new post has been created. This post must be approved before regular users will be able to see it.
+<%- else -%>
+A post has been updated. This post is currently viewable by regular users, and need not be approved (though it's still a good idea to do so).
+<%- end -%>
+
+-------------------------------------------------
+
+<%= @post.title %>
+
+<%= @post.body %>
+
+-------------------------------------------------
+
+Approve or reject this post:
+  http://<%= @server %><%= @url %>

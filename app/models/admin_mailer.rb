@@ -29,11 +29,21 @@ class AdminMailer < ActionMailer::Base
   end
   
   def photo_notification(photo)
-    
+    from         "System Notifier <no-reply@#{domain}>"
+    recipients   Person.admins.collect { |p| p.email }.join(',')
+    new_photo = photo.approved_by.blank?
+    subject      formatted_subject(new_photo == true ? "New photo" : "Updated photo")
+    body         "photo" => photo, "new" => new_photo, 
+                  "url" => admin_posts_path
   end
   
-  def topic_notification(photo)
-    
+  def topic_notification(topic)
+    from         "System Notifier <no-reply@#{domain}>"
+    recipients   Person.admins.collect { |p| p.email }.join(',')
+    new_topic = topic.approved_by.blank?
+    subject      formatted_subject(new_topic == true ? "New topic" : "Updated topic")
+    body         "topic" => topic, "new" => new_topic, 
+                  "url" => admin_posts_path
   end
   
   # def password_reminder(person)

@@ -1,0 +1,8 @@
+<%- if @new == true -%>
+A new photo has been created. This photo must be approved before regular users will be able to see it.
+<%- else -%>
+A photo has been updated. This photo is currently viewable by regular users, and need not be approved (though it's still a good idea to do so).
+<%- end -%>
+
+Approve or reject this photo:
+  http://<%= @server %><%= @url %>

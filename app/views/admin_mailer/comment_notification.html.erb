@@ -1,0 +1,14 @@
+<%- if @new == true -%>
+A new comment has been created. This comment must be approved before regular users will be able to see it.
+<%- else -%>
+A comment has been updated. This comment is currently viewable by regular users, and need not be approved (though it's still a good idea to do so).
+<%- end -%>
+
+-------------------------------------------------
+
+<%= @comment.body %>
+
+-------------------------------------------------
+
+Approve or reject this post:
+  http://<%= @server %><%= @url %>
