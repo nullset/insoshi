@@ -1,25 +1,32 @@
 <h2> 
   <a name="post_<%= blog_post.id %>"></a>
   <%= link_to sanitize(blog_post.title),
-              person_blog_post_path(@blog.person, @blog, blog_post),
+              person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post),
               :class => "show-follow" %>
-  <%- if current_person?(@blog.person) -%>
+  <%- if current_person?(blog_post.blog.person) -%>
     <%= link_to image_tag("icons/page_white_edit.png",
                           :class => 'actioner'),
-                edit_person_blog_post_path(@blog.person, @blog, blog_post) %>
+                edit_person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post) %>
     <%= link_to image_tag("icons/page_white_delete.png",
                           :class => 'actioner'),
-                person_blog_post_path(@blog.person, @blog, blog_post),
+                person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post),
                 :method => :delete,
                 :confirm => "Delete this post?" %>
   <%- end -%>
 </h2>
-<%= display blog_post.body %>
+
+<%- if params[:controller] == 'posts' -%>
+  <%= display truncate(blog_post.body, :length => 230, :omission => %{&#8230; #{link_to "Read more &raquo;", person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post)} }) %>
+  <%=  %>
+<%- else -%>
+  <%= display blog_post.body %>
+<%- end -%>
+
 <p class="meta">
-  Posted <%= time_ago_in_words(blog_post.created_at) %> ago | 
+  Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago | 
   <%- n = blog_post.comments.all.count -%>
   <%= link_to pluralize(n, "comment"),
-              person_blog_post_path(@blog.person, @blog, blog_post, :comments => n),
+              person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post, :comments => n),
               :class => "show-follow" %>    
 </p>
 <%- if logged_in? and current_person.admin? -%>
