@@ -1,7 +1,6 @@
 <li>
   <div class="profile-image">
     <%= image_link search_result.person, :image => :thumbnail %>
-    <%= image_tag "icons/comment.png", :class => "icon" %>
   </div>
   <p >
     In <%= link_to(h(search_result.topic.name),
@@ -10,6 +9,7 @@
                                    :anchor => "post_#{search_result.id}")) %>:
   </p>
   <div class="forum">
-  <%= display search_result.body %>
+    <%= display search_result.body %>
   </div>
+  <div class="clear"></div>
 </li>
