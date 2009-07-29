@@ -1,4 +1,4 @@
-<li class="<%= cycle('first', '', :name => "photos") %>">
+<li class="<%= cycle('first', '', :name => "photos") %>" id="photo_<%= photo.id %>">
   <a href="#gpu<%= photo_id(photo) %>" rel="facebox" class="block_link">
     <span class="img_wrapper <%= photo.tainted? ? 'tainted' : nil %>">
       <%= image_tag(photo.public_filename(:thumbnail)) %>

@@ -6,7 +6,7 @@
     <ul>
       <%- recent_photos.each do |photo| -%>
         <li class="<%= cycle('first', '', '') %>">
-          <%= link_to image_tag(photo.public_filename(:recent_photo), :alt => photo.title, :title => photo.title, :size => "50x50"), "" %>
+          <%= link_to image_tag(photo.public_filename(:recent_photo), :alt => photo.title, :title => photo.title, :size => "50x50"), person_gallery_path(photo.gallery.person, photo.gallery, :anchor => "photo_#{photo.id}") %>
         </li>
       <%- end -%>
     </ul>

@@ -7,7 +7,7 @@
     <h3><%= area.name %></h3>
     <ul>
       <%- area.children.each do |injury| -%>
-        <li><%= link_to_unless(injury.people.blank?, injury.name, searches_path(:q => %{#{area.name.strip} #{injury.name.strip}}, :model => "Person", :injured_area => true)) %> <small>(<%= injury.people.length %>)</small></li>
+        <li><%= link_to_unless(injury.people.blank?, injury.name, searches_path(:q => %{#{area.name.strip} #{injury.name.strip}}, :model => "Person")) %> <small>(<%= injury.people.length %>)</small></li>
       <%- end -%>
     </ul>
   <%- end -%>
