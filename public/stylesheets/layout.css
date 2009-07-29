@@ -376,6 +376,15 @@ ul#sidenav {
 #footer a:hover {
 	text-decoration: underline;
 }
+#disclaimer {
+  border-top: 1px solid #ddd;
+  background: url(/images/famfamfam/asterisk_orange.png) left 16px no-repeat;
+  padding: 10px 0 10px 24px;
+  margin: 5em 0;
+}
+#disclaimer p {
+  margin: .5em 0;
+}
 
 
 form dl, form dt, form dd {
