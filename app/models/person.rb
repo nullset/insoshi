@@ -128,7 +128,7 @@ class Person < ActiveRecord::Base
   before_destroy :destroy_activities, :destroy_feeds
   
   named_scope :admins, :conditions => "admin is true"
-  
+  named_scope :patients, :conditions => "panorama_patient is true and contact_for_advice is true"
 
   class << self
 

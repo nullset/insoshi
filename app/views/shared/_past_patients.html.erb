@@ -1,0 +1,14 @@
+<%- patients = Person.patients -%>
+<%- injured_areas = InjuredArea.find_by_name("All") -%>
+
+<div id="past_patients">
+  <h2>People by Injury</h2>
+  <%- injured_areas.children.each do |area| -%>
+    <h3><%= area.name %></h3>
+    <ul>
+      <%- area.children.each do |injury| -%>
+        <li><%= link_to_unless(injury.people.blank?, injury.name, searches_path(:q => %{#{area.name.strip} #{injury.name.strip}}, :model => "Person", :injured_area => true)) %> <small>(<%= injury.people.length %>)</small></li>
+      <%- end -%>
+    </ul>
+  <%- end -%>
+</div> <!-- #past_patients -->
