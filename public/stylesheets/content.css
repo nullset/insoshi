@@ -612,3 +612,16 @@ ul.messages .meta {
 ul.search_results {
   margin-bottom: 2em;
 }
+#content .admin_actions img {
+  border: none;
+}
+#content .admin_layout img {
+  border: 1px solid #2d86f9;
+}
+#content .admin_layout a img {
+  border: none;
+}
+.blog_admin .admin_actions, .blog_admin .admin_layout {
+  float: left;
+  margin-right: 2em;
+}

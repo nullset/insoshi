@@ -23,5 +23,8 @@
   </td>
   <td class="actions">
     <%= render :partial => "actions", :locals => {:object => post} %>
+    <%- if post.is_a?(BlogPost) -%>
+      <%= render :partial => "featured_post", :locals => {:post => post} %>
+    <%- end -%>
   </td>
 </tr>

@@ -9,7 +9,6 @@ class HomeController < ApplicationController
       @feed = Activity.global_feed
     end
 
-    @intro = Person.find(:first, :conditions => ["admin = ?", true]).blog.posts.find(:first, :order => "created_at desc")
     @featured_posts = Post.find(:all, :conditions => ["featured = ? and approved_by is not null", true], :order => "position")
     
     respond_to do |format|

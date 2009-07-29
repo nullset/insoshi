@@ -49,7 +49,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :posts, :member => {
       :accept => :post,
       :reject => :post,
-      :reject_and_deactivate => :post
+      :reject_and_deactivate => :post,
+      :make_featured => :post
     }
     admin.resources :people, :preferences
     admin.resources :forums do |forums|

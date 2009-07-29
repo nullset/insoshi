@@ -22,3 +22,11 @@
               person_blog_post_path(@blog.person, @blog, blog_post, :comments => n),
               :class => "show-follow" %>    
 </p>
+<%- if logged_in? and current_person.admin? -%>
+  <div class="blog_admin">
+    <h3>Admin</h3>
+    <%= render :partial => 'admin/posts/actions', :locals => {:object => blog_post} %>
+    <%= render :partial => 'admin/posts/featured_post', :locals => {:post => blog_post} %>
+    <div class="clear"></div>
+  </div>
+<%- end -%>

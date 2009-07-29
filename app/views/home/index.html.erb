@@ -1,7 +1,5 @@
-<%- unless @intro.blank? -%>
-  <h1><%= sanitize(@intro.title) %></h1>
-  <%= display @intro.body %>
-
+<%- unless global_prefs.about.blank? -%>
+  <%= display global_prefs.about %>
   <div class="hr"></div>
 <%- end -%>
 
