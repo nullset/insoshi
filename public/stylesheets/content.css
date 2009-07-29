@@ -72,6 +72,13 @@ fieldset.box legend {
 #content form dd input.w-80 {
   width: 80%;
 }
+textarea {
+  width: 100%;
+}
+.mceEditor {
+  margin-bottom: .5em;
+  display: block;
+}
 
 #content img.icon, #content img.actioner {
   padding-left: 0;

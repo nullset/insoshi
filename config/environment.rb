@@ -74,7 +74,7 @@ Rails::Initializer.run do |config|
   #                                    :lib => 'will_paginate',
   #                                    :source => 'http://gems.github.com'
   config.gem 'chronic'
-  config.gem 'BlueCloth', :lib => 'bluecloth'
+  # config.gem 'BlueCloth', :lib => 'bluecloth'
 end
 
 require 'vendor/plugins/jquery_ui_rails_helpers/helpers/tabs_renderer'
