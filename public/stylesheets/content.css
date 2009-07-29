@@ -609,3 +609,6 @@ ul.messages .meta {
   text-decoration: none;
   text-align: center;
 }
+ul.search_results {
+  margin-bottom: 2em;
+}

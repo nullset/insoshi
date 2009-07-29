@@ -1,0 +1,13 @@
+<li>
+  <div class="profile-image">
+    <%= image_link search_result.blog.person, :image => :thumbnail %>
+  </div>
+  <p >
+    In <%= link_to(h(search_result.title),
+                  person_blog_post_path(search_result.blog.person, search_result.blog, search_result)) %>:
+  </p>
+  <div class="forum">
+    <%= display search_result.body %>
+  </div>
+  <div class="clear"></div>
+</li>

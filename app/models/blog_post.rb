@@ -19,6 +19,9 @@ class BlogPost < Post
   MAX_TITLE = MEDIUM_STRING_LENGTH
   MAX_BODY  = MAX_TEXT_LENGTH
   
+  is_indexed :fields => [ 'body', 'title' ],
+             :conditions => "type = 'BlogPost'"
+
   attr_accessible :title, :body
   
   belongs_to :blog

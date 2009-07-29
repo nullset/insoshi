@@ -1,21 +1,20 @@
 class SearchesController < ApplicationController
   include ApplicationHelper
 
-  before_filter :login_required
+  # before_filter :login_required
 
   def index
-    
     redirect_to(home_url) and return if params[:q].nil?
     
     query = params[:q].strip.inspect
     model = strip_admin(params[:model])
     page  = params[:page] || 1
 
-    unless %(Person Message ForumPost).include?(model)
-      flash[:error] = "Invalid search"
-      redirect_to home_url and return
-    end
-
+    # unless %(Person Message ForumPost).include?(model)
+    #   flash[:error] = "Invalid search"
+    #   redirect_to home_url and return
+    # end
+    
     if query.blank?
       @search  = [].paginate
       @results = []
@@ -26,11 +25,14 @@ class SearchesController < ApplicationController
         model = "AllPerson"
       elsif model == "Message"
         filters['recipient_id'] = current_person.id
+      else
+        # Do nothing
       end
       @search = Ultrasphinx::Search.new(:query => query, 
                                         :filters => filters,
                                         :page => page,
                                         :class_names => model)
+
       @search.run
       @results = @search.results
       if model == "AllPerson"
@@ -38,9 +40,9 @@ class SearchesController < ApplicationController
         @results.map!{ |person| Person.find(person) }
       end
     end
-  rescue Ultrasphinx::UsageError
-    flash[:error] = "Invalid search query"
-    redirect_to searches_url(:q => "", :model => params[:model])
+  # rescue Ultrasphinx::UsageError
+  #   flash[:error] = "Invalid search query"
+  #   redirect_to searches_url(:q => "", :model => params[:model])
   end
   
   private
