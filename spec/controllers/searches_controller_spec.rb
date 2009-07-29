@@ -26,11 +26,12 @@ describe SearchesController do
   describe "Person searches" do
     integrate_views
 
-    it "should require login" do
-      logout
-      get :index, :q => "", :model => "Person"
-      response.should redirect_to(login_url)
-    end
+    ## XXX No longer requires a login
+    # it "should require login" do
+    #   logout
+    #   get :index, :q => "", :model => "Person"
+    #   response.should redirect_to(login_url)
+    # end
     
     it "should redirect for an invalid model" do
       get :index, :q => "foo", :model => "AllPerson"
