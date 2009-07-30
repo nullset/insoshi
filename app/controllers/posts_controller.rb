@@ -86,7 +86,13 @@ class PostsController < ApplicationController
     flash[:success] = "Post destroyed"
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { 
+        if model.name == "BlogPost"
+          redirect_to person_blog_path(@post.blog.person, @post.blog)
+        else
+          redirect_to :back
+        end
+      }
     end
   end
   
@@ -139,11 +145,11 @@ class PostsController < ApplicationController
     # Only admin users can destroy forum posts.
     # Only blog owners can destroy blog posts.
     def authorize_destroy
-      if forum?
-        redirect_to home_url unless current_person.admin?
-      elsif blog?
+      # if forum?
+      #   redirect_to home_url unless current_person.admin?
+      # elsif blog?
         authorize_change
-      end
+      # end
     end
 
     ## Handle forum and blog posts in a uniform manner.

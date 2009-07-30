@@ -623,6 +623,13 @@ ul.search_results {
   background: #efefef;
   padding: 3px;
 }
+#content .post.forum_post .meta .actions {
+  margin-left: 1em;
+  display: inline;
+}
+#content .post.forum_post .meta .actions img {
+  border: none;
+}
 #content .forum li {
   list-style: none;
   border-bottom: 1px solid #ddd;

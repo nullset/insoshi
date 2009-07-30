@@ -1,4 +1,6 @@
-<h2 class="entry-title"><%= h @topic.name %></h2>
+<h2 class="entry-title">
+  <%= h @topic.name %>
+</h2>
 <%- unless @posts.blank? -%>
   <ul class="forum">
     <%- @posts.each do |post| -%>
@@ -7,7 +9,20 @@
           <div class="post_body"><%= display post.body %></div>
           <div class="meta">
             Posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to h(post.person.name), person_path(post.person) %>
+            <div class="actions">
+              <%= link_to image_tag("famfamfam/page_edit.png", :size => '16x16', :alt => "Edit", :title => "Edit"), edit_forum_topic_post_path(@topic.forum, @topic, post) if logged_in? && current_person == post.person %>
+              <%= link_to image_tag("famfamfam/page_delete.png", :size => '16x16', :alt => "Delete", :title => "Delete"), forum_topic_post_path(@topic.forum, @topic, post), :method => :delete, :confirm => "Delete this post?" if logged_in? && current_person == post.person %>
+              
+            </div>
           </div>
+          
+          <%- if logged_in? and current_person.admin? -%>
+            <div class="blog_admin">
+              <h3>Admin</h3>
+              <%= render :partial => 'admin/posts/actions', :locals => {:object => post} %>
+              <div class="clear"></div>
+            </div>
+          <%- end -%>
           
           <%- if logged_in? && (current_person == post.person || current_person.admin?) -%>
             <div class="status <%= post.status.downcase.gsub(/ /, '_') %>">

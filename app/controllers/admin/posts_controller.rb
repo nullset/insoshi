@@ -37,7 +37,7 @@ class Admin::PostsController < ApplicationController
       PersonMailer.deliver_post_rejected(post, person) unless (post.respond_to?("commentable_type") || post.respond_to?("forum_id") )
       flash[:success] = "#{params[:model].underscore.humanize} rejected"
     end
-    redirect_to :action => :index
+    redirect_to :back
   end
   
   def reject_and_deactivate
@@ -57,7 +57,7 @@ class Admin::PostsController < ApplicationController
       PersonMailer.deliver_post_rejected(post, person)
       flash[:success] = "#{params[:model].underscore.humanize} rejected and the post's author #{person.name} has been deactivated"
     end
-    redirect_to :action => :index
+    redirect_to :back
   end
   
   def make_featured

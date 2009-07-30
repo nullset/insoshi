@@ -70,7 +70,7 @@ class PersonMailer < ActionMailer::Base
     when "BlogPost"
       url = person_blog_post_path(object.blog.person, object.blog, object)
     when "ForumPost"
-      url = forum_topic_path(object.topic.forum, object.topic, :comments => object)
+      url = forum_topic_path(object.topic.forum, object.topic, :anchor => "post_#{object.id}")
     when "Photo"
       url = person_gallery_photo_path(object.gallery.person, object.gallery, object)
     when "Topic"
