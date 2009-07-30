@@ -28,7 +28,8 @@ describe PostsController do
       lambda do
         post :create, :forum_id => @forum, :topic_id => @topic,
                       :post => { :body => "The body" }
-        topics = forum_topic_url(@forum, @topic, :posts => 2)
+        new_post = Post.find(:first, :order => "created_at desc")
+        topics = forum_topic_path(@forum, @topic, :anchor => "post_#{new_post.id}")
         response.should redirect_to(topics)
       end.should change(ForumPost, :count).by(1)
     end
