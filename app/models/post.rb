@@ -25,19 +25,7 @@ class Post < ActiveRecord::Base
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
                         :conditions => "item_type = 'Post'"
   attr_accessible nil
-  
-  def self.all(current_person = nil, person = nil)
-    if current_person != :false && !current_person.blank? && !person.blank?
-      if current_person != :false && current_person.admin == true 
-        find(:all, :include => :blog, :conditions => "blogs.person_id = #{person.id}", :order => "posts.created_at desc")    
-      elsif current_person.id == person.id
-        find(:all, :include => :blog, :conditions => "blogs.person_id = #{current_person.id}", :order => "posts.created_at desc")    
-      end
-    else
-      find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc")
-    end
-  end
-  
+    
   def self.recent_posts(limit = 3)
     self.find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc", :limit => limit)
   end
@@ -45,7 +33,7 @@ class Post < ActiveRecord::Base
   def status
     status = "Post pending approval" if tainted
     status = "Post rejected" if rejected
-    status
+    status ||= ''
   end
 
 end

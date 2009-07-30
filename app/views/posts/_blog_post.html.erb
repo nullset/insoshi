@@ -1,4 +1,4 @@
-<div class="blog_post <%= blog_post.status.downcase.gsub(/ /, '_') %>">
+<div class="post <%= blog_post.status.downcase.gsub(/ /, '_') %>">
   <h2> 
     <a name="post_<%= blog_post.id %>"></a>
     <%= link_to sanitize(blog_post.title),
@@ -39,7 +39,7 @@
     </div>
   <%- end -%>
 
-  <%- if current_person == blog_post.blog.person || current_person.admin? -%>
+  <%- if logged_in? && (current_person == blog_post.blog.person || current_person.admin?) -%>
     <div class="status <%= blog_post.status.downcase.gsub(/ /, '_') %>">
       <%= blog_post.status %>
     </div>

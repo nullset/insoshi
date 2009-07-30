@@ -1,26 +1,24 @@
 <h2 class="entry-title"><%= h @topic.name %></h2>
-<%- unless @topic.posts.blank? -%>
-  <table class="forum">
-    <thead>
-      <tr>
-        <th scope="col">Comment</th>
-        <th scope="col">Posted</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%- @posts.each do |post| -%>
-        <tr id="post_<%= post.id %>" class="<%= cycle('odd', 'even', :name => "topic_rows") %>">
-          <td><%= display post.body %></td>
-          <td class="meta">
-            <div><%= time_ago_in_words(post.created_at) %> ago</div>
-            by
-            <div class="author"><%= link_to h(post.person.name), person_path(post.person) %></div>
-            <div><%= image_link post.person, :image => :bounded_icon %></div>
-          </td>
-        </tr>
-      <%- end -%>
-    </tbody>
-  </table>
+<%- unless @posts.blank? -%>
+  <ul class="forum">
+    <%- @posts.each do |post| -%>
+      <li id="post_<%= post.id %>">
+        <div class="post forum_post <%= cycle('odd', 'even', :name => "topic_post") %> <%= post.status.downcase.gsub(/ /, '_') %>">
+          <div class="post_body"><%= display post.body %></div>
+          <div class="meta">
+            Posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to h(post.person.name), person_path(post.person) %>
+          </div>
+          
+          <%- if logged_in? && (current_person == post.person || current_person.admin?) -%>
+            <div class="status <%= post.status.downcase.gsub(/ /, '_') %>">
+              <%= post.status %>
+            </div>
+          <%- end -%>
+          
+        </div>
+      </li>
+    <%- end -%>
+  </ul>
 <%- end -%>
 
 <%- if logged_in? -%>
@@ -40,4 +38,6 @@
       <%= f.submit "Submit", :class => "button" %>
     </div>
   <% end %>
+<%- else -%>
+  <p>Want to join in the conversation? Just <%= link_to "login", new_session_path %> or <%= link_to "join our site", signup_path %>.</p>
 <%- end -%>

@@ -29,6 +29,18 @@ class ForumPost < Post
   
   after_create :log_activity
     
+  def self.all(current_person = nil)
+    if current_person != :false && !current_person.blank?
+      if current_person.admin == true 
+        find(:all, :order => "posts.created_at")    
+      else
+        find(:all, :conditions => "(approved_by is not null or approved_by != '' and rejected is not true) or (person_id = #{current_person.id})", :order => "created_at")    
+      end
+    else
+      find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at")
+    end
+  end
+
   private
   
     def log_activity

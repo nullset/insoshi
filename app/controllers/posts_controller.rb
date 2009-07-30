@@ -56,7 +56,7 @@ class PostsController < ApplicationController
         if @post.instance_of?(BlogPost)
           format.html { redirect_to person_blog_post_path(current_person, current_person.blog, @post) }
         elsif @post.instance_of?(ForumPost)
-          format.html { redirect_to post_url }
+          format.html { redirect_to forum_topic_path(@post.topic.forum, @post.topic, :anchor => "post_#{@post.id}") }
         end
       else
         format.html { render :action => resource_template("new") }

@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts.all
+    @posts = @topic.posts.all(current_person)
     
     respond_to do |format|
       format.html

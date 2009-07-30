@@ -597,21 +597,40 @@ ul.search_results {
   margin-right: 2em;
 }
 
-.blog_post.post_rejected {
+.post.post_rejected {
   border: 1px solid #85250D;
   padding: 5px;
 }
-.blog_post.post_pending_approval {
+.post.post_pending_approval {
   border: 1px solid #fc0;
   padding: 5px;
 }
-.blog_post .status {
+.post .status {
   padding: 5px 5px 5px 24px;
 }
-.blog_post .status.post_pending_approval {
+.post .status.post_pending_approval {
   background: #fc0 url(/images/famfamfam/error.png) 3px 4px no-repeat;
 }
-.blog_post .status.post_rejected {
+.post .status.post_rejected {
   background: #85250D url(/images/famfamfam/exclamation.png) 3px 4px no-repeat;
   color: #fc0;
+}
+.post.forum_post.even .meta {
+  background: #e6e6e6;
+  padding: 3px;
+}
+.post.forum_post.odd .meta {
+  background: #efefef;
+  padding: 3px;
+}
+#content .forum li {
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+#content .forum li .post {
+}
+#content .forum li .post .post_body {
+  
 }
