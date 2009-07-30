@@ -157,9 +157,11 @@
                 <%- end -%>
               <%- end -%>              
 
+            <%- unless logged_in? and admin_view? -%>
               <%= render :partial => "shared/recent_posts" %>
               <%= render :partial => "shared/recent_photos", :object => @photos %>
               <%= render :partial => "shared/past_patients" %>
+            <%- end -%>
 
     	      </div> <!-- #sidebar-inner -->
     			</div> <!-- #sidebar -->
