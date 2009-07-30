@@ -211,6 +211,10 @@ img.left {
 .post .meta {
   margin-top: 1em;
 }
+ul.meta li.first {
+  list-style: none;
+  margin-left: 0;
+}
 .meta li  {
   float: left;
   margin-left: 2em;
@@ -502,7 +506,7 @@ div.search {
 }
 
 
-.blog .post {
+.blog li.post {
   list-style: none;
   margin-bottom: 1.5em;
   padding-bottom: 1.5em;

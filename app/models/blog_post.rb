@@ -40,6 +40,8 @@ class BlogPost < Post
         find(:all, :include => :blog, :conditions => "blogs.person_id = #{person.id}", :order => "posts.created_at desc")    
       elsif current_person.id == person.id
         find(:all, :include => :blog, :conditions => "blogs.person_id = #{current_person.id}", :order => "posts.created_at desc")    
+      else
+        find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc")
       end
     else
       find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc")

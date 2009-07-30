@@ -24,13 +24,13 @@
   <%- end -%>
 
   <div class="clear"></div>
-  <p class="meta">
-    Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago | 
+  <ul class="meta">
+    <li class="first">Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago</li>
     <%- n = blog_post.comments.all.count -%>
-    <%= link_to pluralize(n, "comment"),
-                person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post, :comments => n),
-                :class => "show-follow" %>    
-  </p>
+    <li><%= link_to pluralize(n, "comment"), person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post, :comments => n), :class => "icon comments" %></li>
+  </ul>
+  <div class="clear"></div>
+
   <%- if logged_in? and current_person.admin? -%>
     <div class="blog_admin">
       <h3>Admin</h3>
