@@ -24,8 +24,6 @@
       <%= stylesheet_link_tag "ie7" %>
     <![endif]-->
     
-    <link rel="shortcut icon" href="favicon.ico" />
-    <%# stylesheet_link_tag "default" %>
     <%= stylesheet_link_tag "jquery-flora.tabs.css", "jquery.tooltip.css", 
                             "facebox.css" %>
     <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", 
@@ -42,6 +40,7 @@
     	tinyMCE.init({
     		// General options
     		mode : "textareas",
+    		editor_deselector : "noTinyMCE",
     		theme : "advanced",
     		relative_urls : false,
     		valid_elements : "@[id|class|style|title]|"
@@ -78,17 +77,12 @@
     		// Example content CSS (should be your site CSS)
     		content_css : "/stylesheets/tiny_mce.css",
 
-        // ,
-
-        // // Drop lists for link/image/media/template dialogs
-        // template_external_list_url : "lists/template_list.js",
-        // external_link_list_url : "lists/link_list.js",
+        // Drop lists for link/image/media/template dialogs
         external_image_list_url : "<%= person_photos_path(current_person) %>.js"
-          // "/photos/show.js"
-        // ,
         // media_external_list_url : "lists/media_list.js",
 
-    	});  
+    	});
+      // tinyMCE.init({external_image_list_url : "<%= person_photos_path(current_person) %>.js"});
     </script>
     
   </head>

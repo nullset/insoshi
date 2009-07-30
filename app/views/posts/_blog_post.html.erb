@@ -23,6 +23,7 @@
     <%= display blog_post.body %>
   <%- end -%>
 
+  <div class="clear"></div>
   <p class="meta">
     Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago | 
     <%- n = blog_post.comments.all.count -%>

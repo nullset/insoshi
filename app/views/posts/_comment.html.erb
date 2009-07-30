@@ -4,6 +4,7 @@
     <%= time_ago_in_words(comment.created_at) %> ago:
   </p>
   <%= display comment.body %>
+  <div class="clear"></div>
   <%- if current_person?(comment.commentable.blog.person) -%>
   <div>
     <%= link_to "delete", person_blog_post_comment_path(@blog.person, @blog, @post, comment), :method => :delete, :class => "icon comment_delete", :confirm => "Are you sure you want to delete this comment?" %>

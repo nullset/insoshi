@@ -75,6 +75,8 @@ Rails::Initializer.run do |config|
   #                                    :source => 'http://gems.github.com'
   config.gem 'chronic'
   # config.gem 'BlueCloth', :lib => 'bluecloth'
+  
+  config.action_view.sanitized_allowed_attributes = 'id', 'class', 'style'
 end
 
 require 'vendor/plugins/jquery_ui_rails_helpers/helpers/tabs_renderer'

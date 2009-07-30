@@ -208,6 +208,9 @@ img.left {
 .meta {
   font-size: 85%;
 }
+.post .meta {
+  margin-top: 1em;
+}
 .meta li  {
   float: left;
   margin-left: 2em;
@@ -635,9 +638,4 @@ ul.search_results {
   border-bottom: 1px solid #ddd;
   margin-bottom: 1em;
   padding-bottom: 1em;
-}
-#content .forum li .post {
-}
-#content .forum li .post .post_body {
-  
 }
