@@ -53,9 +53,10 @@ class PhotosController < ApplicationController
     photo_data = params[:photo].merge(:person => current_person)
     @photo = @gallery.photos.build(photo_data)
 
+    set_tainted(@photo)
     respond_to do |format|
       if @photo.save
-        AdminMailer.deliver_photo_notification(@photo)
+        AdminMailer.deliver_photo_notification(@photo) unless current_person.admin?
         flash[:success] = "Photo successfully uploaded. #{wait_message}"
         format.html { redirect_to @photo.gallery }
       else
@@ -67,9 +68,10 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     
+    set_tainted(@photo)
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        AdminMailer.deliver_photo_notification(@photo)
+        AdminMailer.deliver_photo_notification(@photo) unless current_person.admin?
         flash[:success] = "Photo successfully updated"
         format.html { redirect_to(person_gallery_path(current_person, @photo.gallery)) }
       else
@@ -154,5 +156,6 @@ class PhotosController < ApplicationController
         end
       end
     end
+    
 end
 

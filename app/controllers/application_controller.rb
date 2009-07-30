@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
       if current_person.admin?
         model.tainted = false
         model.approved_by = current_person.id
+        model.rejected = false
       end
     end
     

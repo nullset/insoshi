@@ -20,13 +20,11 @@
     </div>
   <%- end -%>
   <%- if admin? and not @person.active? -%>
-    <p class="error">This person is not active</p>
+    <p class="flash error">This person is not active</p>
   <%- end -%>
   <%- if current_person?(@person) && current_person.description.blank? -%>
-    <div class="error">
-      Your description is blank.
-      <%= link_to "Click here to add a description", 
-        edit_person_path(@person) %>
+    <div class="flash error">
+      Your description is blank. <%= link_to "Click here to add a description", edit_person_path(@person) %>
     </div>
   <%- end -%>
 <%- end -%>

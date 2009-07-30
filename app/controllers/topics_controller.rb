@@ -34,9 +34,10 @@ class TopicsController < ApplicationController
     @topic = @forum.topics.new(params[:topic])
     @topic.person = current_person
 
+    set_tainted(@topic)
     respond_to do |format|
       if @topic.save
-        AdminMailer.deliver_topic_notification(@topic)
+        AdminMailer.deliver_topic_notification(@topic) unless current_person.admin?
         flash[:success] = "Topic was successfully created. #{wait_message}"
         format.html { redirect_to forum_topic_path(@forum, @topic) }
       else
@@ -50,6 +51,10 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.update_attributes(params[:topic])
+        if current_person.admin?
+          set_tainted(@topic)
+          @topic.save
+        end
         AdminMailer.deliver_topic_notification(@topic)
         flash[:success] = 'Topic was successfully updated.'
         format.html { redirect_to forum_url(@forum) }

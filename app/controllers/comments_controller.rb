@@ -31,9 +31,10 @@ class CommentsController < ApplicationController
     @comment.commenter = current_person
     @post = Post.find(params[:post_id])
 
+    set_tainted(@comment)
     respond_to do |format|
       if @comment.save
-        AdminMailer.deliver_comment_notification(@comment)
+        AdminMailer.deliver_comment_notification(@comment) unless current_person.admin?
         flash[:success] = "Your comment bas been created. #{wait_message}"
         format.html { redirect_to person_blog_post_path(@post.blog.person, @post.blog, @post) }
       else
