@@ -67,7 +67,7 @@
 
     		// Theme options
     		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,sub,sup",
-    		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo,|,link,unlink,image,media,emotions,charmap,iespell,code,|,preview",
+    		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo,|,link,unlink<%= ",image,media" unless params[:controller] =~ /^(photos|galleries)$/ %>,emotions,charmap,iespell,code,|,preview",
     		theme_advanced_buttons3 : "",
     		theme_advanced_toolbar_location : "top",
     		theme_advanced_toolbar_align : "left",
@@ -75,14 +75,12 @@
     		theme_advanced_resizing : true,
 
     		// Example content CSS (should be your site CSS)
-    		content_css : "/stylesheets/tiny_mce.css",
+    		content_css : "/stylesheets/tiny_mce.css"
 
         // Drop lists for link/image/media/template dialogs
-        external_image_list_url : "<%= person_photos_path(current_person) %>.js"
-        // media_external_list_url : "lists/media_list.js",
+        <%= %{ , external_image_list_url : "#{person_photos_path(current_person)}.js"} unless params[:controller] =~ /^(photos|galleries)$/ %>
 
     	});
-      // tinyMCE.init({external_image_list_url : "<%= person_photos_path(current_person) %>.js"});
     </script>
     
   </head>
