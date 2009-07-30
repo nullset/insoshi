@@ -260,7 +260,7 @@ class Person < ActiveRecord::Base
     # This should only have one entry, but use 'first' to be paranoid.
     photos.find_all_by_avatar(true).first
   end
-
+  
   # Return all the photos other than the primary one
   def other_photos
     photos.length > 1 ? photos - [photo] : []
