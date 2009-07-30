@@ -16,72 +16,20 @@
 		<meta name="keywords" content="Panorama Orthopedics &amp;Spine Center, Golden, Colorado, Orthopedic Surgeons, Denver, Orthopedic Specialists, Shoulder, hip, knee, replacement, resurfacing, reconstruction, arthritis, orthopaedic, arthroscopy, bones, bone, joints, hip joint, knee joint, knock knees, flat foot, flat feet, osteotomy, osteotomies, scoliosis, fractures, herniated disc, back pain, spine, orthopedic trauma, carpal tunnel, elbow, finger, hand, ankle, foot, sports injuries, broken tibia, reconstructive surgery, knee reconstruction, foot and ankle" />
 		<meta name="description" content="Panorama Orthopedics &amp;Spine Center is a group of orthopedic surgeons specializing in sports medicine, spine, joint, foot &amp;ankle, hand and trauma. " />
 		<meta name="robots" content="index,follow" />
-    <%= stylesheet_link_tag "reset-min", "base-min", "reset-fonts", "layout", "content" %>
+    <%= stylesheet_link_tag "reset-min", "base-min", "reset-fonts", "layout", "content", "jquery-flora.tabs.css", "jquery.tooltip.css", "facebox.css", "calendar/blue/style", :cache => "all" %>
     <!--[if lte IE 6]>
       <%= stylesheet_link_tag "ie-pre-7.css" %>
     <![endif]-->
     <!--[if IE 7]>
       <%= stylesheet_link_tag "ie7" %>
     <![endif]-->
-    
-    <%= stylesheet_link_tag "jquery-flora.tabs.css", "jquery.tooltip.css", 
-                            "facebox.css" %>
-    <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", 
-                               "jrails.js" %>
-    <%= javascript_include_tag "jquery.collection-min.js", 
-                               "jquery.bgiframe.js", "jquery.tooltip.pack.js",
-                               "jquery.livequery.js",
-                               "facebox.js", "application.js" %>
-    <%= stylesheet_link_tag 'calendar/blue/style' %>
 
-
-    <%= javascript_include_tag "tiny_mce/tiny_mce.js" %>
-    <script type="text/javascript">
-    	tinyMCE.init({
-    		// General options
-    		mode : "textareas",
-    		editor_deselector : "noTinyMCE",
-    		theme : "advanced",
-    		relative_urls : false,
-    		valid_elements : "@[id|class|style|title]|"
-        + "a[rel|rev|charset|hreflang|tabindex|accesskey|type|"
-        + "name|href|target|title|class],strong/b,em/i,strike,u,"
-        + "#p[align],-ol[type|compact],-ul[type|compact],-li,br,img[longdesc|usemap|"
-        + "src|border|alt=|title|hspace|vspace|width|height|align],-sub,-sup,"
-        + "-blockquote,-table[border=0|cellspacing|cellpadding|width|frame|rules|"
-        + "height|align|summary|bgcolor|background|bordercolor],-tr[rowspan|width|"
-        + "height|align|valign|bgcolor|background|bordercolor],tbody,thead,tfoot,"
-        + "#td[colspan|rowspan|width|height|align|valign|bgcolor|background|bordercolor"
-        + "|scope],#th[colspan|rowspan|width|height|align|valign|scope],caption,-div,"
-        + "-span,-code,-pre,address,-h1,-h2,-h3,-h4,-h5,-h6,hr[size|noshade],-font[face"
-        + "|size|color],dd,dl,dt,cite,abbr,acronym,del[datetime|cite],ins[datetime|cite],"
-        + "object[classid|width|height|codebase|*],param[name|value|_value],embed[type|width"
-        + "|height|src|*],script[src|type],map[name],area[shape|coords|href|alt|target],bdo,"
-        + "button,col[align|char|charoff|span|valign|width],colgroup[align|char|charoff|span|"
-        + "valign|width],dfn,fieldset,form[action|accept|accept-charset|enctype|method],"
-        + "input[accept|alt|checked|disabled|maxlength|name|readonly|size|src|type|value],"
-        + "kbd,label[for],legend,noscript,optgroup[label|disabled],option[disabled|label|selected|value],"
-        + "q[cite],samp,select[disabled|multiple|name|size],small,"
-        + "textarea[cols|rows|disabled|name|readonly],tt,var,big",
-    		plugins : "safari,style,advimage,emotions,iespell,inlinepopups,preview,media,searchreplace,contextmenu,paste,fullscreen,noneditable,visualchars,xhtmlxtras",
-
-    		// Theme options
-    		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,sub,sup",
-    		theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo,|,link,unlink<%= ",image,media" unless params[:controller] =~ /^(photos|galleries)$/ %>,emotions,charmap,iespell,code,|,preview",
-    		theme_advanced_buttons3 : "",
-    		theme_advanced_toolbar_location : "top",
-    		theme_advanced_toolbar_align : "left",
-    		theme_advanced_statusbar_location : "bottom",
-    		theme_advanced_resizing : true,
-
-    		// Example content CSS (should be your site CSS)
-    		content_css : "/stylesheets/tiny_mce.css"
-
-        // Drop lists for link/image/media/template dialogs
-        <%= %{ , external_image_list_url : "#{person_photos_path(current_person)}.js"} unless params[:controller] =~ /^(photos|galleries)$/ %>
-
-    	});
+    <script type="text/javascript" charset="utf-8">
+      var tinyMCE_images_path = "<%= params[:controller] =~ /^(photos|galleries)$/ ? '' : "#{person_photos_path(current_person)}.js" %>";
+      var tinyMCE_media_buttons = "<%= params[:controller] =~ /^(photos|galleries)$/ ? '' : ",image,media" %>";
     </script>
+    
+    <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", "jrails.js", "jquery.collection-min.js", "jquery.bgiframe.js", "jquery.tooltip.pack.js", "jquery.livequery.js", "facebox.js", "application.js", "tiny_mce/tiny_mce.js", "tiny_mce/setup.js", :cache => "all" %>
     
   </head>
   <body class="<%= @body %>">
