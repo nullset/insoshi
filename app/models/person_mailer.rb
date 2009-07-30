@@ -75,6 +75,8 @@ class PersonMailer < ActionMailer::Base
       url = person_gallery_photo_path(object.gallery.person, object.gallery, object)
     when "Topic"
       url = forum_topic_path(object.forum, object)
+    when "Comment"
+      url = nil
     end
     obj = object.class.to_s.underscore.humanize.downcase
 

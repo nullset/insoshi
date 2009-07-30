@@ -27,14 +27,14 @@ class Admin::PostsController < ApplicationController
     post.tainted = false
     post.rejected = true
     post.approved_by = nil
-    person = case post.type
-    when "BlogPost"
+    person = case
+    when post.type == "BlogPost"
       post.blog.person
     else
       post.person
     end
     if post.save
-      PersonMailer.deliver_post_rejected(post, person)
+      PersonMailer.deliver_post_rejected(post, person) unless post.respond_to?("commentable_type") { "Comment" }
       flash[:success] = "#{params[:model].underscore.humanize} rejected"
     end
     redirect_to :action => :index

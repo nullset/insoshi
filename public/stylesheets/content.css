@@ -152,6 +152,9 @@ textarea {
   background: #85250D;
   color: #fc0;
 }
+.error a {
+  color: #fc0;
+}
 #errorExplanation {
   padding: 10px;
   margin-bottom: 1em;
