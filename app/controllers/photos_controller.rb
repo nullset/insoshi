@@ -69,6 +69,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     
     set_tainted(@photo)
+    @photo.rejected = false
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         AdminMailer.deliver_photo_notification(@photo) unless current_person.admin?

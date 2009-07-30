@@ -11,6 +11,7 @@ describe PostsController do
       @forum  = forums(:one)
       @topic  = topics(:one)
       @post   = posts(:forum)
+      request.env["HTTP_REFERER"] = forum_topic_path(@forum, @topic)
     end
     
     it "should have working pages" do
@@ -28,7 +29,7 @@ describe PostsController do
       lambda do
         post :create, :forum_id => @forum, :topic_id => @topic,
                       :post => { :body => "The body" }
-        new_post = Post.find(:first, :order => "created_at desc")
+        new_post = Post.find(:first, :conditions => "body = 'The body'", :order => "created_at desc")
         topics = forum_topic_path(@forum, @topic, :anchor => "post_#{new_post.id}")
         response.should redirect_to(topics)
       end.should change(ForumPost, :count).by(1)
@@ -146,7 +147,7 @@ describe PostsController do
     it "should destroy a post" do
       delete :destroy, :blog_id => @blog, :id => @post
       @post.should_not exist_in_database
-      response.should redirect_to(blog_tab_url(@blog))
+      response.should redirect_to(person_blog_path(@person, @blog))
     end
     
     it "should require the right user for destroying" do

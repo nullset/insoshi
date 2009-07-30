@@ -48,13 +48,12 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
+    @topic.attributes = params[:topic]
+    set_tainted(@topic)
+    @topic.rejected = false
 
     respond_to do |format|
-      if @topic.update_attributes(params[:topic])
-        if current_person.admin?
-          set_tainted(@topic)
-          @topic.save
-        end
+      if @topic.save
         AdminMailer.deliver_topic_notification(@topic)
         flash[:success] = 'Topic was successfully updated.'
         format.html { redirect_to forum_url(@forum) }

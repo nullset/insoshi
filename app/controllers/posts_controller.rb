@@ -65,12 +65,12 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post.attributes = params[:post]
+    set_tainted(@post)
+    @post.rejected = false
+    
     respond_to do |format|
-      if @post.update_attributes(params[:post])
-        if current_person.admin?
-          set_tainted(@post)
-          @post.save
-        end
+      if @post.save
         AdminMailer.deliver_post_notification(@post) unless current_person.admin?
         flash[:success] = 'Post updated'
         format.html { redirect_to post_url }
