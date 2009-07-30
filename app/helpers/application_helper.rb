@@ -158,6 +158,75 @@ module ApplicationHelper
     #   "HTML formatting supported"
     # end
   end
+  
+  # Generate the array of link names and paths
+  def breadcrumb_array
+    # ActionController::Routing::Routes.recognize_path( '/your/url/here', :method => :get )
+
+    request_parts = []
+    parts = request.request_uri.split('/').delete_if {|x| x.blank? }
+
+    # Get rid of ?q=BLAH string at the end of search queries
+    parts.collect! {|x| x.match(/(.*)\?[\S]+/) ? x.sub(/(.*)\?[\S]+/, '\1') : x }
+    parts.each_with_index do |part, i|
+      request_parts << {part => parts.delete_at(i + 1)}
+    end
+
+    b_array = []
+    path = ['']
+    request_parts.each do |pair|
+      pair.each do |k,v|
+        path << k
+
+        # If k is one of those in the list, then k is an unimportant thing to add to the breadcrumb
+        # If v is just a number, then it is a specific post id with no pertinant information to pass to the breadcrumb
+        b_array << {k.capitalize, path.join('/')} unless %(blogs posts topics).include?(k) && v.to_i > 0
+
+        unless v.blank?
+          path << v
+          link_name = case k
+          when "people"
+            v.split('-')[1..-1].collect {|x| x.capitalize }.join(' ')
+          when "blogs"
+            k.capitalize.singularize
+          else
+            if v.to_i > 0
+              var = eval("@#{k.singularize}")
+              if var.respond_to?("title")
+                var.title
+              elsif var.respond_to?("name")
+                var.name
+              end
+            else
+              v.capitalize # unless v.to_i > 0
+            end
+          end
+          unless link_name.blank?
+            b_array << {"#{link_name}" => path.join('/')}
+          end
+        end
+      end
+    end
+    b_array
+  end
+
+  # Generate the HTML for the breadcrumbs
+  def breadcrumb_paths
+    link_array = [
+      link_to_unless_current("Home", "http://www.panoramaortho.com"),
+      link_to_unless_current("Blogs", root_path)
+    ]
+    # raise breadcrumb_array.inspect
+    breadcrumb_array.each do |crumb|
+      crumb.each do |n, p|
+        link = link_to_unless_current(n, p) do
+          %{<span title="You are here">#{n}</span>}
+        end
+        link_array << link
+      end
+    end
+    link_array
+  end
 
   private
   

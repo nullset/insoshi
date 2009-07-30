@@ -83,5 +83,5 @@ class ApplicationController < ActionController::Base
     def wait_message
       "<br />It will not appear on the site until site administrators have had a chance to review it for inappropriate content (usually less than a few hours)." unless current_person.admin?
     end
-              
+    
 end
