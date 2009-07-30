@@ -22,9 +22,6 @@ class BlogPost < Post
   is_indexed :fields => [ 'body', 'title' ],
              :conditions => "type = 'BlogPost'"
              
-  # named_scope :all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc"
-  
-
   attr_accessible :title, :body
   
   belongs_to :blog

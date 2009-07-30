@@ -9,7 +9,10 @@ module SetTainted
     # Fields that don't change the taitedness of a model when they are changed
     non_tainted_fields = {
       "BlogPost" => ['featured', 'position'],
-      "Photo" => ['primary', 'avatar', 'size']
+      "Photo" => ['primary', 'avatar', 'size'],
+      "ForumPost" => [],
+      "Comment" => [],
+      "Topic" => []
     }
     # if self.changed? && (!self.changes.include?('tainted') || self.tainted != false)
 

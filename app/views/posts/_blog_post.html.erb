@@ -1,39 +1,47 @@
-<h2> 
-  <a name="post_<%= blog_post.id %>"></a>
-  <%= link_to sanitize(blog_post.title),
-              person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post),
-              :class => "show-follow" %>
-  <%- if current_person?(blog_post.blog.person) -%>
-    <%= link_to image_tag("icons/page_white_edit.png",
-                          :class => 'actioner'),
-                edit_person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post) %>
-    <%= link_to image_tag("icons/page_white_delete.png",
-                          :class => 'actioner'),
+<div class="blog_post <%= blog_post.status.downcase.gsub(/ /, '_') %>">
+  <h2> 
+    <a name="post_<%= blog_post.id %>"></a>
+    <%= link_to sanitize(blog_post.title),
                 person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post),
-                :method => :delete,
-                :confirm => "Delete this post?" %>
+                :class => "show-follow" %>
+    <%- if current_person?(blog_post.blog.person) -%>
+      <%= link_to image_tag("icons/page_white_edit.png",
+                            :class => 'actioner'),
+                  edit_person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post) %>
+      <%= link_to image_tag("icons/page_white_delete.png",
+                            :class => 'actioner'),
+                  person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post),
+                  :method => :delete,
+                  :confirm => "Delete this post?" %>
+    <%- end -%>
+  </h2>
+
+  <%- if params[:controller] == 'posts' -%>
+    <%= display truncate(blog_post.body, :length => 230, :omission => %{&#8230; #{link_to "Read more &raquo;", person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post)} }) %>
+    <%=  %>
+  <%- else -%>
+    <%= display blog_post.body %>
   <%- end -%>
-</h2>
 
-<%- if params[:controller] == 'posts' -%>
-  <%= display truncate(blog_post.body, :length => 230, :omission => %{&#8230; #{link_to "Read more &raquo;", person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post)} }) %>
-  <%=  %>
-<%- else -%>
-  <%= display blog_post.body %>
-<%- end -%>
+  <p class="meta">
+    Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago | 
+    <%- n = blog_post.comments.all.count -%>
+    <%= link_to pluralize(n, "comment"),
+                person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post, :comments => n),
+                :class => "show-follow" %>    
+  </p>
+  <%- if logged_in? and current_person.admin? -%>
+    <div class="blog_admin">
+      <h3>Admin</h3>
+      <%= render :partial => 'admin/posts/actions', :locals => {:object => blog_post} %>
+      <%= render :partial => 'admin/posts/featured_post', :locals => {:post => blog_post} unless blog_post.rejected %>
+      <div class="clear"></div>
+    </div>
+  <%- end -%>
 
-<p class="meta">
-  Posted <%= "by #{link_to blog_post.blog.person.name, person_path(blog_post.blog.person)}" if params[:controller] == 'posts' %> <%= time_ago_in_words(blog_post.created_at) %> ago | 
-  <%- n = blog_post.comments.all.count -%>
-  <%= link_to pluralize(n, "comment"),
-              person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post, :comments => n),
-              :class => "show-follow" %>    
-</p>
-<%- if logged_in? and current_person.admin? -%>
-  <div class="blog_admin">
-    <h3>Admin</h3>
-    <%= render :partial => 'admin/posts/actions', :locals => {:object => blog_post} %>
-    <%= render :partial => 'admin/posts/featured_post', :locals => {:post => blog_post} %>
-    <div class="clear"></div>
-  </div>
-<%- end -%>
+  <%- if current_person == blog_post.blog.person || current_person.admin? -%>
+    <div class="status <%= blog_post.status.downcase.gsub(/ /, '_') %>">
+      <%= blog_post.status %>
+    </div>
+  <%- end -%>
+</div>

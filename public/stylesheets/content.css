@@ -596,3 +596,22 @@ ul.search_results {
   float: left;
   margin-right: 2em;
 }
+
+.blog_post.post_rejected {
+  border: 1px solid #85250D;
+  padding: 5px;
+}
+.blog_post.post_pending_approval {
+  border: 1px solid #fc0;
+  padding: 5px;
+}
+.blog_post .status {
+  padding: 5px 5px 5px 24px;
+}
+.blog_post .status.post_pending_approval {
+  background: #fc0 url(/images/famfamfam/error.png) 3px 4px no-repeat;
+}
+.blog_post .status.post_rejected {
+  background: #85250D url(/images/famfamfam/exclamation.png) 3px 4px no-repeat;
+  color: #fc0;
+}
