@@ -1,12 +1,12 @@
 <div id="signin">
   <h2>Sign in</h2>
 
-  <p class="noscript" style="display:none;">
+  <!-- <p class="noscript" style="display:none;">
     <small>
       <span id="openid_link"><a href="#" onclick="show_openid(); return false;">Login using OpenID</a></span>
       <span id="standard_link"><a href="#" onclick="show_standard(); return false;">Back to Regular Login</a></span>
     </small>
-  </p>
+  </p> -->
 
   <% form_tag session_path do -%>
     <dl>
@@ -14,8 +14,8 @@
       <dd class="standard"><%= text_field_tag 'email', params[:email], :maxlength => Person::MAX_EMAIL %></dd>
       <dt class="standard"><label for="password">Password</label></dt>
       <dd class="standard"><%= password_field_tag 'password', params[:password], :maxlength => Person::MAX_PASSWORD %></dd>
-      <dt class="openid"><label for="openid_url">OpenID</label></dt>
-      <dd class="openid"><%= text_field_tag "openid_url" %></dd>
+      <!-- <dt class="openid"><label for="openid_url">OpenID</label></dt>
+      <dd class="openid"><%= text_field_tag "openid_url" %></dd> -->
       <dt class="access"><span class="label">Options</span></dt>
       <dd>
         <fieldset>
