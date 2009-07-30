@@ -1,4 +1,4 @@
-<%- n = topic.posts.count -%>
+<%- n = topic.posts.all.count -%>
 <tr class="<%= cycle('odd', 'even', :name => "topic_rows") %>">
   <th scope="row"><%= link_to h(topic.name), forum_topic_path(topic.forum, topic, :comments => n), :class => "show-follow" %></th>
   <td class="nowrap"><small><%= link_to h(topic.person.name), person_path(topic.person) %></small></td>

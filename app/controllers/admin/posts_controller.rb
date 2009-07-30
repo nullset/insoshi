@@ -34,7 +34,7 @@ class Admin::PostsController < ApplicationController
       post.person
     end
     if post.save
-      PersonMailer.deliver_post_rejected(post, person) unless post.respond_to?("commentable_type") { "Comment" }
+      PersonMailer.deliver_post_rejected(post, person) unless (post.respond_to?("commentable_type") || post.respond_to?("forum_id") )
       flash[:success] = "#{params[:model].underscore.humanize} rejected"
     end
     redirect_to :action => :index

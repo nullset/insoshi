@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
 
   include SetTainted
   before_save :set_tainted
-  named_scope :all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at desc"
+  named_scope :all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc"
   named_scope :tainted, :conditions => "tainted is true", :order => "approved_by, created_at desc"
 
   has_many :activities, :foreign_key => "item_id", :dependent => :destroy,
@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   attr_accessible nil
   
   def self.recent_posts(limit = 3)
-    self.find(:all, :conditions => "approved_by is not null", :order => "created_at desc", :limit => limit)
+    self.find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc", :limit => limit)
   end
 
 end

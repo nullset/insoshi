@@ -96,7 +96,7 @@ class Photo < ActiveRecord::Base
   end
   
   def self.recent_photos(limit = 9)
-    photos = self.find(:all, :conditions => "approved_by is not null or approved_by != ''", :order => "created_at desc", :limit => limit)
+    photos = self.find(:all, :conditions => "approved_by is not null or approved_by != '' and rejected is not true", :order => "created_at desc", :limit => limit)
     if photos.respond_to?("each")
       photos
     else

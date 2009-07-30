@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     redirect_to blog_url(@blog) if blog?
     redirect_to forum_topic_url(@forum, @topic) if forum?
     
-    @posts = BlogPost.find(:all, :order => "created_at desc").paginate(:page => params[:page])
+    @posts = BlogPost.all.paginate(:page => params[:page])
   end
 
   # Show a blog post.
