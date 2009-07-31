@@ -6,13 +6,7 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta http-equiv="Content-Language" content="en-us" />
 		<title>
-		  <%# if breadcrumb_array.last.keys.first =~ /^(New|Edit)$/ %>
-	      <%# breadcrumb_array.reverse[1].keys.first %>
-		  <%# else %>
-		    <%# breadcrumb_array.last.keys.first %>
-		  <%# end %>
-		  <%= breadcrumb_array.reverse.collect { |b| b.keys.first }.join(' &laquo; ') + "&nbsp;&nbsp;|&nbsp;&nbsp;" unless breadcrumb_array.blank? %>
-		  Panorama Orthopedics &amp; Spine Center
+		  <%= page_title %>Panorama Orthopedics &amp; Spine Center
 		</title>
     <% if @forum %>
       <%= auto_discovery_link_tag(:atom, :action => :show, :format => :atom, 

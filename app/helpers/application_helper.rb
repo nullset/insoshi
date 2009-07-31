@@ -227,6 +227,18 @@ module ApplicationHelper
     end
     link_array
   end
+  
+  def page_title
+    crumbs = breadcrumb_array
+    unless crumbs.blank?
+      keys = crumbs.reverse.collect { |b| b.keys.first }
+      keys = keys.delete_if {|k| k =~ /^(New|Edit)$/ }
+      if keys.length > 1
+        keys.delete_if {|k| k =~ /^(People)$/}
+      end
+      return keys.join(' &middot; ') + " | "
+    end
+  end
 
   private
   

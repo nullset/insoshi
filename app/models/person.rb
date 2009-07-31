@@ -287,7 +287,7 @@ class Person < ActiveRecord::Base
   end
   
   def big_photo
-    photo.nil? ? "default_icon.png" : photo.public_filename(:big)
+    photo.nil? ? "default.png" : photo.public_filename(:big)
   end
 
   # Return the photos ordered by primary first, then by created_at.
