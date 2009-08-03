@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '71a8c82e6d248750397d166001c5e308'
+  
+  
+  def rescue_action_in_public(exception)
+    # do something based on exception
+    message = exception.backtrace.join("\n") unless exception
+    # render :file => "#{RAILS_ROOT}/public/404.html", :layout => false, :status => 404
+    redirect_to :controller => :errors, :action => 'error_404'
+  end
+
+  def local_request?
+    false
+  end       
 
   private
 

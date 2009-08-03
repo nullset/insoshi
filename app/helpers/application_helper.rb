@@ -202,7 +202,7 @@ module ApplicationHelper
             end
           end
           unless link_name.blank?
-            b_array << {"#{link_name}" => path.join('/')}
+            b_array << {"#{link_name.gsub('_', ' ')}" => path.join('/')}
           end
         end
       end
