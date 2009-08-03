@@ -31,7 +31,8 @@
       var tinyMCE_media_buttons = "<%= params[:controller] =~ /^(photos|galleries)$/ ? '' : ",image,media" %>";
     </script>
     
-    <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", "jrails.js", "jquery.collection-min.js", "jquery.bgiframe.js", "jquery.tooltip.pack.js", "jquery.livequery.js", "facebox.js", "application.js", "tiny_mce/tiny_mce.js", "tiny_mce/setup.js" %>
+    <%= javascript_include_tag "jquery.js", "jquery-ui.js", "jquery-fx.js", "jrails.js", "jquery.collection-min.js", "jquery.bgiframe.js", "jquery.tooltip.pack.js", "jquery.livequery.js", "facebox.js", "application.js", :cache => "all" %>
+    <%= javascript_include_tag "tiny_mce/tiny_mce.js", "tiny_mce/setup.js" %>
     
   </head>
   <body class="<%= @body %>">
