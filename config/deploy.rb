@@ -39,8 +39,6 @@ task :after_update_code, :roles => :app do
   end
  
   restart_passenger
-  # stop_nginx
-  # start_nginx
 end
  
 task :start_nginx do
@@ -60,7 +58,7 @@ task :kill_nginx do
 end
  
 task :restart_passenger do
-  run "touch #{release_path}/tmp/restart.txt"  
+  run "touch #{current_release}/tmp/restart.txt"  
 end
 
 task :duplicate_server_files do
