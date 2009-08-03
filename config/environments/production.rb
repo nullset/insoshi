@@ -16,3 +16,8 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+# Production fix for ImageScience issue
+if RAILS_ENV == "production" 
+  ENV['INLINEDIR'] = RAILS_ROOT + "/tmp" 
+end
