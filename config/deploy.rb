@@ -34,8 +34,8 @@ task :after_update_code, :roles => :app do
   # create shared directory for uploaded images (not overwritten on deploy)
   %w{photos thumbnails}.each do |share|
     # run "rm -rf #{release_path}/public/#{share}"
-    run "mkdir -p #{shared_path}/system/#{share}"
-    run "ln -nfs #{shared_path}/system/#{share} #{release_path}/public/#{share}"
+    run "mkdir -p #{shared_path}/#{share}"
+    run "ln -nfs #{shared_path}/#{share} #{release_path}/public/#{share}"
   end
  
   restart_passenger
