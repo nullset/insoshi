@@ -58,7 +58,7 @@ task :kill_nginx do
 end
  
 task :restart_passenger do
-  run "touch #{release_path}/public/restart.txt"  
+  run "touch #{release_path}/tmp/restart.txt"  
 end
 
 task :duplicate_server_files do

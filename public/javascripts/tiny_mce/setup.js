@@ -24,11 +24,11 @@ tinyMCE.init({
   + "kbd,label[for],legend,noscript,optgroup[label|disabled],option[disabled|label|selected|value],"
   + "q[cite],samp,select[disabled|multiple|name|size],small,"
   + "textarea[cols|rows|disabled|name|readonly],tt,var,big",
-	plugins : "safari,style,advimage,emotions,iespell,inlinepopups,preview,media,searchreplace,contextmenu,paste,fullscreen,noneditable,visualchars,xhtmlxtras",
+	plugins : "safari,style,advimage,emotions,inlinepopups,preview,media,contextmenu,paste,visualchars,xhtmlxtras",
 
 	// Theme options
 	theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,outdent,indent,blockquote,|,sub,sup",
-	theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,undo,redo,|,link,unlink" + tinyMCE_media_buttons + ",emotions,charmap,iespell,code,|,preview",
+	theme_advanced_buttons2 : "cut,copy,paste,pastetext,|,search,replace,|,undo,redo,|,link,unlink" + tinyMCE_media_buttons + ",emotions,charmap,iespell,code,|,preview",
 	theme_advanced_buttons3 : "",
 	theme_advanced_toolbar_location : "top",
 	theme_advanced_toolbar_align : "left",
