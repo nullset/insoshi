@@ -21,11 +21,3 @@ config.action_controller.perform_caching             = true
 if RAILS_ENV == "production" 
   ENV['INLINEDIR'] = RAILS_ROOT + "/tmp" 
 end
-
-
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :address => 'localhost',
-  :domain => 'www.panoramaortho.com',
-  :port => 25
-}
