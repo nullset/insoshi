@@ -39,6 +39,8 @@ task :after_update_code, :roles => :app do
   end
  
   restart_passenger
+  # stop_nginx
+  # start_nginx
 end
  
 task :start_nginx do
