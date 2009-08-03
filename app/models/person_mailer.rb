@@ -10,7 +10,7 @@ class PersonMailer < ActionMailer::Base
   end
   
   def password_reminder(person)
-    from         "Password reminder <password-reminder@#{domain}>"
+    from         "Password reminder <deployer@#{domain}>"
     recipients   person.email
     subject      formatted_subject("Password reminder")
     body         "person" => person
