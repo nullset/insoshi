@@ -38,6 +38,7 @@ task :after_update_code, :roles => :app do
     run "ln -nfs #{shared_path}/#{share} #{release_path}/public/#{share}"
   end
  
+  ultrasphinx_index
   restart_passenger
 end
  
@@ -73,4 +74,24 @@ task :duplicate_server_files do
 
   run "cp #{shared_path}/identifier #{release_path}/identifier"
   run "cp #{shared_path}/secret #{release_path}/secret"
+  
+  run "cp -r #{shared_path}/ultrasphinx #{release_path}/config/"
+end
+
+task :ultrasphinx_configure do
+  run "cd #{current_path}; rake ultrasphinx:configure RAILS_ENV=production"
+end
+
+task :ultrasphinx_index do
+  run "cd #{current_path}; rake ultrasphinx:index RAILS_ENV=production"
+end
+
+task :ultrasphinx_start do
+  set :user, "root"
+  run "cd #{current_path}; rake ultrasphinx:daemon:start RAILS_ENV=production"
+end
+
+task :ultrasphinx_stop, :roles => :app do
+  set :user, "root"
+  run "cd #{current_path}; rake ultrasphinx:daemon:stop RAILS_ENV=production"
 end
