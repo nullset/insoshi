@@ -230,6 +230,7 @@
 }
 #subnav form input[type=text] {
   border: 1px solid #bbb;
+  width: 115px;
 }
 #subnav form .buttons {
   float: left;

@@ -21,7 +21,7 @@ module ApplicationHelper
     resources = menu_element("Resources", "http://docs.insoshi.com/")
 
     if logged_in? and not admin_view?
-      profile  = menu_element("Profile",  person_path(current_person))
+      profile  = menu_element("My Profile",  person_path(current_person))
       messages = menu_element("Messages", person_messages_path(current_person))
       #blog     = menu_element("Blog",     blog_path(current_person.blog))
       #photos   = menu_element("Photos",   photos_path)

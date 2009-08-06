@@ -15,9 +15,9 @@
         <script type="text/javascript" charset="utf-8">
           jQuery('#person_panorama_patient').click(function() {
             if (this.checked) {
-              jQuery("dt.patient, dd.patient").slideToggle('slow');
+              jQuery("dt.patient, dd.patient").show();
             } else {
-              jQuery("dt.patient, dd.patient").slideToggle('slow');
+              jQuery("dt.patient, dd.patient").hide();
               jQuery("dd.patient input[type=checkbox]").attr('checked', false);
             }
           });
