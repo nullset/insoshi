@@ -16,7 +16,7 @@ class AdminMailer < ActionMailer::Base
     new_post = post.approved_by.blank?
     subject      formatted_subject(new_post == true ? "New post" : "Updated post")
     body         "post" => post, "new" => new_post, 
-                  "url" => admin_posts_path
+                  "server" => server, "url" => admin_posts_path
   end
   
   def comment_notification(comment)
@@ -25,7 +25,7 @@ class AdminMailer < ActionMailer::Base
     new_comment = comment.approved_by.blank?
     subject      formatted_subject(new_comment == true ? "New comment" : "Updated comment")
     body         "comment" => comment, "new" => new_comment, 
-                  "url" => admin_posts_path
+                 "server" => server, "url" => admin_posts_path
   end
   
   def photo_notification(photo)
@@ -34,7 +34,7 @@ class AdminMailer < ActionMailer::Base
     new_photo = photo.approved_by.blank?
     subject      formatted_subject(new_photo == true ? "New photo" : "Updated photo")
     body         "photo" => photo, "new" => new_photo, 
-                  "url" => admin_posts_path
+                 "server" => server, "url" => admin_posts_path
   end
   
   def topic_notification(topic)
@@ -43,7 +43,7 @@ class AdminMailer < ActionMailer::Base
     new_topic = topic.approved_by.blank?
     subject      formatted_subject(new_topic == true ? "New topic" : "Updated topic")
     body         "topic" => topic, "new" => new_topic, 
-                  "url" => admin_posts_path
+                 "server" => server, "url" => admin_posts_path
   end
   
   # def password_reminder(person)
