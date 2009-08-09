@@ -29,6 +29,7 @@ set :runner, "deployer"
  
  
 task :after_update_code, :roles => :app do
+  ultrasphinx_stop
   duplicate_server_files
   
   # create shared directory for uploaded images (not overwritten on deploy)
@@ -38,7 +39,9 @@ task :after_update_code, :roles => :app do
     run "ln -nfs #{shared_path}/#{share} #{release_path}/public/#{share}"
   end
  
+  ultrasphinx_configure
   ultrasphinx_index
+  ultrasphinx_start
   restart_passenger
 end
  
@@ -87,11 +90,9 @@ task :ultrasphinx_index do
 end
 
 task :ultrasphinx_start do
-  set :user, "root"
   run "cd #{current_path}; rake ultrasphinx:daemon:start RAILS_ENV=production"
 end
 
 task :ultrasphinx_stop, :roles => :app do
-  set :user, "root"
   run "cd #{current_path}; rake ultrasphinx:daemon:stop RAILS_ENV=production"
 end
