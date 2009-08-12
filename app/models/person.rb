@@ -138,11 +138,7 @@ class Person < ActiveRecord::Base
                      :per_page => RASTER_PER_PAGE,
                      :conditions => conditions_for_active)
     end
-    
-    def all_active
-      find(:all, :conditions => conditions_for_active, :order => "last_logged_in_at desc")
-    end
-    
+        
     # Return the people who are 'mostly' active.
     # People are mostly active if they have logged in recently enough.
     def mostly_active(page = 1)
@@ -154,7 +150,7 @@ class Person < ActiveRecord::Base
     
     # Return *all* the active users.
     def all_active
-      find(:all, :conditions => conditions_for_active)
+      find(:all, :conditions => conditions_for_active, :order => "last_logged_in_at desc")
     end
     
     def find_recent
