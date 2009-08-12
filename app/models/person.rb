@@ -140,7 +140,7 @@ class Person < ActiveRecord::Base
     end
     
     def all_active
-      find(:all, :conditions => conditions_for_active)
+      find(:all, :conditions => conditions_for_active, :order => "last_logged_in_at desc")
     end
     
     # Return the people who are 'mostly' active.
