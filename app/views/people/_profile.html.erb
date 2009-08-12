@@ -12,7 +12,11 @@
   <%- end -%>
   <%- if current_person?(@person) -%>
     <%= link_to "Edit profile", edit_person_path(@person) %> |
-    <%= link_to "Change photo", person_galleries_path(@person) %>
+    <%- if @person.galleries.blank? -%>
+      <%= link_to "Change photo", person_galleries_path(@person) %>
+    <%- else -%>
+      <%= link_to "Change photo", person_gallery_path(@person, @person.galleries.first) %>
+    <%- end -%>
   <%- end -%>
   <%- if current_person?(@person) || current_person.admin? -%>
       </p>
