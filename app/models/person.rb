@@ -139,6 +139,10 @@ class Person < ActiveRecord::Base
                      :conditions => conditions_for_active)
     end
     
+    def all_active
+      find(:all, :conditions => conditions_for_active)
+    end
+    
     # Return the people who are 'mostly' active.
     # People are mostly active if they have logged in recently enough.
     def mostly_active(page = 1)

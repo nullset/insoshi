@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
   before_filter :setup
   
   def index
-    @people = Person.active.paginate(:page => params[:page], :per_page => 10)
+    @people = Person.all_active.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html
