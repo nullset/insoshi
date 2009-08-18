@@ -3,7 +3,7 @@
   <td>
     <%- uuid = "gpu#{comment.class}#{comment.id}" -%>
     <%= link_to "", "##{uuid}", :rel => "facebox", :class => "icon page_find left" %>
-    <%= display truncate(comment.body, :length => 90, :omission => "&#8230;") %>
+    <%= display truncate_html(comment.body, :length => 90, :omission => "&#8230;") %>
     <%= link_to "Read more &#187;", "##{uuid}", :rel => "facebox" %>
     <div style="display: none" id="<%= uuid %>">
       <%= display comment.body %>

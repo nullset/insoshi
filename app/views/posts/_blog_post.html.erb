@@ -16,7 +16,7 @@
   </h2>
 
   <%- if params[:controller] == 'posts' && params[:action] != "show" -%>
-    <%= display truncate(blog_post.body, :length => 230, :omission => %{&#8230; #{link_to "Read more &raquo;", person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post)} }) %>
+    <%= display truncate_html(blog_post.body, :length => 230, :omission => %{&#8230; #{link_to "Read more &raquo;", person_blog_post_path(blog_post.blog.person, blog_post.blog, blog_post)} }) %>
   <%- else -%>
     <%= display blog_post.body %>
   <%- end -%>

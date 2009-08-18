@@ -15,7 +15,7 @@
       <dd><%= person_link message.sender, :class => "url fn" %></dd>
     <%- end -%>
     <dt>Excerpt:</dt>
-    <dd><%= display truncate(message.content, :length => 95, :omission => " &#8230; ") + link_to("Read more &raquo;", person_message_path(current_person, message)) %> <%=  %></dd>
+    <dd><%= display truncate_html(message.content, :length => 95, :omission => " &#8230; ") + link_to("Read more &raquo;", person_message_path(current_person, message)) %> <%=  %></dd>
   </dl>
 
     <%# message_icon(message) %>

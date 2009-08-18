@@ -215,17 +215,17 @@ describe Comment do
                                              :commenter => people(:aaron))
     end
     
-    it "should set tainted == true for any new comment" do
+    it "should set tainted == false for any new comment" do
       @comment.tainted.should == true
     end
 
-    it "should set tainted == true for any updated comment" do
+    it "should set tainted == false for any updated comment" do
       @comment.tainted = false
       @comment.save!
       @comment.tainted.should == false
       @comment.body = "Updated body"
       @comment.save!
-      @comment.tainted.should == true
+      @comment.tainted.should == false
     end
     
     it "should ensure that tainted and approved_by cannot be set by mass assignment" do

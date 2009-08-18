@@ -2,7 +2,7 @@
   <a href="<%= person_gallery_path(@person, gallery) %>" class="block_link">
     <%= image_tag(gallery.icon_url) %>
     <strong><%= h gallery.title %></strong>
-    <small><%= display(truncate(strip_tags(gallery.short_description), :length => 50, :omission => "&#8230;")) %></small>
+    <small><%= display(truncate_html(strip_tags(gallery.short_description), :length => 50, :omission => "&#8230;")) %></small>
   </a>
   <div class="links">
     <% if current_person?(gallery.person) %>

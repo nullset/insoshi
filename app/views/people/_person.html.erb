@@ -5,7 +5,7 @@
     </div>
   <%- end -%>
   <p><%= person_link person, :class => "url fn" %></p>
-  <%= display(truncate(person.description, :length => 150),
+  <%= display(truncate_html(person.description, :length => 150),
               :class => "note") %>
   <div class="clear"></div>
 </li>
