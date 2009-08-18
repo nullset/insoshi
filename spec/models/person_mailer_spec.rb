@@ -15,7 +15,7 @@ describe PersonMailer do
      end
    
      it "should have the right sender" do
-       @email.from.first.should == "password-reminder@#{@domain}"
+       @email.from.first.should == "no-reply@#{@domain}"
      end
    
      it "should have the right recipient" do
@@ -34,7 +34,7 @@ describe PersonMailer do
      end
    
      it "should have the right sender" do
-       @email.from.first.should == "message@#{@domain}"
+       @email.from.first.should == "no-reply@#{@domain}"
      end
    
      it "should have the right recipient" do

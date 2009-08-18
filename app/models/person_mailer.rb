@@ -10,22 +10,23 @@ class PersonMailer < ActionMailer::Base
   end
   
   def password_reminder(person)
-    from         "Password reminder <password-reminder@#{domain}>"
+    from         "Password reminder <no-reply@#{domain}>"
     recipients   person.email
     subject      formatted_subject("Password reminder")
     body         "person" => person
   end
   
   def message_notification(message)
-    from         "Message notification <message@#{domain}>"
+    from         "Message notification <no-reply@#{domain}>"
     recipients   message.recipient.email
     subject      formatted_subject("New message")
     body         "server" => server, "message" => message,
-                 "preferences_note" => preferences_note(message.recipient)
+                 "preferences_note" => preferences_note(message.recipient),
+                 "url" => person_message_path(message.recipient, message)
   end
   
   def connection_request(connection)
-    from         "Contact request <connection@#{domain}>"
+    from         "Contact request <no-reply@#{domain}>"
     recipients   connection.person.email
     subject      formatted_subject("Contact request from #{connection.contact.name}")
     body         "server" => server,
@@ -35,7 +36,7 @@ class PersonMailer < ActionMailer::Base
   end
   
   def blog_comment_notification(comment)
-    from         "Comment notification <comment@#{domain}>"
+    from         "Comment notification <no-reply@#{domain}>"
     recipients   comment.commented_person.email
     subject      formatted_subject("New blog comment")
     body         "server" => server, "comment" => comment,
@@ -46,7 +47,7 @@ class PersonMailer < ActionMailer::Base
   end
   
   def wall_comment_notification(comment)
-    from         "Comment notification <comment@#{domain}>"
+    from         "Comment notification <no-reply@#{domain}>"
     recipients   comment.commented_person.email
     subject      formatted_subject("New wall comment")
     body         "server" => server, "comment" => comment,
@@ -56,7 +57,7 @@ class PersonMailer < ActionMailer::Base
   end
   
   def email_verification(ev)
-    from         "Email verification <email@#{domain}>"
+    from         "Email verification <no-reply@#{domain}>"
     recipients   ev.person.email
     subject      formatted_subject("Email verification")
     body         "server_name" => server,
