@@ -109,7 +109,7 @@ class SessionsController < ApplicationController
           :value => current_person.remember_token,
           :expires => current_person.remember_token_expires_at }
       end
-      flash[:success] = "Logged in successfully"
+      # flash[:success] = "Logged in successfully"
       if @first_admin_login
         redirect_to admin_preferences_url
       else

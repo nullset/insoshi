@@ -18,9 +18,9 @@ default_run_options[:pty] = true
 set :ssh_options, { :forward_agent => true }
  
  
-role :app, "174.143.215.236"
-role :web, "174.143.215.236"
-role :db,  "174.143.215.236", :primary => true
+role :app, "174.143.210.7"
+role :web, "174.143.210.7"
+role :db,  "174.143.210.7", :primary => true
  
  
 set :deploy_via, :remote_cache
@@ -39,8 +39,6 @@ task :after_update_code, :roles => :app do
     run "ln -nfs #{shared_path}/#{share} #{release_path}/public/#{share}"
   end
  
-  ultrasphinx_configure
-  ultrasphinx_index
   ultrasphinx_start
   restart_passenger
 end
@@ -90,6 +88,8 @@ task :ultrasphinx_index do
 end
 
 task :ultrasphinx_start do
+  ultrasphinx_configure
+  ultrasphinx_index
   run "cd #{current_path}; rake ultrasphinx:daemon:start RAILS_ENV=production"
 end
 
