@@ -10,7 +10,7 @@ set :keep_releases, 3
 set :deploy_to, "/var/www/#{application}"
  
 set :scm, "git"
-set :repository,  "git@github.com:nullset/insoshi.git"
+set :repository,  "git@github.com:nullset/panorama.git"
 set :branch, "nullset"
  
  
