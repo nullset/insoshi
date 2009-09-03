@@ -18,7 +18,7 @@ default_run_options[:pty] = true
 set :ssh_options, { :forward_agent => true }
  
  
-role :app, "174.143.210.7"
+role :app, "174.143.210.7" 
 role :web, "174.143.210.7"
 role :db,  "174.143.210.7", :primary => true
  
