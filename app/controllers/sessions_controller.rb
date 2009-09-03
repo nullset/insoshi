@@ -70,7 +70,7 @@ class SessionsController < ApplicationController
     render :action => 'new'
   end
   
-  def successful_login(message = "Logged in successfully")
+  def successful_login(message = "Logged in successfully") 
     self.current_person = @person
     if params[:remember_me] == "1"
       current_person.remember_me
