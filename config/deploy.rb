@@ -10,7 +10,7 @@ set :keep_releases, 3
 set :deploy_to, "/var/www/#{application}"
  
 set :scm, "git"
-set :repository,  "git@github.com:nullset/insoshi.git"
+set :repository,  "git@github.com:nullset/panorama.git"
 set :branch, "nullset"
  
  
@@ -18,7 +18,7 @@ default_run_options[:pty] = true
 set :ssh_options, { :forward_agent => true }
  
  
-role :app, "174.143.210.7"
+role :app, "174.143.210.7" 
 role :web, "174.143.210.7"
 role :db,  "174.143.210.7", :primary => true
  
