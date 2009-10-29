@@ -5,7 +5,7 @@ ENV['RAILS_ENV'] ||= "development"
 module Ultrasphinx
 end
  
-namespace :ultrasphinx do  
+namespace :ultrasphinx2 do  
  
   task :_environment => [:environment] do
     # We can't just chain :environment because we want to make 

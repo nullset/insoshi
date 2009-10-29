@@ -41,8 +41,7 @@ class Person < ActiveRecord::Base
                   :panorama_patient, :search_injured_areas, :contact_for_advice
   # Indexed fields for Sphinx
   is_indexed :fields => [ 'name', 'description', 'deactivated', 'email_verified', 'panorama_patient', 'search_injured_areas'],
-             :conditions => "deactivated = false AND (email_verified IS NULL OR email_verified = true)",
-             :delta => true
+             :conditions => "deactivated = false AND (email_verified IS NULL OR email_verified = true)"
   MAX_EMAIL = MAX_PASSWORD = 40
   MAX_NAME = 40
   MAX_DESCRIPTION = 5000

@@ -29,5 +29,5 @@
 #
 
 class AllPerson < Person
-  is_indexed :fields => [ 'name', 'description', 'panorama_patient', 'search_injured_areas' ], :delta => true
+  is_indexed :fields => [ 'name', 'description', 'panorama_patient', 'search_injured_areas' ]
 end
