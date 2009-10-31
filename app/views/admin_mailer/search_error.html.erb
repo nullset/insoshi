@@ -1,0 +1,4 @@
+Sphinx is currently down. To fix:
+
+ssh dpanorama
+cd /var/www/community/current/; rake ultrasphinx:daemon:stop RAILS_ENV=production; rake ultrasphinx:index:main RAILS_ENV=production; rake ultrasphinx:daemon:start RAILS_ENV=production >> log/ultrasphinx-index.log 2>&1

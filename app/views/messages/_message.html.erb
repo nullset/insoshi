@@ -20,22 +20,21 @@
 
     <%# message_icon(message) %>
 
-  <div class="tools meta">
+  <div class="tools">
     <div>Sent <%= time_ago_in_words message.created_at %> ago</div>
-    <%= link_to image_tag("famfamfam/email_open.png", :class => 'actioner'), person_message_path(current_person, message), :title => "Read this message" %>
-    <%= link_to image_tag("icons/email_edit.png", :class => 'actioner'), 
-                reply_person_message_path(current_person, message),
-                :title => "Reply to this message" %>
+    <ul>
+      <li><%= link_to(%{<%= image_tag("famfamfam/email_open.png", :class => 'actioner', :alt => "Read this message") %>Read this message}), person_message_path(current_person, message) %></li>
+      <li><%= link_to(%{<%= image_tag("icons/email_edit.png", :class => 'actioner', :alt => "Reply to this message") %>Reply to this message}), reply_person_message_path(current_person, message) %></li>
     <% unless message.trashed?(current_person) -%>
-      <%= link_to image_tag("icons/email_delete.png", :class => 'actioner'), 
+      <li><%= link_to %{<%= image_tag("icons/email_delete.png", :class => 'actioner', :alt => "Delete this message") %>Delete this message}, 
                   person_message_path(current_person, message), 
                   :method => :delete, 
-                  :confirm => %(Delete this message?),
-                  :title => "Delete this message" %>
+                  :confirm => %(Delete this message?)</li>
     <% else -%>
-      <%= link_to "Untrash", undestroy_person_message_path(current_person, message),
-                             :method => :put %>
-    <% end -%>    
+      <li><%= link_to "Untrash", undestroy_person_message_path(current_person, message),
+                             :method => :put %></li>
+    <% end -%>
+    </ul>
   </div>
   
   <div class="clear"></div>

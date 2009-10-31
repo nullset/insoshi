@@ -33,11 +33,15 @@ class SearchesController < ApplicationController
                                         :page => page,
                                         :class_names => model)
 
-      @search.run
-      @results = @search.results
-      if model == "AllPerson"
-        # Convert to people so that the routing works.
-        @results.map!{ |person| Person.find(person) }
+      begin
+        @search.run
+        @results = @search.results
+        if model == "AllPerson"
+          # Convert to people so that the routing works.
+          @results.map!{ |person| Person.find(person) }
+        end
+      rescue
+        AdminMailer.deliver_sphinx_error
       end
     end
   rescue Ultrasphinx::UsageError

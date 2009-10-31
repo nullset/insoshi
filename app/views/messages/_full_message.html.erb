@@ -7,19 +7,19 @@
                                       :image => :thumbnail %>
   </div>
   <%= display full_message.content %>
-  <p class="meta tools">
-    <%= link_to image_tag("icons/email_edit.png", :class => 'actioner'), 
-                reply_person_message_path(current_person, @message),
-                :title => "Reply to this message" %>
+  <div class="tools">
+    <ul>
+      <li><%= link_to %{<%= image_tag("icons/email_edit.png", :class => 'actioner', :alt => "Reply to this message") %>Reply to this message}, 
+                reply_person_message_path(current_person, @message) %></li>
     <% unless @message.trashed?(current_person) -%>
-      <%= link_to image_tag("icons/email_delete.png", :class => 'actioner'), 
+      <li><%= link_to %{<%= image_tag("icons/email_delete.png", :class => 'actioner', :alt => "Delete this message") %>Delete this message}, 
                   person_message_path(current_person, @message),
                   :method => :delete, 
-                  :confirm => %(Delete this message?),
-                  :title => "Delete this message" %>
+                  :confirm => %(Delete this message?) %></li>
     <% else -%>
-      <%= link_to "Untrash", undestroy_person_message_path(current_person, @message), 
-                             :method => :put %>
+      <li><%= link_to "Untrash", undestroy_person_message_path(current_person, @message), 
+                             :method => :put %></li>
     <% end -%>
-  </p>
+    </ul>
+  </div>
 </li>

@@ -46,6 +46,12 @@ class AdminMailer < ActionMailer::Base
                  "server" => server, "url" => admin_posts_path
   end
   
+  def search_error
+    from         "System Notifier <no-reply@#{domain}>"
+    recipients   "nathan@brandalism.com"
+    subject      "Sphinx error"
+  end
+  
   # def password_reminder(person)
   #   from         "Password reminder <password-reminder@#{domain}>"
   #   recipients   person.email
