@@ -226,6 +226,9 @@ ul.meta li.first {
   margin-bottom: 1em;
 }
 
+.action_links img {
+  margin-right: .5em;
+}
 
 th, td {
   padding: .5em;
