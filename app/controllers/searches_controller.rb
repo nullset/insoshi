@@ -41,7 +41,7 @@ class SearchesController < ApplicationController
           @results.map!{ |person| Person.find(person) }
         end
       rescue
-        AdminMailer.search_error
+        AdminMailer.deliver_sphinx_error
       end
     end
   rescue Ultrasphinx::UsageError

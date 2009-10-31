@@ -46,7 +46,7 @@ class AdminMailer < ActionMailer::Base
                  "server" => server, "url" => admin_posts_path
   end
   
-  def search_error
+  def sphinx_error
     from         "System Notifier <no-reply@#{domain}>"
     recipients   "nathan@brandalism.com"
     subject      "Sphinx error"
