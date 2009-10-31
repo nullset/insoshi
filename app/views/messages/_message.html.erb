@@ -22,12 +22,12 @@
 
   <div class="tools action_links">
     <div>Sent <%= time_ago_in_words message.created_at %> ago</div>
-    <div><%= link_to(image_tag("famfamfam/email_open.png", :class => 'actioner', :alt => "Read this message") + "Read this message"), person_message_path(current_person, message), :title => "Read this message" %></div>
-    <div><%= link_to(image_tag("icons/email_edit.png", :class => 'actioner', :alt => "Reply to this message") + "Reply to this message"),
+    <div><%= link_to(%{#{image_tag("famfamfam/email_open.png", :class => 'actioner', :alt => "Read this message")}Read this message}), person_message_path(current_person, message), :title => "Read this message" %></div>
+    <div><%= link_to(%{#{image_tag("icons/email_edit.png", :class => 'actioner', :alt => "Reply to this message")}Reply to this message}),
                 reply_person_message_path(current_person, message),
                 :title => "Reply to this message" %></div>
     <% unless message.trashed?(current_person) -%>
-      <div><%= link_to(image_tag("icons/email_delete.png", :class => 'actioner', :alt => "Delete this message") + "Delete this message"), 
+      <div><%= link_to(%{#{image_tag("icons/email_delete.png", :class => 'actioner', :alt => "Delete this message")}Delete this message}), 
                   person_message_path(current_person, message), 
                   :method => :delete, 
                   :confirm => %(Delete this message?),
