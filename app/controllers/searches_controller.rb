@@ -42,6 +42,7 @@ class SearchesController < ApplicationController
         end
       rescue
         AdminMailer.deliver_sphinx_error
+        `/opt/ruby-enterprise-1.8.6-20090610/bin/rake ultrasphinx:daemon:stop RAILS_ENV=production; rake ultrasphinx:index:main RAILS_ENV=production; /opt/ruby-enterprise-1.8.6-20090610/bin/rake ultrasphinx:daemon:start RAILS_ENV=production >> log/ultrasphinx-index.log 2>&1`
       end
     end
   rescue Ultrasphinx::UsageError
