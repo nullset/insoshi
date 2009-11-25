@@ -1,9 +1,19 @@
 <div class="admin_actions">
+  <script type="text/javascript">
+  function callPublish(msg, attachment, action_link) {
+    FB.ensureInit(function () {
+      FB.Connect.streamPublish('', attachment, action_link);
+    });
+  }</script>
+
   <%- facebook_title = strip_tags(object.title.gsub(/'/, "\'")) rescue nil -%>
-  <%- facebook_body = strip_tags(object.body.gsub(/'/, "\'")) rescue nil -%>
   <%- if object.class == BlogPost -%>
+    <%- facebook_body = %{#{object.blog.person.name} wrote: #{strip_tags(object.body).gsub(/\'/, "\'").gsub(/\r|\n/, '')\
+  }}[0..300] + " &#8230" rescue nil -%>
     <input type="button" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= person_blog_post_path(object.blog.person, object.blog, object) %>','description':'<%= facebook_body %>'},null);return false;" value="Preview Dialog" />
   <%- elsif object.class == ForumPost -%>
+    <%- facebook_body = %{#{object.person.name} wrote: #{strip_tags(object.body).gsub(/\'/, "\'").gsub(/\r|\n/, '')\
+  }}[0..300] + " &#8230" rescue nil -%>
     <input type="button" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= forum_topic_post_path(object.topic.forum, object.topic, object) %>','description':'<%= facebook_body %>'},null);return false;" value="Preview Dialog" />
   <%- end -%>
   <%= link_to image_tag("famfamfam/accept.png", :title => "Accept this post", :alt => "Accept this post"), accept_admin_post_path(object, :model => object.class), :method => :post unless !object.tainted && !object.rejected %>
