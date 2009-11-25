@@ -1,4 +1,11 @@
 <div class="admin_actions">
+  <%- facebook_title = strip_tags(object.title.gsub(/'/, "\'")) rescue nil -%>
+  <%- facebook_body = strip_tags(object.body.gsub(/'/, "\'")) rescue nil -%>
+  <%- if object.class == BlogPost -%>
+    <input type="button" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= person_blog_post_path(object.blog.person, object.blog, object) %>','description':'<%= facebook_body %>'},null);return false;" value="Preview Dialog" />
+  <%- elsif object.class == ForumPost -%>
+    <input type="button" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= forum_topic_post_path(object.topic.forum, object.topic, object) %>','description':'<%= facebook_body %>'},null);return false;" value="Preview Dialog" />
+  <%- end -%>
   <%= link_to image_tag("famfamfam/accept.png", :title => "Accept this post", :alt => "Accept this post"), accept_admin_post_path(object, :model => object.class), :method => :post unless !object.tainted && !object.rejected %>
   <%= link_to image_tag("famfamfam/cross.png", :title => "Reject this post", :alt => "Reject this post"), reject_admin_post_path(object, :model => object.class), :method => :post, :confirm => "Are you sure?" unless object.rejected? %>
   <%= link_to image_tag("famfamfam/cancel.png", :title => "Reject this post and deactivate the author's account", :alt => "Reject this post and deactivate the author's account"), reject_and_deactivate_admin_post_path(object, :model => object.class), :method => :post, :confirm => "Are you sure?\nThis will cause the user's account to be deactivated." unless object.rejected? %>
