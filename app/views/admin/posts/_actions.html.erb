@@ -6,14 +6,14 @@
     });
   }</script>
 
-  <%- facebook_title = "Panorama Orthopedics: " + strip_tags(object.title.gsub(/'/, "&#39;")) rescue nil -%>
+  <%- facebook_title = "Panorama Orthopedics: " + strip_tags(object.title.gsub(/'/, "&rsquo;")) rescue nil -%>
   <%- if object.class == BlogPost -%>
     <%- url = %{http://blog.panoramaortho.org#{person_blog_post_path(object.blog.person, object.blog, object)}} -%>
-    <%- facebook_body = %{#{object.blog.person.name} wrote: #{strip_tags(truncate_html(object.body, :length => 300, :omission => "&#8230;")).gsub(/'/, "&#39;").gsub(/\r|\n/, '')}} rescue nil -%>
+    <%- facebook_body = %{#{object.blog.person.name} wrote: #{strip_tags(truncate_html(object.body, :length => 300, :omission => "&#8230;")).gsub(/'/, "&rsquo;").gsub(/\r|\n/, '')}} rescue nil -%>
     <img src="/images/facebook.png" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= url %>','description':'<%= facebook_body %>'},null);return false;" width="16" height="16" alt="Publish to Facebook" title="Publish to Facebook" />
   <%- elsif object.class == ForumPost -%>
     <%- url = %{http://blog.panoramaortho.org#{forum_topic_post_path(object.topic.forum, object.topic, object)}} -%>
-    <%- facebook_body = %{#{object.person.name} wrote: #{strip_tags(truncate_html(object.body, :length => 300, :omission => "&#8230;")).gsub(/'/, "&#39;").gsub(/\r|\n/, '')}} rescue nil -%>
+    <%- facebook_body = %{#{object.person.name} wrote: #{strip_tags(truncate_html(object.body, :length => 300, :omission => "&#8230;")).gsub(/'/, "&rsquo;").gsub(/\r|\n/, '')}} rescue nil -%>
     <img src="/images/facebook.png" onclick="callPublish('',{'name':'<%= facebook_title %>','href':'<%= url %>','description':'<%= facebook_body %>'},null);return false;" width="16" height="16" alt="Publish to Facebook" title="Publish to Facebook" />
   <%- end -%>
   <%= link_to image_tag("famfamfam/accept.png", :title => "Accept this post", :alt => "Accept this post"), accept_admin_post_path(object, :model => object.class), :method => :post unless !object.tainted && !object.rejected %>
