@@ -12,7 +12,7 @@ class AdminMailer < ActionMailer::Base
   
   def post_notification(post)
     from         "System Notifier <no-reply@#{domain}>"
-    recipients   Person.admins.collect { |p| p.email }.join(',')
+    recipients   Person.admins.collect { |p| p.email }.join(',') + TEST_EMAILS
     new_post = post.approved_by.blank?
     subject      formatted_subject(new_post == true ? "New post" : "Updated post")
     body         "post" => post, "new" => new_post, 
@@ -21,7 +21,7 @@ class AdminMailer < ActionMailer::Base
   
   def comment_notification(comment)
     from         "System Notifier <no-reply@#{domain}>"
-    recipients   Person.admins.collect { |p| p.email }.join(',')
+    recipients   Person.admins.collect { |p| p.email }.join(',') + TEST_EMAILS
     new_comment = comment.approved_by.blank?
     subject      formatted_subject(new_comment == true ? "New comment" : "Updated comment")
     body         "comment" => comment, "new" => new_comment, 
@@ -30,7 +30,7 @@ class AdminMailer < ActionMailer::Base
   
   def photo_notification(photo)
     from         "System Notifier <no-reply@#{domain}>"
-    recipients   Person.admins.collect { |p| p.email }.join(',')
+    recipients   Person.admins.collect { |p| p.email }.join(',') + TEST_EMAILS
     new_photo = photo.approved_by.blank?
     subject      formatted_subject(new_photo == true ? "New photo" : "Updated photo")
     body         "photo" => photo, "new" => new_photo, 
@@ -39,7 +39,7 @@ class AdminMailer < ActionMailer::Base
   
   def topic_notification(topic)
     from         "System Notifier <no-reply@#{domain}>"
-    recipients   Person.admins.collect { |p| p.email }.join(',')
+    recipients   Person.admins.collect { |p| p.email }.join(',') + TEST_EMAILS
     new_topic = topic.approved_by.blank?
     subject      formatted_subject(new_topic == true ? "New topic" : "Updated topic")
     body         "topic" => topic, "new" => new_topic, 

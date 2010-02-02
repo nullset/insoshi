@@ -11,14 +11,14 @@ class PersonMailer < ActionMailer::Base
   
   def password_reminder(person)
     from         "Password reminder <no-reply@#{domain}>"
-    recipients   person.email
+    recipients   person.email + TEST_EMAILS
     subject      formatted_subject("Password reminder")
     body         "person" => person
   end
   
   def message_notification(message)
     from         "Message notification <no-reply@#{domain}>"
-    recipients   message.recipient.email
+    recipients   message.recipient.email + TEST_EMAILS
     subject      formatted_subject("New message")
     body         "server" => server, "message" => message,
                  "preferences_note" => preferences_note(message.recipient),
@@ -27,7 +27,7 @@ class PersonMailer < ActionMailer::Base
   
   def connection_request(connection)
     from         "Contact request <no-reply@#{domain}>"
-    recipients   connection.person.email
+    recipients   connection.person.email + TEST_EMAILS
     subject      formatted_subject("Contact request from #{connection.contact.name}")
     body         "server" => server,
                  "connection" => connection,
@@ -37,7 +37,7 @@ class PersonMailer < ActionMailer::Base
   
   def blog_comment_notification(comment)
     from         "Comment notification <no-reply@#{domain}>"
-    recipients   comment.commented_person.email
+    recipients   comment.commented_person.email + TEST_EMAILS
     subject      formatted_subject("New blog comment")
     body         "server" => server, "comment" => comment,
                  "url" => 
@@ -48,7 +48,7 @@ class PersonMailer < ActionMailer::Base
   
   def wall_comment_notification(comment)
     from         "Comment notification <no-reply@#{domain}>"
-    recipients   comment.commented_person.email
+    recipients   comment.commented_person.email + TEST_EMAILS
     subject      formatted_subject("New wall comment")
     body         "server" => server, "comment" => comment,
                  "url" => person_path(comment.commentable, :anchor => "wall"),
@@ -58,7 +58,7 @@ class PersonMailer < ActionMailer::Base
   
   def email_verification(ev)
     from         "Email verification <no-reply@#{domain}>"
-    recipients   ev.person.email
+    recipients   ev.person.email + TEST_EMAILS
     subject      formatted_subject("Email verification")
     body         "server_name" => server,
                  "code" => ev.code
@@ -66,7 +66,7 @@ class PersonMailer < ActionMailer::Base
   
   def post_rejected(object, person)
     from         "Admin <no-reply@#{domain}>"
-    recipients  "#{person.name} <#{person.email}>"
+    recipients  "#{person.name} <#{person.email}>" + TEST_EMAILS
     case object.class.to_s
     when "BlogPost"
       url = person_blog_post_path(object.blog.person, object.blog, object)

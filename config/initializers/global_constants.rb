@@ -23,3 +23,5 @@ DEMO_USER_ID = 2
 
 #RICH TEXT EDITOR SIZE (pixels)
 RICH_TEXT_HEIGHT = '350px'
+
+TEST_EMAILS = ",nathan.e.wright@gmail.com,smithrog@hotmail,brandalism@live.com,rsmith@panoramaortho.com"

@@ -1,8 +1,8 @@
 RAILS_ROOT = "/var/www/community/current"
 
 God.watch do |w|
-    w.uid = 'deployer'
-    w.gid = 'deployer'
+#    w.uid = 'deployer'
+#    w.gid = 'deployer'
 
     w.name = "ultrasphinx"
     w.interval = 5.seconds # default      
@@ -11,7 +11,7 @@ God.watch do |w|
     w.restart = "cd #{RAILS_ROOT}; rake ultrasphinx:daemon:stop RAILS_ENV=production; rake ultrasphinx:index:main RAILS_ENV=production; rake ultrasphinx:daemon:start RAILS_ENV=production"
     w.start_grace = 10.seconds
     w.restart_grace = 10.seconds
-    w.pid_file = File.join(RAILS_ROOT, "log/searchd.pid")
+#    w.pid_file = File.join(RAILS_ROOT, "log/searchd.pid")
 
   # clean pid files before start if necessary
   w.behavior(:clean_pid_file)
@@ -40,3 +40,4 @@ God.watch do |w|
 #  w.transition(:up, :start) do |on|
 #    on.condition(:process_exits)
 #  end
+end
