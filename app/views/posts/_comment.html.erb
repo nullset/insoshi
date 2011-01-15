@@ -5,7 +5,7 @@
   </p>
   <%= display comment.body %>
   <div class="clear"></div>
-  <%- if current_person?(comment.commentable.blog.person) -%>
+  <%- if current_person?(comment.commentable.blog.person) || logged_in? && current_person.admin? -%>
   <div>
     <%= link_to "delete", person_blog_post_comment_path(@blog.person, @blog, @post, comment), :method => :delete, :class => "icon comment_delete", :confirm => "Are you sure you want to delete this comment?" %>
   </div>
