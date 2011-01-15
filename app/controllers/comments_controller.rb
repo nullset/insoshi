@@ -90,9 +90,9 @@ class CommentsController < ApplicationController
     def authorized_to_destroy?
       @comment = Comment.find(params[:id])
       if wall?
-        current_person?(person) or current_person?(@comment.commenter)
+        current_person?(person) or current_person?(@comment.commenter) or current_person.admin?
       elsif blog?
-        current_person?(person)
+        current_person?(person) or current_person.admin?
       end
     end
     
